@@ -73,7 +73,7 @@
 					</a>
 					<ul class="list-unstyled full-box">
 						<li>
-							<a href="admin.jsp"><i class="zmdi zmdi-account zmdi-hc-fw"></i> Admin</a>
+							<a href="Controlador?menu=Administrador&accion=Listar"><i class="zmdi zmdi-account zmdi-hc-fw"></i> Admin</a>
 						</li>
 						<li>
 							<a href="teacher.jsp"><i class="zmdi zmdi-male-alt zmdi-hc-fw"></i> Teacher</a>

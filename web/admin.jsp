@@ -151,7 +151,7 @@
 			<div class="row">
 				<div class="col-xs-12">
 					<ul class="nav nav-tabs" style="margin-bottom: 15px;">
-					  	<li class="active"><a href="#new" data-toggle="tab">New</a></li>
+					  	<li class="active"><a href="#new" data-toggle="tab">Crear nuevo</a></li>
 					  	<li><a href="#list" data-toggle="tab">List</a></li>
 					</ul>
 					<div id="myTabContent" class="tab-content">
@@ -159,37 +159,63 @@
 							<div class="container-fluid">
 								<div class="row">
 									<div class="col-xs-12 col-md-10 col-md-offset-1">
-									    <form action="">
+									    <form action="Controlador?menu=Administrador" method="POST">
 									    	<div class="form-group label-floating">
-											  <label class="control-label">Name</label>
-											  <input class="form-control" type="text">
+											  <label class="control-label">Primer nombre</label>
+											  <input class="form-control" type="text" name="nombre1">
+											</div>
+                                                                                        <div class="form-group label-floating">
+											  <label class="control-label">Segundo nombre</label>
+											  <input class="form-control" type="text" name="nombre2">
+											</div>
+                                                                                        <div class="form-group label-floating">
+											  <label class="control-label">Primer apellido</label>
+											  <input class="form-control" type="text" name="apellido1">
+											</div>
+                                                                                        <div class="form-group label-floating">
+											  <label class="control-label">Segundo apellido</label>
+											  <input class="form-control" type="text" name="apellido2">
 											</div>
 											<div class="form-group label-floating">
-											  <label class="control-label">Last Name</label>
-											  <input class="form-control" type="text">
+											  <label class="control-label">Cédula de identidad</label>
+											  <input class="form-control" type="text" name="cedula">
+											</div>
+                                                                                        <div class="form-group label-floating">
+											  <label class="control-label">Correo electrónico</label>
+											  <input class="form-control" type="text" name="correo">
+											</div>
+                                                                                        <div class="form-group label-floating">
+											  <label class="control-label">Número celular</label>
+											  <input class="form-control" type="text" name="celular">
+											</div>
+                                                                                        <div class="form-group label-floating">
+											  <label class="control-label">Número telefónico</label>
+											  <input class="form-control" type="text" name="telefono">
 											</div>
 											<div class="form-group label-floating">
-											  <label class="control-label">Address</label>
-											  <textarea class="form-control"></textarea>
+											  <label class="control-label">Fecha de nacimiento</label>
+											  <input class="form-control" type="text" name="fecha">
 											</div>
-											<div class="form-group label-floating">
-											  <label class="control-label">Email</label>
-											  <input class="form-control" type="text">
+                                                                                        <div class="form-group label-floating">
+											  <label class="control-label">Sexo</label>
+											  <input class="form-control" type="text" name="sexo">
+											</div> 
+                                                                                        <div class="form-group label-floating">
+											  <label class="control-label">Nacionalidad</label>
+											  <input class="form-control" type="text" name="nacionalidad">
+											</div>                                                                    
+                                                                                        <div class="form-group label-floating">
+											  <label class="control-label">Dirección</label>
+											  <input class="form-control" type="text" name="direccion">
 											</div>
-											<div class="form-group label-floating">
-											  <label class="control-label">Phone</label>
-											  <input class="form-control" type="text">
+                                                                                        <div class="form-group label-floating">
+											  <label class="control-label">Estatus</label>
+											  <input class="form-control" type="text" name="estatus">
 											</div>
-											<div class="form-group">
-										      <label class="control-label">Photo</label>
-										      <div>
-										        <input type="text" readonly="" class="form-control" placeholder="Browse...">
-										        <input type="file" >
-										      </div>
+											
 										    </div>
-										    <p class="text-center">
-										    	<button href="#!" class="btn btn-info btn-raised btn-sm"><i class="zmdi zmdi-floppy"></i> Save</button>
-										    </p>
+										    <input type="submit" name="accion" value="Agregar" class="btn btn-primary">
+                                                                                    <input type="submit" name="accion" value="Actualizar" class="btn btn-success">
 									    </form>
 									</div>
 								</div>

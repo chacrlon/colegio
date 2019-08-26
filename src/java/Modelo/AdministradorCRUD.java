@@ -117,7 +117,7 @@ public Administrador listarId(int id) {
     }
 
 
-public int agregar(Docente doc) {
+public int agregar(Administrador admin) {
         String sql="insert into planilla_administrador(nombre1, nombre2, apellido1, apellido2, cedula, sexo, fecha, nacionalidad, celular, telefono, correo, direccion, estatus)values(?,?,?,?,?,?,?,?,?,?,?,?,?)";
         Connection conn = null;
         PreparedStatement ps = null;
@@ -125,19 +125,19 @@ public int agregar(Docente doc) {
         try {
             conn=con.Conexionn();
             ps=conn.prepareStatement(sql);
-            ps.setString(1, doc.getNombre1());
-            ps.setString(2, doc.getNombre2());
-            ps.setString(3, doc.getApellido1());
-            ps.setString(4, doc.getApellido2());
-            ps.setString(5, doc.getCedula());
-            ps.setString(6, doc.getSexo());
-            ps.setString(7, doc.getFecha());
-            ps.setString(8, doc.getNacionalidad());
-            ps.setString(9, doc.getCelular());
-            ps.setString(10, doc.getTelefono());
-            ps.setString(11, doc.getCorreo());
-            ps.setString(12, doc.getDireccion());
-            ps.setString(13, doc.getEstatus());
+            ps.setString(1, admin.getNombre1());
+            ps.setString(2, admin.getNombre2());
+            ps.setString(3, admin.getApellido1());
+            ps.setString(4, admin.getApellido2());
+            ps.setString(5, admin.getCedula());
+            ps.setString(6, admin.getSexo());
+            ps.setString(7, admin.getFecha());
+            ps.setString(8, admin.getNacionalidad());
+            ps.setString(9, admin.getCelular());
+            ps.setString(10, admin.getTelefono());
+            ps.setString(11, admin.getCorreo());
+            ps.setString(12, admin.getDireccion());
+            ps.setString(13, admin.getEstatus());
             ps.executeUpdate();
         } catch (Exception e) {
             e.printStackTrace();
