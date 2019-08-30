@@ -35,22 +35,22 @@ public List listar() {
             ps=conn.prepareStatement(sql);
             rs=ps.executeQuery();
             while(rs.next()){     
-            Administrador doc= new Administrador();
-            doc.setId_p_a(rs.getInt(1));
-            doc.setNombre1(rs.getString(2));
-            doc.setNombre2(rs.getString(3));     
-            doc.setApellido1(rs.getString(4));
-            doc.setApellido2(rs.getString(5));
-            doc.setCedula(rs.getString(6));
-            doc.setSexo(rs.getString(7));     
-            doc.setFecha(rs.getString(8));
-            doc.setNacionalidad(rs.getString(9));
-            doc.setCelular(rs.getString(10));
-            doc.setTelefono(rs.getString(11));
-            doc.setCorreo(rs.getString(12));     
-            doc.setDireccion(rs.getString(13));
-            doc.setEstatus(rs.getString(14));     
-                lista.add(doc);
+            Administrador admin= new Administrador();
+            admin.setId_p_a(rs.getInt(1));
+            admin.setNombre1(rs.getString(2));
+            admin.setNombre2(rs.getString(3));     
+            admin.setApellido1(rs.getString(4));
+            admin.setApellido2(rs.getString(5));
+            admin.setCedula(rs.getString(6));
+            admin.setSexo(rs.getString(7));     
+            admin.setFecha(rs.getString(8));
+            admin.setNacionalidad(rs.getString(9));
+            admin.setCelular(rs.getString(10));
+            admin.setTelefono(rs.getString(11));
+            admin.setCorreo(rs.getString(12));     
+            admin.setDireccion(rs.getString(13));
+            admin.setEstatus(rs.getString(14));     
+                lista.add(admin);
             }
         } catch (Exception e) {
             e.printStackTrace();
@@ -72,7 +72,7 @@ public List listar() {
     }
 
 public Administrador listarId(int id) {
-        Administrador doc= new Administrador();
+        Administrador admin= new Administrador();
         String sql="select * from planilla_administrador where id_p_a="+id;
         Connection conn = null;
         PreparedStatement pst = null;
@@ -82,20 +82,20 @@ public Administrador listarId(int id) {
             pst=conn.prepareStatement(sql);
             rs=pst.executeQuery();
             while(rs.next()){                               
-            doc.setId_p_a(rs.getInt(1));
-            doc.setNombre1(rs.getString(2));
-            doc.setNombre2(rs.getString(3));     
-            doc.setApellido1(rs.getString(4));
-            doc.setApellido2(rs.getString(5));
-            doc.setCedula(rs.getString(6));
-            doc.setSexo(rs.getString(7));     
-            doc.setFecha(rs.getString(8));
-            doc.setNacionalidad(rs.getString(9));
-            doc.setCelular(rs.getString(10));
-            doc.setTelefono(rs.getString(11));
-            doc.setCorreo(rs.getString(12));     
-            doc.setDireccion(rs.getString(13));
-            doc.setEstatus(rs.getString(14));   
+            admin.setId_p_a(rs.getInt(1));
+            admin.setNombre1(rs.getString(2));
+            admin.setNombre2(rs.getString(3));     
+            admin.setApellido1(rs.getString(4));
+            admin.setApellido2(rs.getString(5));
+            admin.setCedula(rs.getString(6));
+            admin.setSexo(rs.getString(7));     
+            admin.setFecha(rs.getString(8));
+            admin.setNacionalidad(rs.getString(9));
+            admin.setCelular(rs.getString(10));
+            admin.setTelefono(rs.getString(11));
+            admin.setCorreo(rs.getString(12));     
+            admin.setDireccion(rs.getString(13));
+            admin.setEstatus(rs.getString(14));   
             }
         } catch (Exception e) {
             e.printStackTrace();
@@ -113,7 +113,7 @@ public Administrador listarId(int id) {
                 e.printStackTrace();
             }
         }
-        return doc;
+        return admin;
     }
 
 
@@ -159,7 +159,7 @@ public int agregar(Administrador admin) {
         return r;
     }
 
-     public int actualizar(Docente doc) {
+     public int actualizar(Administrador admin) {
         String sql="update planilla_administrador set nombre1=?, nombre2=?, apellido1=?, apellido2=?, cedula=?, sexo=?, fecha=?, nacionalidad=?, celular=?, telefono=?, correo=?, direccion=?, estatus=?, where id_p_a=?";
         Connection conn = null;
         PreparedStatement ps = null;
@@ -167,20 +167,20 @@ public int agregar(Administrador admin) {
         try {
             conn=con.Conexionn();
             ps=conn.prepareStatement(sql);
-            ps.setString(1, doc.getNombre1());
-            ps.setString(2, doc.getNombre2());
-            ps.setString(3, doc.getApellido1());
-            ps.setString(4, doc.getApellido2());
-            ps.setString(5, doc.getCedula());
-            ps.setString(6, doc.getSexo());
-            ps.setString(7, doc.getFecha());
-            ps.setString(8, doc.getNacionalidad());
-            ps.setString(9, doc.getCelular());
-            ps.setString(10, doc.getTelefono());
-            ps.setString(11, doc.getCorreo());
-            ps.setString(12, doc.getDireccion());
-            ps.setString(13, doc.getEstatus());
-            ps.setInt(15, doc.getId_p_d());
+            ps.setString(1, admin.getNombre1());
+            ps.setString(2, admin.getNombre2());
+            ps.setString(3, admin.getApellido1());
+            ps.setString(4, admin.getApellido2());
+            ps.setString(5, admin.getCedula());
+            ps.setString(6, admin.getSexo());
+            ps.setString(7, admin.getFecha());
+            ps.setString(8, admin.getNacionalidad());
+            ps.setString(9, admin.getCelular());
+            ps.setString(10, admin.getTelefono());
+            ps.setString(11, admin.getCorreo());
+            ps.setString(12, admin.getDireccion());
+            ps.setString(13, admin.getEstatus());
+            ps.setInt(14, admin.getId_p_a());
             ps.executeUpdate();           
         } catch (Exception e) {
             e.printStackTrace();
@@ -230,3 +230,4 @@ public int agregar(Administrador admin) {
         }
     }
 }
+

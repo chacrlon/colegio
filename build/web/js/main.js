@@ -12,8 +12,8 @@ $(document).ready(function(){
 	});
 	$('.btn-exit-system').on('click', function(){
 		swal({
-		  	title: 'Are you sure?',
-		  	text: "The current session will be closed",
+		  	title: '¿Seguro que deseas salir?',
+		  	text: "La sesion sera cerrada",
 		  	type: 'warning',
 		  	showCancelButton: true,
 		  	confirmButtonColor: '#03A9F4',
@@ -21,7 +21,7 @@ $(document).ready(function(){
 		  	confirmButtonText: '<i class="zmdi zmdi-run"></i> Yes, Exit!',
 		  	cancelButtonText: '<i class="zmdi zmdi-close-circle"></i> No, Cancel!'
 		}).then(function () {
-			window.location.href="index.html";
+			window.location.href="index.jsp";
 		});
 	});
 	$('.btn-menu-dashboard').on('click', function(){
@@ -45,7 +45,7 @@ $(document).ready(function(){
 	});
 	$('.btn-search').on('click', function(){
 		swal({
-		  title: 'What are you looking for?',
+		  title: '¿Que deseas buscar?',
 		  confirmButtonText: '<i class="zmdi zmdi-search"></i>  Search',
 		  confirmButtonColor: '#03A9F4',
 		  showCancelButton: true,
@@ -67,6 +67,9 @@ $(document).ready(function(){
 		$('#Dialog-Help').modal('show');
 	});
 });
+
+
+
 (function($){
     $(window).on("load",function(){
         $(".dashboard-sideBar-ct").mCustomScrollbar({

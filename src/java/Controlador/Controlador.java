@@ -15,6 +15,7 @@ public class Controlador extends HttpServlet {
         
         Administrador admin=new Administrador();
         AdministradorCRUD adminCRUD=new AdministradorCRUD();
+        int ida;
 
  protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
@@ -24,10 +25,12 @@ public class Controlador extends HttpServlet {
             request.getRequestDispatcher("home.jsp").forward(request, response);
         }
         if (menu.equals("Administrador")) {
+            request.getRequestDispatcher("admin.jsp").forward(request, response);
             switch (accion) {
-                case "Listar":
-                    request.getRequestDispatcher("admin.jsp").forward(request, response);
-                    break;
+                case "Listar":                   
+                   List lista = adminCRUD.listar();
+                   request.setAttribute("Administradores", lista);
+                break;
                 case "Agregar":
                     String nombre1=request.getParameter("nombre1");
                     String nombre2=request.getParameter("nombre2");
@@ -56,8 +59,50 @@ public class Controlador extends HttpServlet {
                     admin.setDireccion(direccion);
                     admin.setEstatus(estatus);
                     adminCRUD.agregar(admin);
+                    request.getRequestDispatcher("Controlador?menu=Administrador&accion=Listar").forward(request, response);
                     break;
-               
+                case "Editar":
+                    ida=Integer.parseInt(request.getParameter("id"));
+                    Administrador a=adminCRUD.listarId(ida);
+                    request.setAttribute("administrador", a);
+                    request.getRequestDispatcher("Controlador?menu=Administrador&accion=Listar").forward(request, response);                    
+                break;
+                case "Actualizar":
+                    String nombre1_a=request.getParameter("nombre1");
+                    String nombre2_a=request.getParameter("nombre2");
+                    String apellido1_a=request.getParameter("apellido1");
+                    String apellido2_a=request.getParameter("apellido2");
+                    String cedula_a=request.getParameter("cedula");
+                    String sexo_a=request.getParameter("sexo");
+                    String fecha_a=request.getParameter("fecha");
+                    String nacionalidad_a=request.getParameter("nacionalidad");
+                    String celular_a=request.getParameter("celular");
+                    String telefono_a=request.getParameter("telefono");
+                    String correo_a=request.getParameter("correo");
+                    String direccion_a=request.getParameter("direccion");
+                    String estatus_a=request.getParameter("estatus");
+                    admin.setNombre1(nombre1_a);
+                    admin.setNombre2(nombre2_a);
+                    admin.setApellido1(apellido1_a);
+                    admin.setApellido2(apellido2_a);
+                    admin.setCedula(cedula_a);
+                    admin.setSexo(sexo_a);
+                    admin.setFecha(fecha_a);
+                    admin.setNacionalidad(nacionalidad_a);
+                    admin.setCelular(celular_a);
+                    admin.setTelefono(telefono_a);
+                    admin.setCorreo(correo_a);
+                    admin.setDireccion(direccion_a);
+                    admin.setEstatus(estatus_a);
+                    admin.setId_p_a(ida);
+                    adminCRUD.actualizar(admin);
+                    request.getRequestDispatcher("Controlador?menu=Administrador&accion=Listar").forward(request, response);                    
+                break;
+                case "Eliminar":
+                ida=Integer.parseInt(request.getParameter("id"));
+                adminCRUD.delete(ida);
+                request.getRequestDispatcher("Controlador?menu=Administrador&accion=Listar").forward(request, response);                    
+                break;
                 default:
                     throw new AssertionError();
             }
@@ -82,3 +127,4 @@ public class Controlador extends HttpServlet {
     }// </editor-fold>
 
 }
+
