@@ -16,6 +16,8 @@ public class Controlador extends HttpServlet {
         Administrador admin=new Administrador();
         AdministradorCRUD adminCRUD=new AdministradorCRUD();
         int ida;
+        
+        
 
  protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
@@ -25,11 +27,12 @@ public class Controlador extends HttpServlet {
             request.getRequestDispatcher("home.jsp").forward(request, response);
         }
         if (menu.equals("Administrador")) {
-            request.getRequestDispatcher("admin.jsp").forward(request, response);
+            //request.getRequestDispatcher("admin.jsp").forward(request, response);
             switch (accion) {
-                case "Listar":                   
+                case "Listar":
                    List lista = adminCRUD.listar();
                    request.setAttribute("Administradores", lista);
+                   request.getRequestDispatcher("admin.jsp").forward(request, response);
                 break;
                 case "Agregar":
                     String nombre1=request.getParameter("nombre1");
@@ -65,7 +68,7 @@ public class Controlador extends HttpServlet {
                     ida=Integer.parseInt(request.getParameter("id"));
                     Administrador a=adminCRUD.listarId(ida);
                     request.setAttribute("administrador", a);
-                    request.getRequestDispatcher("Controlador?menu=Administrador&accion=Listar").forward(request, response);                    
+                    request.getRequestDispatcher("Controlador?menu=Administrador&accion=Listar&#new").forward(request, response);                    
                 break;
                 case "Actualizar":
                     String nombre1_a=request.getParameter("nombre1");

@@ -175,8 +175,7 @@
                                                                                         <th class="text-center">Correo</th> 
                                                                                         <th class="text-center">Dirección</th>
                                                                                         <th class="text-center">Estatus</th>
-											<th class="text-center">Editar</th>
-											<th class="text-center">Eliminar</th>
+											<th class="text-center">ACCIONES</th>			
 										</tr>
 									</thead>
 									<tbody>
@@ -218,55 +217,55 @@
 											</div>
                                                                                         <div class="form-group label-floating">
 											  <label class="control-label">Segundo nombre</label>
-											  <input class="form-control" type="text" name="nombre2">
+											  <input class="form-control" type="text" value="${administrador.getNombre2()}" name="nombre2">
 											</div>
                                                                                         <div class="form-group label-floating">
 											  <label class="control-label">Primer apellido</label>
-											  <input class="form-control" type="text" name="apellido1">
+											  <input class="form-control" type="text" value="${administrador.getApellido1()}" name="apellido1">
 											</div>
                                                                                         <div class="form-group label-floating">
 											  <label class="control-label">Segundo apellido</label>
-											  <input class="form-control" type="text" name="apellido2">
+											  <input class="form-control" type="text" value="${administrador.getApellido2()}" name="apellido2">
 											</div>
 											<div class="form-group label-floating">
 											  <label class="control-label">Cédula de identidad</label>
-											  <input class="form-control" type="text" name="cedula">
+											  <input class="form-control" type="text" value="${administrador.getCedula()}" name="cedula">
 											</div>
                                                                                         <div class="form-group label-floating">
 											  <label class="control-label">Correo electrónico</label>
-											  <input class="form-control" type="text" name="correo">
+											  <input class="form-control" type="text" value="${administrador.getSexo()}" name="correo">
 											</div>
                                                                                         <div class="form-group label-floating">
 											  <label class="control-label">Número celular</label>
-											  <input class="form-control" type="text" name="celular">
+											  <input class="form-control" type="text" value="${administrador.getFecha()}" name="celular">
 											</div>
                                                                                         <div class="form-group label-floating">
 											  <label class="control-label">Número telefónico</label>
-											  <input class="form-control" type="text" name="telefono">
+											  <input class="form-control" type="text" value="${administrador.getNacionalidad()}" name="telefono">
 											</div>
 											<div class="form-group label-floating">
 											  <label class="control-label">Fecha de nacimiento</label>
-											  <input class="form-control" type="text" name="fecha">
+											  <input class="form-control" type="text" value="${administrador.getCelular()}" name="fecha">
 											</div>
                                                                                         <div class="form-group label-floating">
 											  <label class="control-label">Sexo</label>
-											  <input class="form-control" type="text" name="sexo">
+											  <input class="form-control" type="text" value="${administrador.getTelefono()}" name="sexo">
 											</div> 
                                                                                         <div class="form-group label-floating">
 											  <label class="control-label">Nacionalidad</label>
-											  <input class="form-control" type="text" name="nacionalidad">
+											  <input class="form-control" type="text" value="${administrador.getCorreo()}" name="nacionalidad">
 											</div>                                                                    
                                                                                         <div class="form-group label-floating">
 											  <label class="control-label">Dirección</label>
-											  <input class="form-control" type="text" name="direccion">
+											  <input class="form-control" type="text" value="${administrador.getDireccion()}" name="direccion">
 											</div>
                                                                                         <div class="form-group label-floating">
 											  <label class="control-label">Estatus</label>
-											  <input class="form-control" type="text" name="estatus">
+											  <input class="form-control" type="text" value="${administrador.getEstatus()}" name="estatus">
 											</div>
 											
 										    </div>
-										    <input type="submit" name="accion" onclick="return validar();"     value="Agregar" class="btn btn-primary">
+										    <input type="submit" name="accion" value="Agregar" class="btn btn-primary">
                                                                                     <input type="submit" name="accion" value="Actualizar" class="btn btn-success">
 									    </form>
 									</div>
