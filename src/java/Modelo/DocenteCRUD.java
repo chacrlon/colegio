@@ -160,7 +160,7 @@ public int agregar(Docente doc) {
     }
 
      public int actualizar(Docente doc) {
-        String sql="update planilla_docente set nombre1=?, nombre2=?, apellido1=?, apellido2=?, cedula=?, sexo=?, fecha=?, nacionalidad=?, celular=?, telefono=?, correo=?, direccion=?, estatus=?, where id_p_d=?";
+        String sql="update planilla_docente set nombre1=?, nombre2=?, apellido1=?, apellido2=?, cedula=?, sexo=?, fecha=?, nacionalidad=?, celular=?, telefono=?, correo=?, direccion=?, estatus=? where id_p_d=?";
         Connection conn = null;
         PreparedStatement ps = null;
         ResultSet rs = null;

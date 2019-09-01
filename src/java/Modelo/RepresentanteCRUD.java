@@ -153,7 +153,7 @@ public int agregar(Representante re) {
     }
 
      public int actualizar(Representante re) {
-        String sql="update planilla_representante set nombre1=?, nombre2=?, apellido1=?, apellido2=?, cedula=?, sexo=?, fecha=?, nacionalidad=?, telefono=?, correo=?, direccion=?, where id_p_r=?";
+        String sql="update planilla_representante set nombre1=?, nombre2=?, apellido1=?, apellido2=?, cedula=?, sexo=?, fecha=?, nacionalidad=?, telefono=?, correo=?, direccion=? where id_p_r=?";
         Connection conn = null;
         PreparedStatement ps = null;
         ResultSet rs = null;
@@ -172,13 +172,7 @@ public int agregar(Representante re) {
             ps.setString(10, re.getCorreo());
             ps.setString(11, re.getDireccion());
             ps.setInt(12, re.getId_p_r());
-            int r=ps.executeUpdate();
-            if(r==1){ 
-                return 1;
-            }else{ 
-                return 0;
-            }
-            
+            ps.executeUpdate();           
         } catch (Exception e) {
             e.printStackTrace();
             return 0;
@@ -196,6 +190,7 @@ public int agregar(Representante re) {
                 e.printStackTrace();
             }
         }
+        return r;
     }
      
      
