@@ -1,7 +1,5 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+SE INCLUYO id_anio
  */
 package Modelo;
 
@@ -10,23 +8,26 @@ package Modelo;
  * @author AARON ROMAN
  */
 public class Asignatura {
+
     int id_a;
     String codigo;
     String nombre;
     Double minimo;
     Double maximo;
     String estatus;
+    int id_anio;
 
     public Asignatura() {
     }
 
-    public Asignatura(int id_a, String codigo, String nombre, Double minimo, Double maximo, String estatus) {
+    public Asignatura(int id_a, String codigo, String nombre, Double minimo, Double maximo, String estatus, int id_anio) {
         this.id_a = id_a;
         this.codigo = codigo;
         this.nombre = nombre;
         this.minimo = minimo;
         this.maximo = maximo;
         this.estatus = estatus;
+        this.id_anio = id_anio;
     }
 
     public int getId_a() {
@@ -77,5 +78,11 @@ public class Asignatura {
         this.estatus = estatus;
     }
     
-    
+    public int getId_anio() {
+        return id_anio;
+    }
+
+    public void setId_anio(int id_anio) {
+        this.id_anio = id_anio;
+    }
 }

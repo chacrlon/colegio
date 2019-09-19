@@ -17,28 +17,27 @@ import java.util.List;
  *
  * @author AARON ROMAN
  */
-public class AsignaturaCRUD {
+public class PublicacionCRUD {
     Conexion con= new Conexion();       
      int r;
 
 public List listar() {
-        String sql="select * from asignaturas";
+        String sql="select * from publicaciones";
         Connection conn = null;
         PreparedStatement ps = null;
         ResultSet rs = null;
-        List<Asignatura>lista=new ArrayList<>();
+        List<Publicacion>lista=new ArrayList<>();
         try {
             conn=con.Conexionn();
             ps=conn.prepareStatement(sql);
             rs=ps.executeQuery();
             while (rs.next()) {
-                Asignatura admin = new Asignatura();
-                admin.setId_a(rs.getInt(1));
-                admin.setCodigo(rs.getString(2));
-                admin.setNombre(rs.getString(3));
-                admin.setMinimo(rs.getDouble(4));
-                admin.setMaximo(rs.getDouble(5));               
-                admin.setEstatus(rs.getString(6));
+                Publicacion admin= new Publicacion();
+                admin.setId_pu(rs.getInt(1));
+                admin.setTitulo(rs.getString(2));
+                admin.setMensaje(rs.getString(3));
+                admin.setFecha(rs.getString(4));               
+                admin.setHora(rs.getString(5));
             }
         } catch (Exception e) {
             e.printStackTrace();
@@ -59,9 +58,9 @@ public List listar() {
         return lista;
     }
 
-public Asignatura listarId(int id) {
-        Asignatura admin= new Asignatura();
-        String sql="select * from asignaturas where id_asignatura="+id;
+public Publicacion listarId(int id) {
+        Publicacion admin= new Publicacion();
+        String sql="select * from publicaciones where id_publicacion="+id;
         Connection conn = null;
         PreparedStatement pst = null;
         ResultSet rs = null;
@@ -70,12 +69,11 @@ public Asignatura listarId(int id) {
             pst=conn.prepareStatement(sql);
             rs=pst.executeQuery();
             while(rs.next()){                               
-            admin.setId_a(rs.getInt(1));
-            admin.setCodigo(rs.getString(2));
-            admin.setNombre(rs.getString(3));
-            admin.setMinimo(rs.getDouble(4));
-            admin.setMaximo(rs.getDouble(5));               
-            admin.setEstatus(rs.getString(6));   
+                admin.setId_pu(rs.getInt(1));
+                admin.setTitulo(rs.getString(2));
+                admin.setMensaje(rs.getString(3));
+                admin.setFecha(rs.getString(4));               
+                admin.setHora(rs.getString(5));   
             }
         } catch (Exception e) {
             e.printStackTrace();
@@ -97,20 +95,18 @@ public Asignatura listarId(int id) {
     }
 
 
-public int agregar(Asignatura admin) {
-        String sql="insert into asignaturas(codigo, nombre, minimo, maximo, estatus, id_anio)values(?,?,?,?,?,?)";
+public int agregar(Publicacion admin) {
+        String sql="insert into publicaciones(titulo, mensaje, fecha, hora)values(?,?,?,?)";
         Connection conn = null;
         PreparedStatement ps = null;
         ResultSet rs = null;
         try {
             conn=con.Conexionn();
             ps=conn.prepareStatement(sql);
-            ps.setString(1, admin.getCodigo());
-            ps.setString(2, admin.getNombre());
-            ps.setDouble(3, admin.getMinimo());
-            ps.setDouble(4, admin.getMaximo());
-            ps.setString(5, admin.getEstatus());
-            ps.setInt(6, admin.getId_anio());
+            ps.setString(1, admin.getTitulo());
+            ps.setString(2, admin.getMensaje());
+            ps.setString(3, admin.getFecha());
+            ps.setString(4, admin.getHora());
             ps.executeUpdate();
         } catch (Exception e) {
             e.printStackTrace();
@@ -132,20 +128,19 @@ public int agregar(Asignatura admin) {
         return r;
     }
 
-     public int actualizar(Asignatura admin) {
-        String sql="update asignaturas set codigo=?, nombre=?, minimo=?, maximo=?, estatus=? where id_asignatura=?";
+     public int actualizar(Publicacion admin) {
+        String sql="update publicaciones set titulo=?, mensaje=?, fecha=?, hora=? where id_publicacion=?";
         Connection conn = null;
         PreparedStatement ps = null;
         ResultSet rs = null;
         try {
             conn=con.Conexionn();
             ps=conn.prepareStatement(sql);
-            ps.setString(1, admin.getCodigo());
-            ps.setString(2, admin.getNombre());
-            ps.setDouble(3, admin.getMinimo());
-            ps.setDouble(4, admin.getMaximo());
-            ps.setString(5, admin.getEstatus());
-            ps.setInt(6, admin.getId_a());
+            ps.setString(1, admin.getTitulo());
+            ps.setString(2, admin.getMensaje());
+            ps.setString(3, admin.getFecha());
+            ps.setString(4, admin.getHora());
+            ps.setInt(5, admin.getId_pu());
             ps.executeUpdate();           
         } catch (Exception e) {
             e.printStackTrace();
@@ -169,7 +164,7 @@ public int agregar(Asignatura admin) {
      
      
      public void delete(int id) {
-        String sql="delete from asignaturas where id_asignatura="+id;       
+        String sql="delete from publicaciones where id_publicacion="+id;       
         Connection conn = null;
         PreparedStatement ps = null;
         ResultSet rs = null;

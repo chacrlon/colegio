@@ -17,28 +17,25 @@ import java.util.List;
  *
  * @author AARON ROMAN
  */
-public class AsignaturaCRUD {
+public class CalificacionCRUD {
     Conexion con= new Conexion();       
      int r;
 
 public List listar() {
-        String sql="select * from asignaturas";
+        String sql="select * from calificacion";
         Connection conn = null;
         PreparedStatement ps = null;
         ResultSet rs = null;
-        List<Asignatura>lista=new ArrayList<>();
+        List<Calificacion>lista=new ArrayList<>();
         try {
             conn=con.Conexionn();
             ps=conn.prepareStatement(sql);
             rs=ps.executeQuery();
             while (rs.next()) {
-                Asignatura admin = new Asignatura();
-                admin.setId_a(rs.getInt(1));
-                admin.setCodigo(rs.getString(2));
-                admin.setNombre(rs.getString(3));
-                admin.setMinimo(rs.getDouble(4));
-                admin.setMaximo(rs.getDouble(5));               
-                admin.setEstatus(rs.getString(6));
+                Calificacion admin = new Calificacion();
+                admin.setId_ca(rs.getInt(1));
+                admin.setCalificacion(rs.getDouble(2));
+                admin.setFecha_carga(rs.getString(3));
             }
         } catch (Exception e) {
             e.printStackTrace();
@@ -59,9 +56,9 @@ public List listar() {
         return lista;
     }
 
-public Asignatura listarId(int id) {
-        Asignatura admin= new Asignatura();
-        String sql="select * from asignaturas where id_asignatura="+id;
+public Calificacion listarId(int id) {
+        Calificacion admin = new Calificacion();
+        String sql="select * from calificacion where id_calificacion="+id;
         Connection conn = null;
         PreparedStatement pst = null;
         ResultSet rs = null;
@@ -70,12 +67,9 @@ public Asignatura listarId(int id) {
             pst=conn.prepareStatement(sql);
             rs=pst.executeQuery();
             while(rs.next()){                               
-            admin.setId_a(rs.getInt(1));
-            admin.setCodigo(rs.getString(2));
-            admin.setNombre(rs.getString(3));
-            admin.setMinimo(rs.getDouble(4));
-            admin.setMaximo(rs.getDouble(5));               
-            admin.setEstatus(rs.getString(6));   
+                admin.setId_ca(rs.getInt(1));
+                admin.setCalificacion(rs.getDouble(2));
+                admin.setFecha_carga(rs.getString(3));  
             }
         } catch (Exception e) {
             e.printStackTrace();
@@ -97,20 +91,18 @@ public Asignatura listarId(int id) {
     }
 
 
-public int agregar(Asignatura admin) {
-        String sql="insert into asignaturas(codigo, nombre, minimo, maximo, estatus, id_anio)values(?,?,?,?,?,?)";
+public int agregar(Calificacion admin) {
+        String sql="insert into calificacion(calificacion, fecha_carga, id_plan, id_p_e)values(?,?,?,?)";
         Connection conn = null;
         PreparedStatement ps = null;
         ResultSet rs = null;
         try {
             conn=con.Conexionn();
             ps=conn.prepareStatement(sql);
-            ps.setString(1, admin.getCodigo());
-            ps.setString(2, admin.getNombre());
-            ps.setDouble(3, admin.getMinimo());
-            ps.setDouble(4, admin.getMaximo());
-            ps.setString(5, admin.getEstatus());
-            ps.setInt(6, admin.getId_anio());
+            ps.setDouble(1, admin.getCalificacion());
+            ps.setString(2, admin.getFecha_carga());
+            ps.setInt(3, admin.getId_plan());
+            ps.setInt(4, admin.getId_p_e());
             ps.executeUpdate();
         } catch (Exception e) {
             e.printStackTrace();
@@ -132,20 +124,19 @@ public int agregar(Asignatura admin) {
         return r;
     }
 
-     public int actualizar(Asignatura admin) {
-        String sql="update asignaturas set codigo=?, nombre=?, minimo=?, maximo=?, estatus=? where id_asignatura=?";
+     public int actualizar(Calificacion admin) {
+        String sql="update calificacion set calificacion=?, fecha_carga=?, id_plan=?, id_p_e=? where id_calificacion=?";
         Connection conn = null;
         PreparedStatement ps = null;
         ResultSet rs = null;
         try {
             conn=con.Conexionn();
             ps=conn.prepareStatement(sql);
-            ps.setString(1, admin.getCodigo());
-            ps.setString(2, admin.getNombre());
-            ps.setDouble(3, admin.getMinimo());
-            ps.setDouble(4, admin.getMaximo());
-            ps.setString(5, admin.getEstatus());
-            ps.setInt(6, admin.getId_a());
+            ps.setDouble(1, admin.getCalificacion());
+            ps.setString(2, admin.getFecha_carga());
+            ps.setInt(3, admin.getId_plan());
+            ps.setInt(4, admin.getId_p_e());
+            ps.setInt(5, admin.getId_ca());
             ps.executeUpdate();           
         } catch (Exception e) {
             e.printStackTrace();
@@ -169,7 +160,7 @@ public int agregar(Asignatura admin) {
      
      
      public void delete(int id) {
-        String sql="delete from asignaturas where id_asignatura="+id;       
+        String sql="delete from calificacion where id_calificacion="+id;       
         Connection conn = null;
         PreparedStatement ps = null;
         ResultSet rs = null;
