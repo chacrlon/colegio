@@ -25,14 +25,6 @@ public class Año {
         this.estatus = estatus;
     }
 
-    public String getEstatus() {
-        return estatus;
-    }
-
-    public void setEstatus(String estatus) {
-        this.estatus = estatus;
-    }
-
     public int getId_a() {
         return id_a;
     }
@@ -56,6 +48,13 @@ public class Año {
     public void setNombre(String nombre) {
         this.nombre = nombre;
     }
-    
-    
+
+    public String getEstatus() {
+        return estatus;
+    }
+
+    public void setEstatus(String estatus) {
+        this.estatus = estatus;
+    }
+
 }

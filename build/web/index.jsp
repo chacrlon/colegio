@@ -35,6 +35,9 @@
         <div class="container">
             <a class="btn btn-success btn-lg" href="homedocente.jsp">Iniciar Docente</a>
         </div>
+        <div class="container">
+            <a class="btn btn-success btn-lg" href="homeestudiante.jsp">Iniciar Estudiante</a>
+        </div>
 	<!--====== Scripts -->
 	<script src="./js/jquery-3.1.1.min.js"></script>
 	<script src="./js/bootstrap.min.js"></script>

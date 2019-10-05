@@ -54,13 +54,13 @@
 					</a>
 					<ul class="list-unstyled full-box">
 						<li>
-							<a href="Controlador?menu=Periodo&accion=Listar"><i class="zmdi zmdi-timer zmdi-hc-fw"></i> Periodos</a>
+							<a href="period.jsp"><i class="zmdi zmdi-timer zmdi-hc-fw"></i> Asignaturas</a>
 						</li>
 						<li>
-							<a href="Controlador?menu=Anio&accion=Listar"><i class="zmdi zmdi-book zmdi-hc-fw"></i> Año escolar</a>
+							<a href="subject.jsp"><i class="zmdi zmdi-book zmdi-hc-fw"></i> Subject</a>
 						</li>
 						<li>
-							<a href="Controlador?menu=Seccion&accion=Listar"><i class="zmdi zmdi-graduation-cap zmdi-hc-fw"></i> Section</a>
+							<a href="section.jsp"><i class="zmdi zmdi-graduation-cap zmdi-hc-fw"></i> Section</a>
 						</li>
 						<li>
 							<a href="salon.jsp"><i class="zmdi zmdi-font zmdi-hc-fw"></i> Salon</a>
@@ -71,18 +71,18 @@
 					<a href="#!" class="btn-sideBar-SubMenu">
 						<i class="zmdi zmdi-account-add zmdi-hc-fw"></i> Users <i class="zmdi zmdi-caret-down pull-right"></i>
 					</a>
-					<ul class="list-unstyled full-box">
+					<ul class="list-unstyled full-box">			
 						<li>
-							<a href="Controlador?menu=Administrador&accion=Listar"><i class="zmdi zmdi-account zmdi-hc-fw"></i> Admin</a>
+							<a href="teacher.jsp"><i class="zmdi zmdi-male-alt zmdi-hc-fw"></i> Docentes</a>
+						</li>
+                                                <li>
+							<a href="student.jsp"><i class="zmdi zmdi-face zmdi-hc-fw"></i> Compañeros</a>
 						</li>
 						<li>
-							<a href="teacher.jsp"><i class="zmdi zmdi-male-alt zmdi-hc-fw"></i> Teacher</a>
-						</li>
+							<a href="student.jsp"><i class="zmdi zmdi-face zmdi-hc-fw"></i> Perfil</a>
+						</li>      
 						<li>
-							<a href="student.jsp"><i class="zmdi zmdi-face zmdi-hc-fw"></i> Student</a>
-						</li>
-						<li>
-							<a href="representative.jsp"><i class="zmdi zmdi-male-female zmdi-hc-fw"></i> Representative</a>
+							<a href="representative.jsp"><i class="zmdi zmdi-male-female zmdi-hc-fw"></i> Representantes</a>
 						</li>
 					</ul>
 				</li>

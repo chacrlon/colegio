@@ -32,11 +32,11 @@ public List listar() {
             ps=conn.prepareStatement(sql);
             rs=ps.executeQuery();
             while (rs.next()) {
-                Año admin = new Año();
-                admin.setId_a(rs.getInt(1));
-                admin.setCodigo(rs.getString(2));
-                admin.setNombre(rs.getString(3));              
-                admin.setEstatus(rs.getString(4));
+                Año anio = new Año();
+                anio.setId_a(rs.getInt(1));
+                anio.setCodigo(rs.getString(2));
+                anio.setNombre(rs.getString(3));              
+                anio.setEstatus(rs.getString(4));
             }
         } catch (Exception e) {
             e.printStackTrace();
@@ -58,7 +58,7 @@ public List listar() {
     }
 
 public Año listarId(int id) {
-        Año admin= new Año();
+        Año anio= new Año();
         String sql="select * from anio where id_anio="+id;
         Connection conn = null;
         PreparedStatement pst = null;
@@ -68,10 +68,10 @@ public Año listarId(int id) {
             pst=conn.prepareStatement(sql);
             rs=pst.executeQuery();
             while(rs.next()){                               
-            admin.setId_a(rs.getInt(1));
-            admin.setCodigo(rs.getString(2));
-            admin.setNombre(rs.getString(3));              
-            admin.setEstatus(rs.getString(4));   
+            anio.setId_a(rs.getInt(1));
+            anio.setCodigo(rs.getString(2));
+            anio.setNombre(rs.getString(3));              
+            anio.setEstatus(rs.getString(4));   
             }
         } catch (Exception e) {
             e.printStackTrace();
@@ -89,7 +89,7 @@ public Año listarId(int id) {
                 e.printStackTrace();
             }
         }
-        return admin;
+        return anio;
     }
 
 

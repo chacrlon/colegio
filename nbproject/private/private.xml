@@ -3,12 +3,11 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/AARON%20ROMAN/Documents/NetBeansProjects/COLEGIO_ONLINE/src/java/Modelo/Publicacion.java</file>
-            <file>file:/C:/Users/AARON%20ROMAN/Documents/NetBeansProjects/COLEGIO_ONLINE/src/java/Modelo/Plan_evaluacion.java</file>
-            <file>file:/C:/Users/AARON%20ROMAN/Documents/NetBeansProjects/COLEGIO_ONLINE/src/java/Modelo/Plan_evaluacionCRUD.java</file>
-            <file>file:/C:/Users/AARON%20ROMAN/Documents/NetBeansProjects/COLEGIO_ONLINE/web/index.jsp</file>
-            <file>file:/C:/Users/AARON%20ROMAN/Documents/NetBeansProjects/COLEGIO_ONLINE/web/homedocente.jsp</file>
-            <file>file:/C:/Users/AARON%20ROMAN/Documents/NetBeansProjects/COLEGIO_ONLINE/src/java/Modelo/PublicacionCRUD.java</file>
+            <file>file:/C:/Users/AARON%20ROMAN/Documents/NetBeansProjects/COLEGIO_ONLINE/src/java/Modelo/AñoCRUD.java</file>
+            <file>file:/C:/Users/AARON%20ROMAN/Documents/NetBeansProjects/COLEGIO_ONLINE/web/home.jsp</file>
+            <file>file:/C:/Users/AARON%20ROMAN/Documents/NetBeansProjects/COLEGIO_ONLINE/web/admin.jsp</file>
+            <file>file:/C:/Users/AARON%20ROMAN/Documents/NetBeansProjects/COLEGIO_ONLINE/src/java/Controlador/Controlador.java</file>
+            <file>file:/C:/Users/AARON%20ROMAN/Documents/NetBeansProjects/COLEGIO_ONLINE/web/año.jsp</file>
         </group>
     </open-files>
 </project-private>

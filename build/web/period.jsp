@@ -3,7 +3,7 @@
     Created on : Aug 18, 2019, 7:22:12 PM
     Author     : AARON ROMAN
 --%>
-
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <!DOCTYPE html>
@@ -143,114 +143,49 @@
 		<!-- Content page -->
 		<div class="container-fluid">
 			<div class="page-header">
-			  <h1 class="text-titles"><i class="zmdi zmdi-timer zmdi-hc-fw"></i> Administration <small>Period</small></h1>
+			  <h1 class="text-titles"><i class="zmdi zmdi-account zmdi-hc-fw"></i> Usuarios <small>Administrador</small></h1>
 			</div>
-			<p class="lead">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Esse voluptas reiciendis tempora voluptatum eius porro ipsa quae voluptates officiis sapiente sunt dolorem, velit quos a qui nobis sed, dignissimos possimus!</p>
+			<p class="lead"></p>
 		</div>
 		<div class="container-fluid">
 			<div class="row">
 				<div class="col-xs-12">
 					<ul class="nav nav-tabs" style="margin-bottom: 15px;">
-					  	<li class="active"><a href="#new" data-toggle="tab">New</a></li>
-					  	<li><a href="#list" data-toggle="tab">List</a></li>
-					</ul>
-					<div id="myTabContent" class="tab-content">
-						<div class="tab-pane fade active in" id="new">
-							<div class="container-fluid">
-								<div class="row">
-									<div class="col-xs-12 col-md-10 col-md-offset-1">
-									    <form action="">
-									    	<div class="form-group label-floating">
-											  <label class="control-label">Name</label>
-											  <input class="form-control" type="text">
-											</div>
-											<div class="form-group">
-										      <label class="control-label">Status</label>
-										        <select class="form-control">
-										          <option>Active</option>
-										          <option>Disable</option>
-										        </select>
-										    </div>
-											<div class="form-group">
-											  <label class="control-label">Start Date</label>
-											  <input class="form-control" type="date">
-											</div>
-											<div class="form-group">
-											  <label class="control-label">End Date</label>
-											  <input class="form-control" type="date">
-											</div>
-											<div class="form-group label-floating">
-											  <label class="control-label">Amount</label>
-											  <input class="form-control" type="text">
-											</div>
-											<div class="form-group">
-										        <label class="control-label">Year</label>
-										        <select class="form-control">
-										          <option>2017</option>
-										          <option>2016</option>
-										        </select>
-										    </div>
-										    <p class="text-center">
-										    	<button href="#!" class="btn btn-info btn-raised btn-sm"><i class="zmdi zmdi-floppy"></i> Save</button>
-										    </p>
-									    </form>
-									</div>
-								</div>
-							</div>
-						</div>
-					  	<div class="tab-pane fade" id="list">
+                                                <li class="active"><a href="#list" data-toggle="tab">List</a></li>
+					  	<li ><a href="#new" data-toggle="tab">New</a></li>
+					</ul>	
+                                                <div id="myTabContent" class="tab-content">
+                                                    <div class="tab-pane fade active in" id="list">
 							<div class="table-responsive">
 								<table class="table table-hover text-center">
 									<thead>
 										<tr>
-											<th class="text-center">#</th>
-											<th class="text-center">Name</th>
-											<th class="text-center">Status</th>
-											<th class="text-center">Start Date</th>
-											<th class="text-center">End Date</th>
-											<th class="text-center">Amount</th>
-											<th class="text-center">year</th>
-											<th class="text-center">Update</th>
-											<th class="text-center">Delete</th>
+											<th class="text-center">Id</th>
+											<th class="text-center">Nombre del periodo</th>
+											<th class="text-center">Fecha de inicio</th>
+											<th class="text-center">Fecha de cierre</th>
+											<th class="text-center">Estatus</th>										
+											<th class="text-center">ACCIONES</th>			
 										</tr>
 									</thead>
 									<tbody>
-										<tr>
-											<td>1</td>
-											<td>First</td>
-											<td>Active</td>
-											<td>07/01/2017</td>
-											<td>06/04/2017</td>
-											<td>$40</td>
-											<td>2017</td>
-											<td><a href="#!" class="btn btn-success btn-raised btn-xs"><i class="zmdi zmdi-refresh"></i></a></td>
-											<td><a href="#!" class="btn btn-danger btn-raised btn-xs"><i class="zmdi zmdi-delete"></i></a></td>
-										</tr>
-										<tr>
-											<td>2</td>
-											<td>Second</td>
-											<td>Active</td>
-											<td>07/04/2017</td>
-											<td>06/08/2017</td>
-											<td>$40</td>
-											<td>2017</td>
-											<td><a href="#!" class="btn btn-success btn-raised btn-xs"><i class="zmdi zmdi-refresh"></i></a></td>
-											<td><a href="#!" class="btn btn-danger btn-raised btn-xs"><i class="zmdi zmdi-delete"></i></a></td>
-										</tr>
-										<tr>
-											<td>3</td>
-											<td>Third</td>
-											<td>Active</td>
-											<td>07/08/2017</td>
-											<td>06/12/2017</td>
-											<td>$40</td>
-											<td>2017</td>
-											<td><a href="#!" class="btn btn-success btn-raised btn-xs"><i class="zmdi zmdi-refresh"></i></a></td>
-											<td><a href="#!" class="btn btn-danger btn-raised btn-xs"><i class="zmdi zmdi-delete"></i></a></td>
-										</tr>
+                                                                             <c:forEach var="periodo" items="${Periodos}">
+                                                                                <tr>
+                                                                                        <td>${periodo.getId_p()}</td>
+											<td>${periodo.getNombre()}</td>
+											<td>${periodo.getFecha_i()}</td>
+											<td>${periodo.getFecha_f()}</td>
+											<td>${periodo.getEstatus()}</td>											
+                                                                                          
+                                                                                   
+                                                                                <td><a href="Controlador?menu=Periodo&accion=Editar&id=${periodo.getId_p()}" class="btn btn-success btn-raised btn-xs"><i class="zmdi zmdi-refresh"></i></a></td>
+									        <td><a href="Controlador?menu=Periodo&accion=Eliminar&id=${periodo.getId_p()}" class="btn btn-danger btn-raised btn-xs"><i class="zmdi zmdi-delete"></i></a></td>
+										
+                                                                                </tr>
+                                                                            </c:forEach>
 									</tbody>
 								</table>
-								<ul class="pagination pagination-sm">
+                                                            <ul class="pagination pagination-sm">
 								  	<li class="disabled"><a href="#!">«</a></li>
 								  	<li class="active"><a href="#!">1</a></li>
 								  	<li><a href="#!">2</a></li>
@@ -261,6 +196,37 @@
 								</ul>
 							</div>
 					  	</div>
+                                                                           
+						<div class="tab-pane fade in" id="new">
+							<div class="container-fluid">
+								<div class="row">
+									<div class="col-xs-12 col-md-10 col-md-offset-1">
+									    <form action="Controlador?menu=Periodo" name="formulario" method="POST">
+									    	<div class="form-group label-floating">
+											  <label id="error" class="control-label">Nombre del periodo</label>
+                                                                                           <input class="form-control" type="text" value="${periodo.getNombre()}" name="nombre_p">
+											</div>
+                                                                                        <div class="form-group label-floating">
+											  <label class="control-label">Fecha de inicio</label>
+											  <input class="form-control" type="text" value="${periodo.getFecha_i()}" name="fecha_inicio">
+											</div>
+                                                                                        <div class="form-group label-floating">
+											  <label class="control-label">Fecha de cierre</label>
+											  <input class="form-control" type="text" value="${periodo.getFecha_f()}" name="fecha_fin">
+											</div>
+                                                                                        <div class="form-group label-floating">
+											  <label class="control-label">Estatus</label>
+											  <input class="form-control" type="text" value="${periodo.getEstatus()}" name="estatus_p">
+											</div>											                                                                                       
+											
+										    </div>
+										    <input type="submit" name="accion" value="Agregar" class="btn btn-primary">
+                                                                                    <input type="submit" name="accion" value="Actualizar" class="btn btn-success">
+									    </form>
+									</div>
+								</div>
+							</div>
+						</div>
 					</div>
 				</div>
 			</div>

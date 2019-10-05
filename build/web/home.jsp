@@ -54,13 +54,13 @@
 					</a>
 					<ul class="list-unstyled full-box">
 						<li>
-							<a href="period.jsp"><i class="zmdi zmdi-timer zmdi-hc-fw"></i> Period</a>
+							<a href="Controlador?menu=Periodo&accion=Listar"><i class="zmdi zmdi-timer zmdi-hc-fw"></i> Periodos</a>
 						</li>
 						<li>
-							<a href="subject.jsp"><i class="zmdi zmdi-book zmdi-hc-fw"></i> Subject</a>
+							<a href="Controlador?menu=Anio&accion=Listar"><i class="zmdi zmdi-book zmdi-hc-fw"></i> Año escolar</a>
 						</li>
 						<li>
-							<a href="section.jsp"><i class="zmdi zmdi-graduation-cap zmdi-hc-fw"></i> Section</a>
+							<a href="Controlador?menu=Seccion&accion=Listar"><i class="zmdi zmdi-graduation-cap zmdi-hc-fw"></i> Section</a>
 						</li>
 						<li>
 							<a href="salon.jsp"><i class="zmdi zmdi-font zmdi-hc-fw"></i> Salon</a>

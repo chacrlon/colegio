@@ -32,12 +32,13 @@ public List listar() {
             ps=conn.prepareStatement(sql);
             rs=ps.executeQuery();
             while (rs.next()) {
-                Periodo admin = new Periodo();
-                admin.setId_p(rs.getInt(1));
-                admin.setNombre(rs.getString(2));
-                admin.setFecha_i(rs.getString(3));
-                admin.setFecha_f(rs.getString(4));               
-                admin.setEstatus(rs.getString(5));
+                Periodo periodo = new Periodo();
+                periodo.setId_p(rs.getInt(1));
+                periodo.setNombre(rs.getString(2));
+                periodo.setFecha_i(rs.getString(3));
+                periodo.setFecha_f(rs.getString(4));               
+                periodo.setEstatus(rs.getString(5));
+                lista.add(periodo);
             }
         } catch (Exception e) {
             e.printStackTrace();
@@ -59,7 +60,7 @@ public List listar() {
     }
 
 public Periodo listarId(int id) {
-        Periodo admin= new Periodo();
+        Periodo periodo= new Periodo();
         String sql="select * from periodo where id_periodo="+id;
         Connection conn = null;
         PreparedStatement pst = null;
@@ -69,11 +70,11 @@ public Periodo listarId(int id) {
             pst=conn.prepareStatement(sql);
             rs=pst.executeQuery();
             while(rs.next()){                               
-                admin.setId_p(rs.getInt(1));
-                admin.setNombre(rs.getString(2));
-                admin.setFecha_i(rs.getString(3));
-                admin.setFecha_f(rs.getString(4));               
-                admin.setEstatus(rs.getString(5));   
+                periodo.setId_p(rs.getInt(1));
+                periodo.setNombre(rs.getString(2));
+                periodo.setFecha_i(rs.getString(3));
+                periodo.setFecha_f(rs.getString(4));               
+                periodo.setEstatus(rs.getString(5));   
             }
         } catch (Exception e) {
             e.printStackTrace();
@@ -91,7 +92,7 @@ public Periodo listarId(int id) {
                 e.printStackTrace();
             }
         }
-        return admin;
+        return periodo;
     }
 
 
@@ -140,7 +141,7 @@ public int agregar(Periodo admin) {
             ps.setString(2, admin.getFecha_i());
             ps.setString(3, admin.getFecha_f());
             ps.setString(4, admin.getEstatus());
-            ps.setInt(14, admin.getId_p());
+            ps.setInt(5, admin.getId_p());
             ps.executeUpdate();           
         } catch (Exception e) {
             e.printStackTrace();

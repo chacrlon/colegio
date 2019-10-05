@@ -51,6 +51,7 @@ public List listar() {
                 admin.setDireccion(rs.getString(13));
                 admin.setEstatus(rs.getString(14));
                 lista.add(admin);
+                
             }
         } catch (Exception e) {
             e.printStackTrace();
