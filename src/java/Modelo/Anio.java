@@ -9,20 +9,22 @@ package Modelo;
  *
  * @author AARON ROMAN
  */
-public class Año {
+public class Anio {
     private int id_a;
     private String codigo;
     private String nombre;
     private String estatus;
+    private int id_p;
 
-    public Año() {
+    public Anio() {
     }
 
-    public Año(int id_a, String codigo, String nombre, String estatus) {
+    public Anio(int id_a, String codigo, String nombre, String estatus, int id_p) {
         this.id_a = id_a;
         this.codigo = codigo;
         this.nombre = nombre;
         this.estatus = estatus;
+        this.id_p = id_p;
     }
 
     public int getId_a() {
@@ -56,5 +58,15 @@ public class Año {
     public void setEstatus(String estatus) {
         this.estatus = estatus;
     }
+
+    public int getId_p() {
+        return id_p;
+    }
+
+    public void setId_p(int id_p) {
+        this.id_p = id_p;
+    }
+
+    
 
 }

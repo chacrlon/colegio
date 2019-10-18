@@ -38,6 +38,7 @@ public List listar() {
                 admin.setCodigo(rs.getString(2));
                 admin.setNombre(rs.getString(3));              
                 admin.setEstatus(rs.getString(4));
+                lista.add(admin);
             }
         } catch (Exception e) {
             e.printStackTrace();

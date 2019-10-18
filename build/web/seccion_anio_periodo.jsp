@@ -9,7 +9,7 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-	<title>Period</title>
+	<title>Seccion del año</title>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
 	<link rel="stylesheet" href="./css/main.css">
@@ -161,27 +161,25 @@
 									<thead>
 										<tr>
 											<th class="text-center">Id</th>
-											<th class="text-center">Nombre del periodo</th>
-											<th class="text-center">Fecha de inicio</th>
-											<th class="text-center">Fecha de cierre</th>
+											<th class="text-center">Codigo de la seccion</th>
+											<th class="text-center">Nombre de la seccion</th>
 											<th class="text-center">Estatus</th>										
 											<th class="text-center">ACCIONES</th>			
 										</tr>
 									</thead>
 									<tbody>
-                                                                             <c:forEach var="periodo" items="${Periodos}">
+                                                                             <c:forEach var="seccion" items="${Secciones}">
                                                                                 <tr>
-                                                                                        <td>${periodo.getId_p()}</td>
-											<td><input class="form-control" type="text" value="${periodo.getNombre()}" name="nombre_p"></td>
-											<td>${periodo.getFecha_i()}</td>
-											<td>${periodo.getFecha_f()}</td>
-											<td>${periodo.getEstatus()}</td>											
+                                                                                        <td>${seccion.getId_s()}</td>
+											<td>${seccion.getCodigo()}</td>
+											<td>${seccion.getNombre()}</td>
+											<td>${seccion.getEstatus()}</td>											
                                                                                           
                                                                                    
-                                                                                <td><a href="Controlador?menu=Periodo&accion=Editar&id=${periodo.getId_p()}" class="btn btn-success btn-raised btn-xs"><i class="zmdi zmdi-refresh"></i></a></td>                                                                             
-									        <td><a href="Controlador?menu=Periodo&accion=Eliminar&id=${periodo.getId_p()}" class="btn btn-danger btn-raised btn-xs"><i class="zmdi zmdi-delete"></i></a></td>
-                                                                                <td><a href="Controlador?menu=Periodo&accion=Anio_Periodo&accionn=Listar" class="btn btn-success btn-raised btn-xs"><i class="zmdi zmdi-refresh"></i>Agregar Año</a></td>
-										
+                                                                                <td><a href="Controlador?menu=Periodo&accion=Anio_Periodo&accionn=Seccion&accionnn=Editar&id=${seccion.getId_s()}" class="btn btn-success btn-raised btn-xs"><i class="zmdi zmdi-refresh"></i></a></td>
+									        <td><a href="Controlador?menu=Periodo&accion=Anio_Periodo&accionn=Seccion&accionnn=Eliminar&id=${seccion.getId_s()}" class="btn btn-danger btn-raised btn-xs"><i class="zmdi zmdi-delete"></i></a></td>
+										<td><a href="Controlador?menu=Periodo&accion=Anio_Periodo&accionn=Seccion&accionnn=Estudiantes_Lapsos&accio4=Listar" class="btn btn-success btn-raised btn-xs"><i class="zmdi zmdi-refresh"></i>Mas opciones</a></td>
+                                                                                
                                                                                 </tr>
                                                                             </c:forEach>
 									</tbody>
@@ -202,31 +200,23 @@
 							<div class="container-fluid">
 								<div class="row">
 									<div class="col-xs-12 col-md-10 col-md-offset-1">
-									    <form action="Controlador?menu=Periodo" name="formulario" method="POST">
-									    	        <div class="form-group label-floating">
-                                                                                        <label id="error" class="control-label">ID del periodo</label>
-                                                                                           <input class="form-control" type="number" value="${periodo.getId_p()}" name="id_periodo" id="id_periodo">
+									    <form action="Controlador?menu=Periodo&accion=Anio_Periodo&accionn=Seccion" name="formulario" method="POST">
+									    	<div class="form-group label-floating">
+											  <label id="error" class="control-label">Codigo de la seccion</label>
+                                                                                           <input class="form-control" type="text" value="${seccion.getCodigo()}" name="codigo_s">
 											</div>
                                                                                         <div class="form-group label-floating">
-											  <label id="error" class="control-label">Nombre del periodo</label>
-                                                                                           <input class="form-control" type="text" value="${periodo.getNombre()}" name="nombre_p">
-											</div>
-                                                                                        <div class="form-group label-floating">
-											  <label class="control-label">Fecha de inicio</label>
-											  <input class="form-control" type="text" value="${periodo.getFecha_i()}" name="fecha_inicio">
-											</div>
-                                                                                        <div class="form-group label-floating">
-											  <label class="control-label">Fecha de cierre</label>
-											  <input class="form-control" type="text" value="${periodo.getFecha_f()}" name="fecha_fin">
+											  <label class="control-label">Nombre de la seccion</label>
+											  <input class="form-control" type="text" value="${seccion.getNombre()}" name="nombre_s">
 											</div>
                                                                                         <div class="form-group label-floating">
 											  <label class="control-label">Estatus</label>
-											  <input class="form-control" type="text" value="${periodo.getEstatus()}" name="estatus_p">
+											  <input class="form-control" type="text" value="${seccion.getEstatus()}" name="estatus_s">
 											</div>											                                                                                       
 											
 										    </div>
-										    <input type="submit" name="accion" value="Agregar" class="btn btn-primary">
-                                                                                    <input type="submit" name="accion" value="Actualizar" class="btn btn-success">
+										    <input type="submit" name="accionnn" value="Agregar" class="btn btn-primary">
+                                                                                    <input type="submit" name="accionnn" value="Actualizar" class="btn btn-success">
 									    </form>
 									</div>
 								</div>

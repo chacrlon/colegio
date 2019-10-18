@@ -63,7 +63,10 @@
 							<a href="Controlador?menu=Seccion&accion=Listar"><i class="zmdi zmdi-graduation-cap zmdi-hc-fw"></i> Section</a>
 						</li>
 						<li>
-							<a href="salon.jsp"><i class="zmdi zmdi-font zmdi-hc-fw"></i> Salon</a>
+							<a href="Controlador?menu=Asignatura&accion=Listar"><i class="zmdi zmdi-font zmdi-hc-fw"></i> Materias</a>
+						</li>
+                                                <li>
+							<a href="Controlador?menu=EstudianteLapsos&accion=Listar"><i class="zmdi zmdi-font zmdi-hc-fw"></i> Ver info academica del estudiante</a>
 						</li>
 					</ul>
 				</li>

@@ -39,6 +39,7 @@ public List listar() {
                 admin.setMinimo(rs.getDouble(4));
                 admin.setMaximo(rs.getDouble(5));               
                 admin.setEstatus(rs.getString(6));
+                lista.add(admin);
             }
         } catch (Exception e) {
             e.printStackTrace();
@@ -110,7 +111,6 @@ public int agregar(Asignatura admin) {
             ps.setDouble(3, admin.getMinimo());
             ps.setDouble(4, admin.getMaximo());
             ps.setString(5, admin.getEstatus());
-            ps.setInt(6, admin.getId_anio());
             ps.executeUpdate();
         } catch (Exception e) {
             e.printStackTrace();

@@ -199,7 +199,7 @@
 							<div class="container-fluid">
 								<div class="row">
 									<div class="col-xs-12 col-md-10 col-md-offset-1">
-									    <form action="Controlador?menu=Periodo" name="formulario" method="POST">
+									    <form action="Controlador?menu=Seccion" name="formulario" method="POST">
 									    	<div class="form-group label-floating">
 											  <label id="error" class="control-label">Codigo de la seccion</label>
                                                                                            <input class="form-control" type="text" value="${seccion.getCodigo()}" name="codigo_s">

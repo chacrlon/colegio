@@ -17,7 +17,7 @@ import java.util.List;
  *
  * @author AARON ROMAN
  */
-public class AñoCRUD {
+public class AnioCRUD {
     Conexion con= new Conexion();       
      int r;
    
@@ -26,17 +26,18 @@ public List listar() {
         Connection conn = null;
         PreparedStatement ps = null;
         ResultSet rs = null;
-        List<Año>lista=new ArrayList<>();
+        List<Anio>lista=new ArrayList<>();
         try {
             conn=con.Conexionn();
             ps=conn.prepareStatement(sql);
             rs=ps.executeQuery();
             while (rs.next()) {
-                Año anio = new Año();
+                Anio anio = new Anio();
                 anio.setId_a(rs.getInt(1));
                 anio.setCodigo(rs.getString(2));
                 anio.setNombre(rs.getString(3));              
                 anio.setEstatus(rs.getString(4));
+                lista.add(anio);
             }
         } catch (Exception e) {
             e.printStackTrace();
@@ -57,8 +58,8 @@ public List listar() {
         return lista;
     }
 
-public Año listarId(int id) {
-        Año anio= new Año();
+public Anio listarId(int id) {
+        Anio anio= new Anio();
         String sql="select * from anio where id_anio="+id;
         Connection conn = null;
         PreparedStatement pst = null;
@@ -93,7 +94,7 @@ public Año listarId(int id) {
     }
 
 
-public int agregar(Año admin) {
+public int agregar(Anio admin) {
         String sql="insert into anio(codigo, nombre, estatus)values(?,?,?)";
         Connection conn = null;
         PreparedStatement ps = null;
@@ -125,7 +126,41 @@ public int agregar(Año admin) {
         return r;
     }
 
-     public int actualizar(Año admin) {
+
+public int agregarIDperiodo(Anio admin) {
+        String sql="insert into anio(codigo, nombre, estatus, id_periodoo)values(?,?,?,?)";
+        Connection conn = null;
+        PreparedStatement ps = null;
+        ResultSet rs = null;
+        try {
+            conn=con.Conexionn();
+            ps=conn.prepareStatement(sql);
+            ps.setString(1, admin.getCodigo());
+            ps.setString(2, admin.getNombre());
+            ps.setString(3, admin.getEstatus());
+            ps.setInt(4, admin.getId_p());
+            ps.executeUpdate();
+        } catch (Exception e) {
+            e.printStackTrace();
+            return 0;
+        }
+        finally {
+            try {
+                if(ps != null)
+                    ps.close();
+                if(rs != null)
+                    rs.close();
+                if(conn != null)
+                    conn.close();    
+            }
+            catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }       
+        return r;
+    }
+
+     public int actualizar(Anio admin) {
         String sql="update anio set codigo=?, nombre=?, estatus=? where id_anio=?";
         Connection conn = null;
         PreparedStatement ps = null;

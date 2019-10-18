@@ -172,14 +172,15 @@
                                                                              <c:forEach var="periodo" items="${Periodos}">
                                                                                 <tr>
                                                                                         <td>${periodo.getId_p()}</td>
-											<td>${periodo.getNombre()}</td>
+											<td><input class="form-control" type="text" value="${periodo.getNombre()}" name="nombre_p"></td>
 											<td>${periodo.getFecha_i()}</td>
 											<td>${periodo.getFecha_f()}</td>
 											<td>${periodo.getEstatus()}</td>											
                                                                                           
                                                                                    
-                                                                                <td><a href="Controlador?menu=Periodo&accion=Editar&id=${periodo.getId_p()}" class="btn btn-success btn-raised btn-xs"><i class="zmdi zmdi-refresh"></i></a></td>
+                                                                                <td><a href="Controlador?menu=Periodo&accion=Editar&id=${periodo.getId_p()}" class="btn btn-success btn-raised btn-xs"><i class="zmdi zmdi-refresh"></i></a></td>                                                                             
 									        <td><a href="Controlador?menu=Periodo&accion=Eliminar&id=${periodo.getId_p()}" class="btn btn-danger btn-raised btn-xs"><i class="zmdi zmdi-delete"></i></a></td>
+                                                                                <td><a href="Controlador?menu=Periodo&accion=Anio_Periodo&accionn=Listar" class="btn btn-success btn-raised btn-xs"><i class="zmdi zmdi-refresh"></i>Agregar Año</a></td>
 										
                                                                                 </tr>
                                                                             </c:forEach>
@@ -202,7 +203,11 @@
 								<div class="row">
 									<div class="col-xs-12 col-md-10 col-md-offset-1">
 									    <form action="Controlador?menu=Periodo" name="formulario" method="POST">
-									    	<div class="form-group label-floating">
+									    	        <div class="form-group label-floating">
+                                                                                        <label id="error" class="control-label">ID del periodo</label>
+                                                                                           <input class="form-control" type="number" value="${periodo.getId_p()}" name="id_periodo" id="id_periodo">
+											</div>
+                                                                                        <div class="form-group label-floating">
 											  <label id="error" class="control-label">Nombre del periodo</label>
                                                                                            <input class="form-control" type="text" value="${periodo.getNombre()}" name="nombre_p">
 											</div>
