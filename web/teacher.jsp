@@ -3,7 +3,7 @@
     Created on : Aug 18, 2019, 7:31:30 PM
     Author     : AARON ROMAN
 --%>
-
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="es">
@@ -73,10 +73,10 @@
 					</a>
 					<ul class="list-unstyled full-box">
 						<li>
-							<a href="admin.jsp"><i class="zmdi zmdi-account zmdi-hc-fw"></i> Admin</a>
+							<a href="admin.jsp"><i class="zmdi zmdi-account zmdi-hc-fw"></i> Administradores</a>
 						</li>
 						<li>
-							<a href="teacher.jsp"><i class="zmdi zmdi-male-alt zmdi-hc-fw"></i> Teacher</a>
+							<a href="teacher.jsp"><i class="zmdi zmdi-male-alt zmdi-hc-fw"></i> Docentes</a>
 						</li>
 						<li>
 							<a href="student.jsp"><i class="zmdi zmdi-face zmdi-hc-fw"></i> Student</a>
@@ -144,146 +144,64 @@
 			<div class="page-header">
 			  <h1 class="text-titles"><i class="zmdi zmdi-male-alt zmdi-hc-fw"></i> Users <small>Teacher</small></h1>
 			</div>
-			<p class="lead">Aqui trabajaras el formulario para registar a un nuevo docente, las cajas de texto que usaras sera:
-                        Primer nombre, segundo nombre, primer apellido, segundo apellido, cedula, sexo, fecha, nacionalidad, celular, telefono, correo, direccion, estatus (El estatus es de tipo Select para que visualice 2 opciones, Activo o Inactivo)</p>
+			<p class="lead"></p>
 		</div>
 		<div class="container-fluid">
 			<div class="row">
 				<div class="col-xs-12">
 					<ul class="nav nav-tabs" style="margin-bottom: 15px;">
-					  	<li class="active"><a href="#new" data-toggle="tab">New</a></li>
-					  	<li><a href="#list" data-toggle="tab">List</a></li>
-					</ul>
-					<div id="myTabContent" class="tab-content">
-						<div class="tab-pane fade active in" id="new">
-							<div class="container-fluid">
-								<div class="row">
-									<div class="col-xs-12 col-md-10 col-md-offset-1">
-									    <form action="">
-									    	<div class="form-group label-floating">
-											  <label class="control-label">Name</label>
-											  <input class="form-control" type="text">
-											</div>
-											<div class="form-group label-floating">
-											  <label class="control-label">Last Name</label>
-											  <input class="form-control" type="text">
-											</div>
-											<div class="form-group label-floating">
-											  <label class="control-label">Address</label>
-											  <textarea class="form-control"></textarea>
-											</div>
-											<div class="form-group label-floating">
-											  <label class="control-label">Email</label>
-											  <input class="form-control" type="text">
-											</div>
-											<div class="form-group label-floating">
-											  <label class="control-label">Phone</label>
-											  <input class="form-control" type="text">
-											</div>
-											<div class="form-group label-floating">
-											  <label class="control-label">Specialty</label>
-											  <input class="form-control" type="text">
-											</div>
-											<div class="form-group">
-											  <label class="control-label">Birthday</label>
-											  <input class="form-control" type="date">
-											</div>
-											<div class="form-group">
-										        <label class="control-label">Gender</label>
-										        <select class="form-control">
-										          <option>Male</option>
-										          <option>Female</option>
-										        </select>
-										    </div>
-											<div class="form-group">
-										      <label class="control-label">Photo</label>
-										      <div>
-										        <input type="text" readonly="" class="form-control" placeholder="Browse...">
-										        <input type="file" >
-										      </div>
-										    </div>
-										    <p class="text-center">
-										    	<button href="#!" class="btn btn-info btn-raised btn-sm"><i class="zmdi zmdi-floppy"></i> Save</button>
-										    </p>
-									    </form>
-									</div>
-								</div>
-							</div>
-						</div>
-					  	<div class="tab-pane fade" id="list">
+                                                <li class="active"><a href="#list" data-toggle="tab">List</a></li>
+					  	<li ><a href="#new" data-toggle="tab">New</a></li>
+					</ul>	
+                                                <div id="myTabContent" class="tab-content">
+                                                    <div class="tab-pane fade active in" id="list">
 							<div class="table-responsive">
 								<table class="table table-hover text-center">
 									<thead>
 										<tr>
-											<th class="text-center">#</th>
-											<th class="text-center">Name</th>
-											<th class="text-center">Last Name</th>
-											<th class="text-center">Address</th>
-											<th class="text-center">Email</th>
-											<th class="text-center">Phone</th>
-											<th class="text-center">Specialty</th>
-											<th class="text-center">Birthday</th>
-											<th class="text-center">Gender</th>
-											<th class="text-center">Update</th>
-											<th class="text-center">Delete</th>
+											<th class="text-center">Id</th>
+											<th class="text-center">Primer nombre</th>
+											<th class="text-center">Segundo nombre</th>
+											<th class="text-center">Primer apellido</th>
+											<th class="text-center">Segundo apellido</th>
+											<th class="text-center">Cédula de identidad</th>
+                                                                                        <th class="text-center">Sexo</th>
+                                                                                        <th class="text-center">Fecha de nacimiento</th>
+                                                                                        <th class="text-center">Nacionalidad</th>
+                                                                                        <th class="text-center">Celular</th>
+                                                                                        <th class="text-center">Teléfono</th>
+                                                                                        <th class="text-center">Correo</th> 
+                                                                                        <th class="text-center">Dirección</th>
+                                                                                        <th class="text-center">Estatus</th>
+											<th class="text-center">ACCIONES</th>			
 										</tr>
 									</thead>
 									<tbody>
-										<tr>
-											<td>1</td>
-											<td>Carlos</td>
-											<td>Alfaro</td>
-											<td>El Salvador</td>
-											<td>carlos@gmail.com</td>
-											<td>+50312345678</td>
-											<td>IT</td>
-											<td>07/03/1997</td>
-											<td>Male</td>
-											<td><a href="#!" class="btn btn-success btn-raised btn-xs"><i class="zmdi zmdi-refresh"></i></a></td>
-											<td><a href="#!" class="btn btn-danger btn-raised btn-xs"><i class="zmdi zmdi-delete"></i></a></td>
-										</tr>
-										<tr>
-											<td>2</td>
-											<td>Alicia</td>
-											<td>Melendez</td>
-											<td>El Salvador</td>
-											<td>alicia@gmail.com</td>
-											<td>+50312345678</td>
-											<td>Social Work</td>
-											<td>23/07/1997</td>
-											<td>Female</td>
-											<td><a href="#!" class="btn btn-success btn-raised btn-xs"><i class="zmdi zmdi-refresh"></i></a></td>
-											<td><a href="#!" class="btn btn-danger btn-raised btn-xs"><i class="zmdi zmdi-delete"></i></a></td>
-										</tr>
-										<tr>
-											<td>3</td>
-											<td>Sarai</td>
-											<td>Lopez</td>
-											<td>El Salvador</td>
-											<td>sarai@gmail.com</td>
-											<td>+50312345678</td>
-											<td>Lawyer</td>
-											<td>10/09/1991</td>
-											<td>Female</td>
-											<td><a href="#!" class="btn btn-success btn-raised btn-xs"><i class="zmdi zmdi-refresh"></i></a></td>
-											<td><a href="#!" class="btn btn-danger btn-raised btn-xs"><i class="zmdi zmdi-delete"></i></a></td>
-										</tr>
-										<tr>
-											<td>4</td>
-											<td>Alba</td>
-											<td>Bonilla</td>
-											<td>El Salvador</td>
-											<td>alba@gmail.com</td>
-											<td>+50312345678</td>
-											<td>Designer</td>
-											<td>19/04/1993</td>
-											<td>Female</td>
-											<td><a href="#!" class="btn btn-success btn-raised btn-xs"><i class="zmdi zmdi-refresh"></i></a></td>
-											<td><a href="#!" class="btn btn-danger btn-raised btn-xs"><i class="zmdi zmdi-delete"></i></a></td>
-										</tr>
+                                                                             <c:forEach var="doc" items="${Docentes}">
+                                                                                <tr>
+                                                                                        <td>${doc.getId_p_d()}</td>
+											<td>${doc.getNombre1()}</td>
+											<td>${doc.getNombre2()}</td>
+											<td>${doc.getApellido1()}</td>
+											<td>${doc.getApellido2()}</td>
+											<td>${doc.getCedula()}</td>
+                                                                                        <td>${doc.getSexo()}</td>
+                                                                                        <td>${doc.getFecha()}</td>
+                                                                                        <td>${doc.getNacionalidad()}</td>
+                                                                                        <td>${doc.getCelular()}</td>
+                                                                                        <td>${doc.getTelefono()}</td>
+                                                                                        <td>${doc.getCorreo()}</td>
+                                                                                        <td>${doc.getDireccion()}</td>
+                                                                                        <td>${doc.getEstatus()}</td>    
+                                                                                   
+                                                                                <td><a href="Controlador?menu=Docente&accion=Editar&id=${doc.getId_p_d()}" class="btn btn-success btn-raised btn-xs"><i class="zmdi zmdi-refresh"></i></a></td>
+									        <td><a href="Controlador?menu=Docente&accion=Eliminar&id=${doc.getId_p_d()}" class="btn btn-danger btn-raised btn-xs"><i class="zmdi zmdi-delete"></i></a></td>
+										
+                                                                                </tr>
+                                                                            </c:forEach>
 									</tbody>
 								</table>
-								<ul class="pagination pagination-sm">
+                                                            <ul class="pagination pagination-sm">
 								  	<li class="disabled"><a href="#!">«</a></li>
 								  	<li class="active"><a href="#!">1</a></li>
 								  	<li><a href="#!">2</a></li>
@@ -294,6 +212,73 @@
 								</ul>
 							</div>
 					  	</div>
+                                                                           
+						<div class="tab-pane fade in" id="new">
+							<div class="container-fluid">
+								<div class="row">
+									<div class="col-xs-12 col-md-10 col-md-offset-1">
+									    <form action="Controlador?menu=Docente" name="formulario" method="POST">
+									    	<div class="form-group label-floating">
+											  <label id="error" class="control-label">Primer nombre</label>
+                                                                                           <input class="form-control" type="text" value="${docente.getNombre1()}" name="nombred1">
+											</div>
+                                                                                        <div class="form-group label-floating">
+											  <label class="control-label">Segundo nombre</label>
+											  <input class="form-control" type="text" value="${docente.getNombre2()}" name="nombred2">
+											</div>
+                                                                                        <div class="form-group label-floating">
+											  <label class="control-label">Primer apellido</label>
+											  <input class="form-control" type="text" value="${docente.getApellido1()}" name="apellidod1">
+											</div>
+                                                                                        <div class="form-group label-floating">
+											  <label class="control-label">Segundo apellido</label>
+											  <input class="form-control" type="text" value="${docente.getApellido2()}" name="apellidod2">
+											</div>
+											<div class="form-group label-floating">
+											  <label class="control-label">Cédula de identidad</label>
+											  <input class="form-control" type="text" value="${docente.getCedula()}" name="cedulad">
+											</div>
+                                                                                        <div class="form-group label-floating">
+											  <label class="control-label">Sexo</label>
+											  <input class="form-control" type="text" value="${docente.getSexo()}" name="correod">
+											</div>
+                                                                                        <div class="form-group label-floating">
+											  <label class="control-label">Fecha de nacimiento</label>
+											  <input class="form-control" type="text" value="${docente.getFecha()}" name="celulard">
+											</div>
+                                                                                        <div class="form-group label-floating">
+											  <label class="control-label">Nacionalidad</label>
+											  <input class="form-control" type="text" value="${docente.getNacionalidad()}" name="telefonod">
+											</div>
+											<div class="form-group label-floating">
+											  <label class="control-label">Celular</label>
+											  <input class="form-control" type="text" value="${docente.getCelular()}" name="fechad">
+											</div>
+                                                                                        <div class="form-group label-floating">
+											  <label class="control-label">Telefono</label>
+											  <input class="form-control" type="text" value="${docente.getTelefono()}" name="sexod">
+											</div> 
+                                                                                        <div class="form-group label-floating">
+											  <label class="control-label">Correo</label>
+											  <input class="form-control" type="text" value="${docente.getCorreo()}" name="nacionalidadd">
+											</div>                                                                    
+                                                                                        <div class="form-group label-floating">
+											  <label class="control-label">Dirección</label>
+											  <input class="form-control" type="text" value="${docente.getDireccion()}" name="direcciond">
+											</div>
+                                                                                        <div class="form-group label-floating">
+											  <label class="control-label">Estatus</label>
+											  <input class="form-control" type="text" value="${docente.getEstatus()}" name="estatusd">
+											</div>
+											
+										    </div>
+										    <input type="submit" name="accion" value="Agregar" class="btn btn-primary">
+                                                                                    <input type="submit" name="accion" value="Actualizar" class="btn btn-success">
+									    </form>
+									</div>
+								</div>
+							</div>
+						</div>
 					</div>
 				</div>
 			</div>

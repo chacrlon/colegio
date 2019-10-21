@@ -180,7 +180,7 @@ public int agregar(Docente doc) {
             ps.setString(11, doc.getCorreo());
             ps.setString(12, doc.getDireccion());
             ps.setString(13, doc.getEstatus());
-            ps.setInt(15, doc.getId_p_d());
+            ps.setInt(14, doc.getId_p_d());
             ps.executeUpdate();           
         } catch (Exception e) {
             e.printStackTrace();

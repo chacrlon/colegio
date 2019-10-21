@@ -6,10 +6,14 @@ import Modelo.Anio;
 import Modelo.AnioCRUD;
 import Modelo.Asignatura;
 import Modelo.AsignaturaCRUD;
+import Modelo.Docente;
+import Modelo.DocenteCRUD;
 import Modelo.Estudiante;
 import Modelo.EstudianteCRUD;
 import Modelo.Periodo;
 import Modelo.PeriodoCRUD;
+import Modelo.Representante;
+import Modelo.RepresentanteCRUD;
 import Modelo.Seccion;
 import Modelo.SeccionCRUD;
 import java.io.IOException;
@@ -23,7 +27,7 @@ import javax.servlet.http.HttpServletResponse;
 
 public class Controlador extends HttpServlet {
     
-        int ida, idp, id_anio, id_seccion, id_asignatura;
+        int ida, idp, id_anio, id_seccion, id_asignatura, id_docente, id_estudiante, id_representante;
              
         Periodo periodo=new Periodo();
         PeriodoCRUD periodoCRUD=new PeriodoCRUD();
@@ -37,12 +41,18 @@ public class Controlador extends HttpServlet {
         
         Asignatura asignatura=new Asignatura();
         AsignaturaCRUD asignaturaCRUD=new AsignaturaCRUD();
+                                     
+        Administrador admin=new Administrador();
+        AdministradorCRUD adminCRUD=new AdministradorCRUD();
+        
+        Docente doc=new Docente();
+        DocenteCRUD docCRUD=new DocenteCRUD();
         
         Estudiante estudiante=new Estudiante();
         EstudianteCRUD estudianteCRUD=new EstudianteCRUD();
-                       
-        Administrador admin=new Administrador();
-        AdministradorCRUD adminCRUD=new AdministradorCRUD();              
+        
+        Representante representante=new Representante();
+        RepresentanteCRUD representanteCRUD=new RepresentanteCRUD();
 
         
  protected void processRequest(HttpServletRequest request, HttpServletResponse response)
@@ -64,6 +74,7 @@ public class Controlador extends HttpServlet {
                    request.getRequestDispatcher("period.jsp").forward(request, response);
                 break;
                 case "Agregar":
+                    int id_periodo=Integer.parseInt(request.getParameter("id_periodo"));
                     String nombre_p=request.getParameter("nombre_p");
                     String fecha_inicio=request.getParameter("fecha_inicio");
                     String fecha_fin=request.getParameter("fecha_fin");
@@ -112,6 +123,9 @@ public class Controlador extends HttpServlet {
                 case "Anio_Periodo":
                     switch (accionn) {
                 case "Listar":
+                    idp=Integer.parseInt(request.getParameter("id"));
+                    Periodo pee=periodoCRUD.listarId(idp);
+                    request.setAttribute("periodo", pee);
                    List listaa = anioCRUD.listar();
                    request.setAttribute("Anios", listaa);
                    request.getRequestDispatcher("anio_periodo.jsp").forward(request, response);
@@ -433,7 +447,7 @@ public class Controlador extends HttpServlet {
                     throw new AssertionError();
             }          
         }
-       
+             
         if (menu.equals("Administrador")) {
             //request.getRequestDispatcher("admin.jsp").forward(request, response);
             switch (accion) {
@@ -519,6 +533,260 @@ public class Controlador extends HttpServlet {
             }          
         }
         
+        if (menu.equals("Docente")) {
+            
+            switch (accion) {
+                case "Listar":
+                   List lista = docCRUD.listar();
+                   request.setAttribute("Docentes", lista);
+                   request.getRequestDispatcher("teacher.jsp").forward(request, response);
+                break;
+                case "Agregar":
+                    String nombred1=request.getParameter("nombred1");
+                    String nombred2=request.getParameter("nombred2");
+                    String apellidod1=request.getParameter("apellidod1");
+                    String apellidod2=request.getParameter("apellidod2");
+                    String cedulad=request.getParameter("cedulad");
+                    String sexod=request.getParameter("sexod");
+                    String fechad=request.getParameter("fechad");
+                    String nacionalidadd=request.getParameter("nacionalidadd");
+                    String celulard=request.getParameter("celulard");
+                    String telefonod=request.getParameter("telefonod");
+                    String correod=request.getParameter("correod");
+                    String direcciond=request.getParameter("direcciond");
+                    String estatusd=request.getParameter("estatusd");
+                    doc.setNombre1(nombred1);
+                    doc.setNombre2(nombred2);
+                    doc.setApellido1(apellidod1);
+                    doc.setApellido2(apellidod2);
+                    doc.setCedula(cedulad);
+                    doc.setSexo(sexod);
+                    doc.setFecha(fechad);
+                    doc.setNacionalidad(nacionalidadd);
+                    doc.setCelular(celulard);
+                    doc.setTelefono(telefonod);
+                    doc.setCorreo(correod);
+                    doc.setDireccion(direcciond);
+                    doc.setEstatus(estatusd);
+                    docCRUD.agregar(doc);
+                    request.getRequestDispatcher("Controlador?menu=Docente&accion=Listar").forward(request, response);
+                    break;
+                case "Editar":
+                    id_docente=Integer.parseInt(request.getParameter("id"));
+                    Docente a=docCRUD.listarId(id_docente);
+                    request.setAttribute("docente", a);
+                    request.getRequestDispatcher("Controlador?menu=Docente&accion=Listar").forward(request, response);                    
+                break;
+                case "Actualizar":
+                    String nombred11=request.getParameter("nombred1");
+                    String nombred21=request.getParameter("nombred2");
+                    String apellidod11=request.getParameter("apellidod1");
+                    String apellidod21=request.getParameter("apellidod2");
+                    String cedulad1=request.getParameter("cedulad");
+                    String sexod1=request.getParameter("sexod");
+                    String fechad1=request.getParameter("fechad");
+                    String nacionalidadd1=request.getParameter("nacionalidadd");
+                    String celulard1=request.getParameter("celulard");
+                    String telefonod1=request.getParameter("telefonod");
+                    String correod1=request.getParameter("correod");
+                    String direcciond1=request.getParameter("direcciond");
+                    String estatusd1=request.getParameter("estatusd");
+                    doc.setNombre1(nombred11);
+                    doc.setNombre2(nombred21);
+                    doc.setApellido1(apellidod11);
+                    doc.setApellido2(apellidod21);
+                    doc.setCedula(cedulad1);
+                    doc.setSexo(sexod1);
+                    doc.setFecha(fechad1);
+                    doc.setNacionalidad(nacionalidadd1);
+                    doc.setCelular(celulard1);
+                    doc.setTelefono(telefonod1);
+                    doc.setCorreo(correod1);
+                    doc.setDireccion(direcciond1);
+                    doc.setEstatus(estatusd1);
+                    doc.setId_p_d(id_docente);
+                    docCRUD.actualizar(doc);
+                    request.getRequestDispatcher("Controlador?menu=Docente&accion=Listar").forward(request, response);                    
+                break;
+                case "Eliminar":
+                id_docente=Integer.parseInt(request.getParameter("id"));
+                docCRUD.delete(id_docente);
+                request.getRequestDispatcher("Controlador?menu=Docente&accion=Listar").forward(request, response);                    
+                break;
+                default:
+                    throw new AssertionError();
+            }          
+        }
+        
+        if (menu.equals("Estudiante")) {
+            
+            switch (accion) {
+                case "Listar":
+                   List lista = estudianteCRUD.listar();
+                   request.setAttribute("Estudiantes", lista);
+                   request.getRequestDispatcher("student.jsp").forward(request, response);
+                break;
+                case "Agregar":
+                    String nombre1=request.getParameter("nombre1");
+                    String nombre2=request.getParameter("nombre2");
+                    String apellido1=request.getParameter("apellido1");
+                    String apellido2=request.getParameter("apellido2");
+                    String cedula=request.getParameter("cedula");
+                    String sexo=request.getParameter("sexo");
+                    String fecha=request.getParameter("fecha");
+                    String nacionalidad=request.getParameter("nacionalidad");
+                    String celular=request.getParameter("celular");
+                    String telefono=request.getParameter("telefono");
+                    String correo=request.getParameter("correo");
+                    String direccion=request.getParameter("direccion");
+                    String procedencia=request.getParameter("procedencia");
+                    String anio=request.getParameter("anio");
+                    String cedula_r=request.getParameter("cedula_r");
+                    estudiante.setNombre1(nombre1);
+                    estudiante.setNombre2(nombre2);
+                    estudiante.setApellido1(apellido1);
+                    estudiante.setApellido2(apellido2);
+                    estudiante.setCedula(cedula);
+                    estudiante.setSexo(sexo);
+                    estudiante.setFecha(fecha);
+                    estudiante.setNacionalidad(nacionalidad);
+                    estudiante.setCelular(celular);
+                    estudiante.setTelefono(telefono);
+                    estudiante.setCorreo(correo);
+                    estudiante.setDireccion(direccion);
+                    estudiante.setProcedencia(procedencia);
+                    estudiante.setAnio(anio);
+                    estudiante.setCedula_r(cedula_r);
+                    estudianteCRUD.agregar(estudiante);
+                    request.getRequestDispatcher("Controlador?menu=Estudiante&accion=Listar").forward(request, response);
+                    break;
+                case "Editar":
+                    id_estudiante=Integer.parseInt(request.getParameter("id"));
+                    Estudiante a=estudianteCRUD.listarId(id_estudiante);
+                    request.setAttribute("estudiante", a);
+                    request.getRequestDispatcher("Controlador?menu=Estudiante&accion=Listar").forward(request, response);                    
+                break;
+                case "Actualizar":
+                    String nombre1e=request.getParameter("nombre1");
+                    String nombre2e=request.getParameter("nombre2");
+                    String apellido1e=request.getParameter("apellido1");
+                    String apellido2e=request.getParameter("apellido2");
+                    String cedulae=request.getParameter("cedula");
+                    String sexoe=request.getParameter("sexo");
+                    String fechae=request.getParameter("fecha");
+                    String nacionalidade=request.getParameter("nacionalidad");
+                    String celulare=request.getParameter("celular");
+                    String telefonoe=request.getParameter("telefono");
+                    String correoe=request.getParameter("correo");
+                    String direccione=request.getParameter("direccion");
+                    String procedenciae=request.getParameter("procedencia");
+                    String anioe=request.getParameter("anio");
+                    String cedula_re=request.getParameter("cedula_r");
+                    estudiante.setNombre1(nombre1e);
+                    estudiante.setNombre2(nombre2e);
+                    estudiante.setApellido1(apellido1e);
+                    estudiante.setApellido2(apellido2e);
+                    estudiante.setCedula(cedulae);
+                    estudiante.setSexo(sexoe);
+                    estudiante.setFecha(fechae);
+                    estudiante.setNacionalidad(nacionalidade);
+                    estudiante.setCelular(celulare);
+                    estudiante.setTelefono(telefonoe);
+                    estudiante.setCorreo(correoe);
+                    estudiante.setDireccion(direccione);
+                    estudiante.setProcedencia(procedenciae);
+                    estudiante.setAnio(anioe);
+                    estudiante.setCedula_r(cedula_re);
+                    estudiante.setId_p_e(id_estudiante);
+                    estudianteCRUD.actualizar(estudiante);
+                    request.getRequestDispatcher("Controlador?menu=Estudiante&accion=Listar").forward(request, response);                    
+                break;
+                case "Eliminar":
+                id_estudiante=Integer.parseInt(request.getParameter("id"));
+                estudianteCRUD.delete(id_estudiante);
+                request.getRequestDispatcher("Controlador?menu=Estudiante&accion=Listar").forward(request, response);                    
+                break;
+                default:
+                    throw new AssertionError();
+            }          
+        }
+        
+        if (menu.equals("Representante")) {
+            
+            switch (accion) {
+                case "Listar":
+                   List lista = representanteCRUD.listar();
+                   request.setAttribute("Representantes", lista);
+                   request.getRequestDispatcher("representative.jsp").forward(request, response);
+                break;
+                case "Agregar":
+                    String nombred1=request.getParameter("nombred1");
+                    String nombred2=request.getParameter("nombred2");
+                    String apellidod1=request.getParameter("apellidod1");
+                    String apellidod2=request.getParameter("apellidod2");
+                    String cedulad=request.getParameter("cedulad");
+                    String sexod=request.getParameter("sexod");
+                    String fechad=request.getParameter("fechad");
+                    String nacionalidadd=request.getParameter("nacionalidadd");
+                    String telefonod=request.getParameter("telefonod");
+                    String correod=request.getParameter("correod");
+                    String direcciond=request.getParameter("direcciond");
+                    representante.setNombre1(nombred1);
+                    representante.setNombre2(nombred2);
+                    representante.setApellido1(apellidod1);
+                    representante.setApellido2(apellidod2);
+                    representante.setCedula(cedulad);
+                    representante.setSexo(sexod);
+                    representante.setFecha(fechad);
+                    representante.setNacionalidad(nacionalidadd);
+                    representante.setTelefono(telefonod);
+                    representante.setCorreo(correod);
+                    representante.setDireccion(direcciond);
+                    representanteCRUD.agregar(representante);
+                    request.getRequestDispatcher("Controlador?menu=Representante&accion=Listar").forward(request, response);
+                    break;
+                case "Editar":
+                    id_representante=Integer.parseInt(request.getParameter("id"));
+                    Representante a=representanteCRUD.listarId(id_representante);
+                    request.setAttribute("representante", a);
+                    request.getRequestDispatcher("Controlador?menu=Representante&accion=Listar").forward(request, response);                    
+                break;
+                case "Actualizar":
+                    String nombred11=request.getParameter("nombred1");
+                    String nombred21=request.getParameter("nombred2");
+                    String apellidod11=request.getParameter("apellidod1");
+                    String apellidod21=request.getParameter("apellidod2");
+                    String cedulad1=request.getParameter("cedulad");
+                    String sexod1=request.getParameter("sexod");
+                    String fechad1=request.getParameter("fechad");
+                    String nacionalidadd1=request.getParameter("nacionalidadd");
+                    String telefonod1=request.getParameter("telefonod");
+                    String correod1=request.getParameter("correod");
+                    String direcciond1=request.getParameter("direcciond");
+                    representante.setNombre1(nombred11);
+                    representante.setNombre2(nombred21);
+                    representante.setApellido1(apellidod11);
+                    representante.setApellido2(apellidod21);
+                    representante.setCedula(cedulad1);
+                    representante.setSexo(sexod1);
+                    representante.setFecha(fechad1);
+                    representante.setNacionalidad(nacionalidadd1);
+                    representante.setTelefono(telefonod1);
+                    representante.setCorreo(correod1);
+                    representante.setDireccion(direcciond1);
+                    representante.setId_p_r(id_representante);
+                    representanteCRUD.actualizar(representante);
+                    request.getRequestDispatcher("Controlador?menu=Representante&accion=Listar").forward(request, response);                    
+                break;
+                case "Eliminar":
+                id_representante=Integer.parseInt(request.getParameter("id"));
+                representanteCRUD.delete(id_representante);
+                request.getRequestDispatcher("Controlador?menu=Representante&accion=Listar").forward(request, response);                    
+                break;
+                default:
+                    throw new AssertionError();
+            }          
+        }
     }
 
     @Override

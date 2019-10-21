@@ -158,6 +158,12 @@
                                                     <div class="tab-pane fade active in" id="list">
 							<div class="table-responsive">
                                                             
+									    	        <div class="form-group label-floating">
+                                                                                        <label id="error" class="control-label">ID del periodo</label>
+                                                                                           <input class="form-control" type="number" value="${periodo.getId_p()}" name="id_periodo" id="id_periodo">
+											</div>
+                                                                                        
+									    
 								<table class="table table-hover text-center">
 									<thead>
 										<tr>
@@ -205,6 +211,10 @@
 									    	<div class="form-group label-floating">
 											  <label id="error" class="control-label">Codigo del año</label>
                                                                                            <input class="form-control" type="text" value="${anio.getCodigo()}" name="codigo_anio">
+											</div>
+                                                                                        <div class="form-group label-floating">
+                                                                                        <label id="error" class="control-label">ID del periodo</label>
+                                                                                           <input class="form-control" type="number" value="${periodo.getId_p()}" name="id_periodo" id="id_periodo">
 											</div>
                                                                                         <div class="form-group label-floating">
 											  <label class="control-label">Nombre del año</label>

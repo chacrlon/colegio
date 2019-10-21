@@ -1,14 +1,15 @@
-<%-- 
-    Document   : students
-    Created on : Aug 18, 2019, 7:30:56 PM
+<<%-- 
+    Document   : period
+    Created on : Aug 18, 2019, 7:22:12 PM
     Author     : AARON ROMAN
 --%>
-
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<!DOCTYPE html>
 <!DOCTYPE html>
 <html lang="es">
 <head>
-	<title>Student</title>
+	<title>Estudiantes</title>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
 	<link rel="stylesheet" href="./css/main.css">
@@ -142,177 +143,70 @@
 		<!-- Content page -->
 		<div class="container-fluid">
 			<div class="page-header">
-			  <h1 class="text-titles"><i class="zmdi zmdi-face zmdi-hc-fw"></i> Users <small>Student</small></h1>
+			  <h1 class="text-titles"><i class="zmdi zmdi-account zmdi-hc-fw"></i> Usuarios <small>Administrador</small></h1>
 			</div>
-			<p class="lead">Aqui trabajaras el formulario para registar a un nuevo estudiante, las cajas de texto que usaras sera:
-                        Primer nombre, segundo nombre, primer apellido, segundo apellido, cedula, sexo, fecha, nacionalidad, celular, telefono, correo, direccion, colegio de procedencia, año escolar y cedula del representante</p>
+			<p class="lead"></p>
 		</div>
 		<div class="container-fluid">
 			<div class="row">
 				<div class="col-xs-12">
 					<ul class="nav nav-tabs" style="margin-bottom: 15px;">
-					  	<li class="active"><a href="#new" data-toggle="tab">New</a></li>
-					  	<li><a href="#list" data-toggle="tab">List</a></li>
-					</ul>
-					<div id="myTabContent" class="tab-content">
-						<div class="tab-pane fade active in" id="new">
-							<div class="container-fluid">
-								<div class="row">
-									<div class="col-xs-12 col-md-10 col-md-offset-1">
-									    <form action="">
-									    	<fieldset>Student Data</fieldset>
-									    	<div class="form-group label-floating">
-											  <label class="control-label">Name</label>
-											  <input class="form-control" type="text">
-											</div>
-											<div class="form-group label-floating">
-											  <label class="control-label">Last Name</label>
-											  <input class="form-control" type="text">
-											</div>
-											<div class="form-group label-floating">
-											  <label class="control-label">Address</label>
-											  <textarea class="form-control"></textarea>
-											</div>
-											<div class="form-group label-floating">
-											  <label class="control-label">Email</label>
-											  <input class="form-control" type="text">
-											</div>
-											<div class="form-group label-floating">
-											  <label class="control-label">Phone</label>
-											  <input class="form-control" type="text">
-											</div>
-											<div class="form-group">
-											  <label class="control-label">Birthday</label>
-											  <input class="form-control" type="date">
-											</div>
-											<div class="form-group">
-										        <label class="control-label">Gender</label>
-										        <select class="form-control">
-										          <option>Male</option>
-										          <option>Female</option>
-										        </select>
-										    </div>
-											<div class="form-group">
-										      <label class="control-label">Photo</label>
-										      <div>
-										        <input type="text" readonly="" class="form-control" placeholder="Browse...">
-										        <input type="file" >
-										      </div>
-										    </div>
-										    <div class="form-group">
-										        <label class="control-label">Student Type</label>
-										        <select class="form-control">
-										          <option>Old</option>
-										          <option>New</option>
-										        </select>
-										    </div>
-										    <div class="form-group">
-										        <label class="control-label">Section</label>
-										        <select class="form-control">
-										          <option>1 grade</option>
-										          <option>2 grade</option>
-										          <option>3 grade</option>
-										          <option>4 grade</option>
-										          <option>5 grade</option>
-										        </select>
-										    </div>
-										    <br><br>
-										    <fieldset>Representative Data</fieldset>
-										    <div class="form-group label-floating">
-											  <label class="control-label">Representative DNI</label>
-											  <input class="form-control" type="text">
-											</div>
-											<div class="form-group label-floating">
-											  <label class="control-label">Representative Relationship</label>
-											  <input class="form-control" type="text">
-											</div>
-										    <p class="text-center">
-										    	<button href="#!" class="btn btn-info btn-raised btn-sm"><i class="zmdi zmdi-floppy"></i> Save</button>
-										    </p>
-									    </form>
-									</div>
-								</div>
-							</div>
-						</div>
-					  	<div class="tab-pane fade" id="list">
+                                                <li class="active"><a href="#list" data-toggle="tab">List</a></li>
+					  	<li ><a href="#new" data-toggle="tab">New</a></li>
+					</ul>	
+                                                <div id="myTabContent" class="tab-content">
+                                                    <div class="tab-pane fade active in" id="list">
 							<div class="table-responsive">
 								<table class="table table-hover text-center">
 									<thead>
 										<tr>
-											<th class="text-center">#</th>
-											<th class="text-center">Name</th>
-											<th class="text-center">Last Name</th>
-											<th class="text-center">Address</th>
-											<th class="text-center">Email</th>
-											<th class="text-center">Phone</th>
-											<th class="text-center">Birthday</th>
-											<th class="text-center">Gender</th>
-											<th class="text-center">Type</th>
-											<th class="text-center">Section</th>
-											<th class="text-center">Update</th>
-											<th class="text-center">Delete</th>
+											<th class="text-center">Id</th>
+											<th class="text-center">Primer nombre</th>
+											<th class="text-center">Segundo nombre</th>
+											<th class="text-center">Primer apellido</th>
+											<th class="text-center">Segundo apellido</th>
+											<th class="text-center">Cédula de identidad</th>
+                                                                                        <th class="text-center">Sexo</th>
+                                                                                        <th class="text-center">Fecha de nacimiento</th>
+                                                                                        <th class="text-center">Nacionalidad</th>
+                                                                                        <th class="text-center">Celular</th>
+                                                                                        <th class="text-center">Teléfono</th>
+                                                                                        <th class="text-center">Correo</th> 
+                                                                                        <th class="text-center">Dirección</th>
+                                                                                        <th class="text-center">Procedencia</th>
+                                                                                        <th class="text-center">Año Escolar</th>
+                                                                                        <th class="text-center">Cedula del representante</th>
+											<th class="text-center">ACCIONES</th>		
 										</tr>
 									</thead>
 									<tbody>
-										<tr>
-											<td>1</td>
-											<td>Carlos</td>
-											<td>Alfaro</td>
-											<td>El Salvador</td>
-											<td>carlos@gmail.com</td>
-											<td>+50312345678</td>
-											<td>07/03/1997</td>
-											<td>Male</td>
-											<td>Old</td>
-											<td>Section</td>
-											<td><a href="#!" class="btn btn-success btn-raised btn-xs"><i class="zmdi zmdi-refresh"></i></a></td>
-											<td><a href="#!" class="btn btn-danger btn-raised btn-xs"><i class="zmdi zmdi-delete"></i></a></td>
-										</tr>
-										<tr>
-											<td>2</td>
-											<td>Alicia</td>
-											<td>Melendez</td>
-											<td>El Salvador</td>
-											<td>alicia@gmail.com</td>
-											<td>+50312345678</td>
-											<td>07/07/1990</td>
-											<td>Female</td>
-											<td>New</td>
-											<td>Section</td>
-											<td><a href="#!" class="btn btn-success btn-raised btn-xs"><i class="zmdi zmdi-refresh"></i></a></td>
-											<td><a href="#!" class="btn btn-danger btn-raised btn-xs"><i class="zmdi zmdi-delete"></i></a></td>
-										</tr>
-										<tr>
-											<td>3</td>
-											<td>Sarai</td>
-											<td>Mercado</td>
-											<td>El Salvador</td>
-											<td>sarai@gmail.com</td>
-											<td>+50312345678</td>
-											<td>09/09/1991</td>
-											<td>Female</td>
-											<td>Old</td>
-											<td>Section</td>
-											<td><a href="#!" class="btn btn-success btn-raised btn-xs"><i class="zmdi zmdi-refresh"></i></a></td>
-											<td><a href="#!" class="btn btn-danger btn-raised btn-xs"><i class="zmdi zmdi-delete"></i></a></td>
-										</tr>
-										<tr>
-											<td>4</td>
-											<td>Alba</td>
-											<td>Bonilla</td>
-											<td>El Salvador</td>
-											<td>alba@gmail.com</td>
-											<td>+50312345678</td>
-											<td>01/10/1993</td>
-											<td>Female</td>
-											<td>New</td>
-											<td>Section</td>
-											<td><a href="#!" class="btn btn-success btn-raised btn-xs"><i class="zmdi zmdi-refresh"></i></a></td>
-											<td><a href="#!" class="btn btn-danger btn-raised btn-xs"><i class="zmdi zmdi-delete"></i></a></td>
-										</tr>
+                                                                             <c:forEach var="es" items="${Estudiantes}">
+                                                                                <tr>
+                                                                                        <td>${es.getId_p_e()}</td>
+											<td>${es.getNombre1()}</td>
+											<td>${es.getNombre2()}</td>
+											<td>${es.getApellido1()}</td>
+                                                                                        <td>${es.getApellido2()}</td>
+											<td>${es.getCedula()}</td>
+                                                                                        <td>${es.getSexo()}</td>
+											<td>${es.getFecha()}</td>
+											<td>${es.getNacionalidad()}</td>
+											<td>${es.getCelular()}</td>
+                                                                                        <td>${es.getTelefono()}</td>
+											<td>${es.getCorreo()}</td>
+                                                                                        <td>${es.getDireccion()}</td>
+											<td>${es.getProcedencia()}</td>
+											<td>${es.getAnio()}</td>
+											<td>${es.getCedula_r()}</td>
+                                                                                                                                                                            
+                                                                                <td><a href="Controlador?menu=Estudiante&accion=Editar&id=${es.getId_p_e()}" class="btn btn-success btn-raised btn-xs"><i class="zmdi zmdi-refresh"></i></a></td>
+									        <td><a href="Controlador?menu=Estudiante&accion=Eliminar&id=${es.getId_p_e()}" class="btn btn-danger btn-raised btn-xs"><i class="zmdi zmdi-delete"></i></a></td>
+										
+                                                                                </tr>
+                                                                            </c:forEach>
 									</tbody>
 								</table>
-								<ul class="pagination pagination-sm">
+                                                            <ul class="pagination pagination-sm">
 								  	<li class="disabled"><a href="#!">«</a></li>
 								  	<li class="active"><a href="#!">1</a></li>
 								  	<li><a href="#!">2</a></li>
@@ -323,6 +217,81 @@
 								</ul>
 							</div>
 					  	</div>
+                                                                           
+						<div class="tab-pane fade in" id="new">
+							<div class="container-fluid">
+								<div class="row">
+									<div class="col-xs-12 col-md-10 col-md-offset-1">
+									    <form action="Controlador?menu=Estudiante" name="formulario" method="POST">
+									    	        <div class="form-group label-floating">
+											  <label id="error" class="control-label">Primer nombre</label>
+                                                                                           <input class="form-control" type="text" value="${estudiante.getNombre1()}" name="nombre1">
+											</div>
+                                                                                        <div class="form-group label-floating">
+											  <label class="control-label">Segundo nombre</label>
+											  <input class="form-control" type="text" value="${estudiante.getNombre2()}" name="nombre2">
+											</div>
+                                                                                        <div class="form-group label-floating">
+											  <label class="control-label">Primer apellido</label>
+											  <input class="form-control" type="text" value="${estudiante.getApellido1()}" name="apellido1">
+											</div>
+                                                                                        <div class="form-group label-floating">
+											  <label class="control-label">Segundo apellido</label>
+											  <input class="form-control" type="text" value="${estudiante.getApellido2()}" name="apellido2">
+											</div>
+											<div class="form-group label-floating">
+											  <label class="control-label">Cédula de identidad</label>
+											  <input class="form-control" type="text" value="${estudiante.getCedula()}" name="cedula">
+											</div>
+                                                                                        <div class="form-group label-floating">
+											  <label class="control-label">Sexo</label>
+											  <input class="form-control" type="text" value="${estudiante.getSexo()}" name="sexo">
+											</div>
+                                                                                        <div class="form-group label-floating">
+											  <label class="control-label">Fecha de nacimiento</label>
+											  <input class="form-control" type="text" value="${estudiante.getFecha()}" name="fecha">
+											</div>
+                                                                                        <div class="form-group label-floating">
+											  <label class="control-label">Nacionalidad</label>
+											  <input class="form-control" type="text" value="${estudiante.getNacionalidad()}" name="nacionalidad">
+											</div>
+											<div class="form-group label-floating">
+											  <label class="control-label">Celular</label>
+											  <input class="form-control" type="text" value="${estudiante.getCelular()}" name="celular">
+											</div>
+                                                                                        <div class="form-group label-floating">
+											  <label class="control-label">Telefono</label>
+											  <input class="form-control" type="text" value="${estudiante.getTelefono()}" name="telefono">
+											</div> 
+                                                                                        <div class="form-group label-floating">
+											  <label class="control-label">Correo</label>
+											  <input class="form-control" type="text" value="${estudiante.getCorreo()}" name="correo">
+											</div>                                                                    
+                                                                                        <div class="form-group label-floating">
+											  <label class="control-label">Dirección</label>
+											  <input class="form-control" type="text" value="${estudiante.getDireccion()}" name="direccion">
+											</div>
+                                                                                        <div class="form-group label-floating">
+											  <label class="control-label">Plantel de procedencia</label>
+											  <input class="form-control" type="text" value="${estudiante.getProcedencia()}" name="procedencia">
+											</div>
+                                                                                        <div class="form-group label-floating">
+											  <label class="control-label">Año escolar</label>
+											  <input class="form-control" type="text" value="${estudiante.getAnio()}" name="anio">
+											</div>
+                                                                                        <div class="form-group label-floating">
+											  <label class="control-label">Cedula del representante</label>
+											  <input class="form-control" type="text" value="${estudiante.getCedula_r()}" name="cedula_r">
+											</div>
+                                                                                        
+										    </div>
+										    <input type="submit" name="accion" value="Agregar" class="btn btn-primary">
+                                                                                    <input type="submit" name="accion" value="Actualizar" class="btn btn-success">
+									    </form>
+									</div>
+								</div>
+							</div>
+						</div>
 					</div>
 				</div>
 			</div>

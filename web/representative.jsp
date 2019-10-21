@@ -1,14 +1,14 @@
 <%-- 
-    Document   : representative
-    Created on : Aug 18, 2019, 7:22:35 PM
+    Document   : teacher
+    Created on : Aug 18, 2019, 7:31:30 PM
     Author     : AARON ROMAN
 --%>
-
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="es">
 <head>
-	<title>Registration</title>
+	<title>Representante</title>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
 	<link rel="stylesheet" href="./css/main.css">
@@ -73,10 +73,10 @@
 					</a>
 					<ul class="list-unstyled full-box">
 						<li>
-							<a href="admin.jsp"><i class="zmdi zmdi-account zmdi-hc-fw"></i> Admin</a>
+							<a href="admin.jsp"><i class="zmdi zmdi-account zmdi-hc-fw"></i> Administradores</a>
 						</li>
 						<li>
-							<a href="teacher.jsp"><i class="zmdi zmdi-male-alt zmdi-hc-fw"></i> Teacher</a>
+							<a href="teacher.jsp"><i class="zmdi zmdi-male-alt zmdi-hc-fw"></i> Docentes</a>
 						</li>
 						<li>
 							<a href="student.jsp"><i class="zmdi zmdi-face zmdi-hc-fw"></i> Student</a>
@@ -142,128 +142,62 @@
 		<!-- Content page -->
 		<div class="container-fluid">
 			<div class="page-header">
-			  <h1 class="text-titles"><i class="zmdi zmdi-money-box zmdi-hc-fw"></i> Payments <small>Registration</small></h1>
+			  <h1 class="text-titles"><i class="zmdi zmdi-male-female zmdi-hc-fw"></i> Usuarios <small>Representantes</small></h1>
 			</div>
-			<p class="lead">Aqui trabajaras el formulario para registar a un nuevo representante, las cajas de texto que usaras sera:
-                        Primer nombre, segundo nombre, primer apellido, segundo apellido, cedula, sexo, fecha, nacionalidad, telefono, correo, direccion</p>
+			<p class="lead"></p>
 		</div>
 		<div class="container-fluid">
 			<div class="row">
 				<div class="col-xs-12">
 					<ul class="nav nav-tabs" style="margin-bottom: 15px;">
-					  	<li class="active"><a href="#new" data-toggle="tab">New</a></li>
-					  	<li><a href="#list" data-toggle="tab">List</a></li>
-					</ul>
-					<div id="myTabContent" class="tab-content">
-						<div class="tab-pane fade active in" id="new">
-							<div class="container-fluid">
-								<div class="row">
-									<div class="col-xs-12 col-md-10 col-md-offset-1">
-									    <form action="">
-									    	<div class="form-group label-floating">
-											  <label class="control-label">Payment</label>
-											  <input class="form-control" type="text">
-											</div>
-											<div class="form-group label-floating">
-											  <label class="control-label">Amount</label>
-											  <input class="form-control" type="text">
-											</div>
-											<div class="form-group label-floating">
-											  <label class="control-label">Student Code</label>
-											  <textarea class="form-control"></textarea>
-											</div>
-											<div class="form-group">
-										        <label class="control-label">Section</label>
-										        <select class="form-control">
-										          <option>1 grade</option>
-										          <option>2 grade</option>
-										          <option>3 grade</option>
-										          <option>4 grade</option>
-										          <option>5 grade</option>
-										        </select>
-										    </div>
-											<div class="form-group">
-										        <label class="control-label">Year</label>
-										        <select class="form-control">
-										          <option>2017</option>
-										          <option>2016</option>
-										          <option>2015</option>
-										          <option>2014</option>
-										          <option>2013</option>
-										        </select>
-										    </div>
-										    <p class="text-center">
-										    	<button href="#!" class="btn btn-info btn-raised btn-sm"><i class="zmdi zmdi-floppy"></i> Save</button>
-										    </p>
-									    </form>
-									</div>
-								</div>
-							</div>
-						</div>
-					  	<div class="tab-pane fade" id="list">
+                                                <li class="active"><a href="#list" data-toggle="tab">List</a></li>
+					  	<li ><a href="#new" data-toggle="tab">New</a></li>
+					</ul>	
+                                                <div id="myTabContent" class="tab-content">
+                                                    <div class="tab-pane fade active in" id="list">
 							<div class="table-responsive">
 								<table class="table table-hover text-center">
 									<thead>
 										<tr>
-											<th class="text-center">#</th>
-											<th class="text-center">Payment</th>
-											<th class="text-center">Amount</th>
-											<th class="text-center">Pending</th>
-											<th class="text-center">Student</th>
-											<th class="text-center">Section</th>
-											<th class="text-center">Year</th>
-											<th class="text-center">Update</th>
-											<th class="text-center">Delete</th>
+											<th class="text-center">Id</th>
+											<th class="text-center">Primer nombre</th>
+											<th class="text-center">Segundo nombre</th>
+											<th class="text-center">Primer apellido</th>
+											<th class="text-center">Segundo apellido</th>
+											<th class="text-center">Cédula de identidad</th>
+                                                                                        <th class="text-center">Sexo</th>
+                                                                                        <th class="text-center">Fecha de nacimiento</th>
+                                                                                        <th class="text-center">Nacionalidad</th>
+                                                                                        <th class="text-center">Teléfono</th>
+                                                                                        <th class="text-center">Correo</th> 
+                                                                                        <th class="text-center">Dirección</th>
+											<th class="text-center">ACCIONES</th>			
 										</tr>
 									</thead>
 									<tbody>
-										<tr>
-											<td>1</td>
-											<td>$70</td>
-											<td>$40</td>
-											<td>$30</td>
-											<td>Carlos Alfaro</td>
-											<td>Section</td>
-											<td>2017</td>
-											<td><a href="#!" class="btn btn-success btn-raised btn-xs"><i class="zmdi zmdi-refresh"></i></a></td>
-											<td><a href="#!" class="btn btn-danger btn-raised btn-xs"><i class="zmdi zmdi-delete"></i></a></td>
-										</tr>
-										<tr>
-											<td>2</td>
-											<td>$70</td>
-											<td>$70</td>
-											<td>$0</td>
-											<td>Claudia Rodriguez</td>
-											<td>Section</td>
-											<td>2017</td>
-											<td><a href="#!" class="btn btn-success btn-raised btn-xs"><i class="zmdi zmdi-refresh"></i></a></td>
-											<td><a href="#!" class="btn btn-danger btn-raised btn-xs"><i class="zmdi zmdi-delete"></i></a></td>
-										</tr>
-										<tr>
-											<td>3</td>
-											<td>$70</td>
-											<td>$70</td>
-											<td>$0</td>
-											<td>Alicia Melendez</td>
-											<td>Section</td>
-											<td>2017</td>
-											<td><a href="#!" class="btn btn-success btn-raised btn-xs"><i class="zmdi zmdi-refresh"></i></a></td>
-											<td><a href="#!" class="btn btn-danger btn-raised btn-xs"><i class="zmdi zmdi-delete"></i></a></td>
-										</tr>
-										<tr>
-											<td>4</td>
-											<td>$70</td>
-											<td>$70</td>
-											<td>$0</td>
-											<td>Alba Bonilla</td>
-											<td>Section</td>
-											<td>2017</td>
-											<td><a href="#!" class="btn btn-success btn-raised btn-xs"><i class="zmdi zmdi-refresh"></i></a></td>
-											<td><a href="#!" class="btn btn-danger btn-raised btn-xs"><i class="zmdi zmdi-delete"></i></a></td>
-										</tr>
+                                                                             <c:forEach var="repre" items="${Representantes}">
+                                                                                <tr>
+                                                                                        <td>${repre.getId_p_r()}</td>
+											<td>${repre.getNombre1()}</td>
+											<td>${repre.getNombre2()}</td>
+											<td>${repre.getApellido1()}</td>
+											<td>${repre.getApellido2()}</td>
+											<td>${repre.getCedula()}</td>
+                                                                                        <td>${repre.getSexo()}</td>
+                                                                                        <td>${repre.getFecha()}</td>
+                                                                                        <td>${repre.getNacionalidad()}</td>
+                                                                                        <td>${repre.getTelefono()}</td>
+                                                                                        <td>${repre.getCorreo()}</td>
+                                                                                        <td>${repre.getDireccion()}</td>    
+                                                                                   
+                                                                                <td><a href="Controlador?menu=Representante&accion=Editar&id=${repre.getId_p_r()}" class="btn btn-success btn-raised btn-xs"><i class="zmdi zmdi-refresh"></i></a></td>
+									        <td><a href="Controlador?menu=Representante&accion=Eliminar&id=${repre.getId_p_r()}" class="btn btn-danger btn-raised btn-xs"><i class="zmdi zmdi-delete"></i></a></td>
+										
+                                                                                </tr>
+                                                                            </c:forEach>
 									</tbody>
 								</table>
-								<ul class="pagination pagination-sm">
+                                                            <ul class="pagination pagination-sm">
 								  	<li class="disabled"><a href="#!">«</a></li>
 								  	<li class="active"><a href="#!">1</a></li>
 								  	<li><a href="#!">2</a></li>
@@ -274,6 +208,65 @@
 								</ul>
 							</div>
 					  	</div>
+                                                                           
+						<div class="tab-pane fade in" id="new">
+							<div class="container-fluid">
+								<div class="row">
+									<div class="col-xs-12 col-md-10 col-md-offset-1">
+									    <form action="Controlador?menu=Representante" name="formulario" method="POST">
+									    	<div class="form-group label-floating">
+											  <label id="error" class="control-label">Primer nombre</label>
+                                                                                           <input class="form-control" type="text" value="${representante.getNombre1()}" name="nombred1">
+											</div>
+                                                                                        <div class="form-group label-floating">
+											  <label class="control-label">Segundo nombre</label>
+											  <input class="form-control" type="text" value="${representante.getNombre2()}" name="nombred2">
+											</div>
+                                                                                        <div class="form-group label-floating">
+											  <label class="control-label">Primer apellido</label>
+											  <input class="form-control" type="text" value="${representante.getApellido1()}" name="apellidod1">
+											</div>
+                                                                                        <div class="form-group label-floating">
+											  <label class="control-label">Segundo apellido</label>
+											  <input class="form-control" type="text" value="${representante.getApellido2()}" name="apellidod2">
+											</div>
+											<div class="form-group label-floating">
+											  <label class="control-label">Cédula de identidad</label>
+											  <input class="form-control" type="text" value="${representante.getCedula()}" name="cedulad">
+											</div>
+                                                                                        <div class="form-group label-floating">
+											  <label class="control-label">Telefono</label>
+											  <input class="form-control" type="text" value="${representante.getSexo()}" name="sexod">
+											</div> 
+                                                                                        <div class="form-group label-floating">
+											  <label class="control-label">Fecha de nacimiento</label>
+											  <input class="form-control" type="text" value="${representante.getFecha()}" name="fechad">
+											</div>
+                                                                                        <div class="form-group label-floating">
+											  <label class="control-label">Correo</label>
+											  <input class="form-control" type="text" value="${representante.getCorreo()}" name="nacionalidadd">
+											</div>  
+                                                                                        <div class="form-group label-floating">
+											  <label class="control-label">Nacionalidad</label>
+											  <input class="form-control" type="text" value="${representante.getTelefono()}" name="telefonod">
+											</div>
+                                                                                        <div class="form-group label-floating">
+											  <label class="control-label">Correo</label>
+											  <input class="form-control" type="text" value="${representante.getCorreo()}" name="correod">
+											</div>
+                                                                                        <div class="form-group label-floating">
+											  <label class="control-label">Dirección</label>
+											  <input class="form-control" type="text" value="${representante.getDireccion()}" name="direcciond">
+											</div>
+                                                                                        											
+										    </div>
+										    <input type="submit" name="accion" value="Agregar" class="btn btn-primary">
+                                                                                    <input type="submit" name="accion" value="Actualizar" class="btn btn-success">
+									    </form>
+									</div>
+								</div>
+							</div>
+						</div>
 					</div>
 				</div>
 			</div>
