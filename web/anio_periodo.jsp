@@ -140,7 +140,7 @@
 				</li>
 			</ul>
 		</nav>
-		<!-- Content page -->
+		<!-- Content page  -->
 		<div class="container-fluid">
 			<div class="page-header">
 			  <h1 class="text-titles"><i class="zmdi zmdi-account zmdi-hc-fw"></i> Usuarios <small>Administrador</small></h1>
@@ -151,23 +151,22 @@
 			<div class="row">
 				<div class="col-xs-12">
 					<ul class="nav nav-tabs" style="margin-bottom: 15px;">
+                                            
                                                 <li class="active"><a href="#list" data-toggle="tab">List</a></li>
 					  	<li ><a href="#new" data-toggle="tab">New</a></li>
 					</ul>	
                                                 <div id="myTabContent" class="tab-content">
                                                     <div class="tab-pane fade active in" id="list">
-							<div class="table-responsive">
-                                                            
-									    	        <div class="form-group label-floating">
-                                                                                        <label id="error" class="control-label">ID del periodo</label>
-                                                                                           <input class="form-control" type="number" value="${periodo.getId_p()}" name="id_periodo" id="id_periodo">
-											</div>
+							<div class="table-responsive">                                                           									    	        
                                                                                         
-									    
+					    
+                                          <!--  <div>	
+                                                <input value="${valor}" >
+					    </div> -->
 								<table class="table table-hover text-center">
 									<thead>
 										<tr>
-											<th class="text-center">Id</th>
+											
 											<th class="text-center">Codigo del año</th>
 											<th class="text-center">Nombre del año</th>
 											<th class="text-center">Estatus</th>										
@@ -177,7 +176,7 @@
 									<tbody>
                                                                              <c:forEach var="anio" items="${Anios}">
                                                                                 <tr>
-                                                                                        <td>${anio.getId_a()}</td>
+                                                                                        
 											<td>${anio.getCodigo()}</td>
 											<td>${anio.getNombre()}</td>
 											<td>${anio.getEstatus()}</td>											
@@ -185,7 +184,7 @@
                                                                                    
                                                                                 <td><a href="Controlador?menu=Periodo&accion=Anio_Periodo&accionn=Editar&id=${anio.getId_a()}" class="btn btn-success btn-raised btn-xs"><i class="zmdi zmdi-refresh"></i></a></td>
 									        <td><a href="Controlador?menu=Periodo&accion=Anio_Periodo&accionn=Eliminar&id=${anio.getId_a()}" class="btn btn-danger btn-raised btn-xs"><i class="zmdi zmdi-delete"></i></a></td>
-										<td><a href="Controlador?menu=Periodo&accion=Anio_Periodo&accionn=Seccion&accionnn=Listar" class="btn btn-success btn-raised btn-xs"><i class="zmdi zmdi-refresh"></i>Agregar Seccion</a></td>
+										<td><a href="Controlador?menu=Periodo&accion=Anio_Periodo&accionn=Seccion&accionnn=Listar&idp=${periodoses.getId_p()}&idpa=${anio.getId_a()}" class="btn btn-success btn-raised btn-xs"><i class="zmdi zmdi-refresh"></i>Agregar Seccion</a></td>
                                                                                 
                                                                                 </tr>
                                                                             </c:forEach>
@@ -211,11 +210,7 @@
 									    	<div class="form-group label-floating">
 											  <label id="error" class="control-label">Codigo del año</label>
                                                                                            <input class="form-control" type="text" value="${anio.getCodigo()}" name="codigo_anio">
-											</div>
-                                                                                        <div class="form-group label-floating">
-                                                                                        <label id="error" class="control-label">ID del periodo</label>
-                                                                                           <input class="form-control" type="number" value="${periodo.getId_p()}" name="id_periodo" id="id_periodo">
-											</div>
+											</div>                                   
                                                                                         <div class="form-group label-floating">
 											  <label class="control-label">Nombre del año</label>
 											  <input class="form-control" type="text" value="${anio.getNombre()}" name="nombre_anio">
@@ -224,7 +219,10 @@
 											  <label class="control-label">Estatus</label>
 											  <input class="form-control" type="text" value="${anio.getEstatus()}" name="estatus_anio">
 											</div>
-                                                                                        
+                                                                                        <div class="form-group label-floating">
+						                                          <label id="error" class="control-label">ID del periodo</label>
+                                                                                          <input class="form-control" type="text" value="${periodoses.getId_p()}" name="id_periodo2">
+					                                                </div>
 											
 										    </div>
 										    <input type="submit" name="accionn" value="Agregar" class="btn btn-primary">

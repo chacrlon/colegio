@@ -160,7 +160,7 @@
 								<table class="table table-hover text-center">
 									<thead>
 										<tr>
-											<th class="text-center">Id</th>
+											
 											<th class="text-center">Nombre del periodo</th>
 											<th class="text-center">Fecha de inicio</th>
 											<th class="text-center">Fecha de cierre</th>
@@ -171,7 +171,7 @@
 									<tbody>
                                                                              <c:forEach var="periodo" items="${Periodos}">
                                                                                 <tr>
-                                                                                        <td>${periodo.getId_p()}</td>
+                                                                                        
 											<td><input class="form-control" type="text" value="${periodo.getNombre()}" name="nombre_p"></td>
 											<td>${periodo.getFecha_i()}</td>
 											<td>${periodo.getFecha_f()}</td>

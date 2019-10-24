@@ -16,6 +16,7 @@ import Modelo.Representante;
 import Modelo.RepresentanteCRUD;
 import Modelo.Seccion;
 import Modelo.SeccionCRUD;
+import static com.sun.corba.se.spi.presentation.rmi.StubAdapter.request;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
@@ -24,6 +25,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 public class Controlador extends HttpServlet {
     
@@ -53,8 +55,7 @@ public class Controlador extends HttpServlet {
         
         Representante representante=new Representante();
         RepresentanteCRUD representanteCRUD=new RepresentanteCRUD();
-
-        
+              
  protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         String menu = request.getParameter("menu");
@@ -65,6 +66,9 @@ public class Controlador extends HttpServlet {
         if (menu.equals("Principal")) {
             request.getRequestDispatcher("home.jsp").forward(request, response);
         }
+        HttpSession sesion = request.getSession();
+        String valorr="Probando variables";
+        
         if (menu.equals("Periodo")) {
            
             switch (accion) {
@@ -92,7 +96,7 @@ public class Controlador extends HttpServlet {
                     idp=Integer.parseInt(request.getParameter("id"));
                     Periodo pe=periodoCRUD.listarId(idp);
                     request.setAttribute("periodo", pe);
-                    request.getRequestDispatcher("Controlador?menu=Periodo&accion=Listar").forward(request, response);                    
+                    request.getRequestDispatcher("Controlador?menu=Periodo&accion=Listar").forward(request, response);                 
                 break;
                 case "Actualizar":                
                     String nombre_p1=request.getParameter("nombre_p");
@@ -125,20 +129,21 @@ public class Controlador extends HttpServlet {
                 case "Listar":
                     idp=Integer.parseInt(request.getParameter("id"));
                     Periodo pee=periodoCRUD.listarId(idp);
-                    request.setAttribute("periodo", pee);
+                    sesion.setAttribute("periodoses", pee);
                    List listaa = anioCRUD.listar();
                    request.setAttribute("Anios", listaa);
+                   request.setAttribute("valor", valorr);
                    request.getRequestDispatcher("anio_periodo.jsp").forward(request, response);
                 break;
-                case "Agregar":
+                case "Agregar":           
                     String codigo_anio=request.getParameter("codigo_anio");
                     String nombre_anio=request.getParameter("nombre_anio");
                     String estatus_anio=request.getParameter("estatus_anio");
-                    //int id_p_anio=Integer.parseInt(request.getParameter(idp));
+                    int id_periodo2=Integer.parseInt(request.getParameter("id_periodo2"));
                     anio.setCodigo(codigo_anio);
                     anio.setNombre(nombre_anio);
                     anio.setEstatus(estatus_anio);
-                    
+                    anio.setId_p(id_periodo2);
                     anioCRUD.agregarIDperiodo(anio);
                     request.getRequestDispatcher("Controlador?menu=Periodo&accion=Anio_Periodo&accionn=Listar").forward(request, response);
                     break;
@@ -175,6 +180,14 @@ public class Controlador extends HttpServlet {
                 case "Seccion":
                     switch (accionnn) {
                 case "Listar":
+                    idp=Integer.parseInt(request.getParameter("idp"));
+                    Periodo pe2=periodoCRUD.listarId(idp);
+                    sesion.setAttribute("periodoses", pe2);
+                    
+                    id_anio=Integer.parseInt(request.getParameter("idpa"));
+                    Anio pea2=anioCRUD.listarId(id_anio);
+                    sesion.setAttribute("anioes", pea2);
+                    
                    List listaaa = seccionCRUD.listar();
                    request.setAttribute("Secciones", listaaa);
                    request.getRequestDispatcher("seccion_anio_periodo.jsp").forward(request, response);

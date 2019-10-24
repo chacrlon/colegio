@@ -128,7 +128,7 @@ public int agregar(Anio admin) {
 
 
 public int agregarIDperiodo(Anio admin) {
-        String sql="insert into anio(codigo, nombre, estatus, id_periodoo)values(?,?,?,?)";
+        String sql="insert into anio(codigo, nombre, estatus, id_periodo)values(?,?,?,?)";
         Connection conn = null;
         PreparedStatement ps = null;
         ResultSet rs = null;
