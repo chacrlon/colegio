@@ -94,6 +94,39 @@ public Seccion listarId(int id) {
         return admin;
     }
 
+    public int agregarIDS(Seccion admin) {
+        String sql="insert into seccion(codigo, nombre, estatus, id_periodo, id_anio)values(?,?,?,?,?)";
+        Connection conn = null;
+        PreparedStatement ps = null;
+        ResultSet rs = null;
+        try {
+            conn=con.Conexionn();
+            ps=conn.prepareStatement(sql);
+            ps.setString(1, admin.getCodigo());
+            ps.setString(2, admin.getNombre());
+            ps.setString(3, admin.getEstatus());
+            ps.setInt(4, admin.getId_p());
+            ps.setInt(5, admin.getId_a());
+            ps.executeUpdate();
+        } catch (Exception e) {
+            e.printStackTrace();
+            return 0;
+        }
+        finally {
+            try {
+                if(ps != null)
+                    ps.close();
+                if(rs != null)
+                    rs.close();
+                if(conn != null)
+                    conn.close();    
+            }
+            catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }       
+        return r;
+    }
 
 public int agregar(Seccion admin) {
         String sql="insert into seccion(codigo, nombre, estatus)values(?,?,?)";

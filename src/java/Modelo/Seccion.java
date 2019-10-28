@@ -11,19 +11,23 @@ package Modelo;
  */
 public class Seccion {
     
-    int id_s;
-    String codigo;
-    String nombre;
-    String estatus;
+    private int id_s;
+    private String codigo;
+    private String nombre;
+    private String estatus;
+    private int id_p;
+    private int id_a;
 
     public Seccion() {
     }
 
-    public Seccion(int id_s, String codigo, String nombre, String estatus) {
+    public Seccion(int id_s, String codigo, String nombre, String estatus, int id_p, int id_a) {
         this.id_s = id_s;
         this.codigo = codigo;
         this.nombre = nombre;
         this.estatus = estatus;
+        this.id_p = id_p;
+        this.id_a = id_a;
     }
 
     public int getId_s() {
@@ -57,6 +61,21 @@ public class Seccion {
     public void setEstatus(String estatus) {
         this.estatus = estatus;
     }
-    
-    
+
+    public int getId_p() {
+        return id_p;
+    }
+
+    public void setId_p(int id_p) {
+        this.id_p = id_p;
+    }
+
+    public int getId_a() {
+        return id_a;
+    }
+
+    public void setId_a(int id_a) {
+        this.id_a = id_a;
+    }
+
 }
