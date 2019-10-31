@@ -98,8 +98,46 @@ public Asignatura listarId(int id) {
     }
 
 
+public int agregarIDS(Asignatura admin) {
+        String sql="insert into asignaturas(codigo, nombre, minimo, maximo, estatus, id_periodo, id_anio, id_seccion)values(?,?,?,?,?,?,?,?)";
+        Connection conn = null;
+        PreparedStatement ps = null;
+        ResultSet rs = null;
+        try {
+            conn=con.Conexionn();
+            ps=conn.prepareStatement(sql);
+            ps.setString(1, admin.getCodigo());
+            ps.setString(2, admin.getNombre());
+            ps.setDouble(3, admin.getMinimo());
+            ps.setDouble(4, admin.getMaximo());
+            ps.setString(5, admin.getEstatus());
+            ps.setInt(6, admin.getId_periodo());
+            ps.setInt(7, admin.getId_anio());
+            ps.setInt(8, admin.getId_seccion());
+            ps.executeUpdate();
+        } catch (Exception e) {
+            e.printStackTrace();
+            return 0;
+        }
+        finally {
+            try {
+                if(ps != null)
+                    ps.close();
+                if(rs != null)
+                    rs.close();
+                if(conn != null)
+                    conn.close();    
+            }
+            catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }       
+        return r;
+    }
+
+
 public int agregar(Asignatura admin) {
-        String sql="insert into asignaturas(codigo, nombre, minimo, maximo, estatus, id_anio)values(?,?,?,?,?,?)";
+        String sql="insert into asignaturas(codigo, nombre, minimo, maximo, estatus)values(?,?,?,?,?)";
         Connection conn = null;
         PreparedStatement ps = null;
         ResultSet rs = null;

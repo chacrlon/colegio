@@ -1,33 +1,32 @@
-/*
-SE INCLUYO id_anio
- */
+
 package Modelo;
 
-/**
- *
- * @author AARON ROMAN
- */
+
 public class Asignatura {
 
-    int id_a;
-    String codigo;
-    String nombre;
-    Double minimo;
-    Double maximo;
-    String estatus;
-    int id_anio;
+    private int id_a;
+    private String codigo;
+    private String nombre;
+    private Double minimo;
+    private Double maximo;
+    private String estatus;
+    private int id_periodo;
+    private int id_anio;
+    private int id_seccion;
 
     public Asignatura() {
     }
 
-    public Asignatura(int id_a, String codigo, String nombre, Double minimo, Double maximo, String estatus, int id_anio) {
+    public Asignatura(int id_a, String codigo, String nombre, Double minimo, Double maximo, String estatus, int id_periodo, int id_anio, int id_seccion) {
         this.id_a = id_a;
         this.codigo = codigo;
         this.nombre = nombre;
         this.minimo = minimo;
         this.maximo = maximo;
         this.estatus = estatus;
+        this.id_periodo = id_periodo;
         this.id_anio = id_anio;
+        this.id_seccion = id_seccion;
     }
 
     public int getId_a() {
@@ -77,7 +76,15 @@ public class Asignatura {
     public void setEstatus(String estatus) {
         this.estatus = estatus;
     }
-    
+
+    public int getId_periodo() {
+        return id_periodo;
+    }
+
+    public void setId_periodo(int id_periodo) {
+        this.id_periodo = id_periodo;
+    }
+
     public int getId_anio() {
         return id_anio;
     }
@@ -85,4 +92,14 @@ public class Asignatura {
     public void setId_anio(int id_anio) {
         this.id_anio = id_anio;
     }
+
+    public int getId_seccion() {
+        return id_seccion;
+    }
+
+    public void setId_seccion(int id_seccion) {
+        this.id_seccion = id_seccion;
+    }
+
+    
 }

@@ -178,7 +178,7 @@
                                                                                    
                                                                                 <td><a href="Controlador?menu=Periodo&accion=Anio_Periodo&accionn=Seccion&accionnn=Editar&id=${seccion.getId_s()}" class="btn btn-success btn-raised btn-xs"><i class="zmdi zmdi-refresh"></i></a></td>
 									        <td><a href="Controlador?menu=Periodo&accion=Anio_Periodo&accionn=Seccion&accionnn=Eliminar&id=${seccion.getId_s()}" class="btn btn-danger btn-raised btn-xs"><i class="zmdi zmdi-delete"></i></a></td>
-										<td><a href="Controlador?menu=Periodo&accion=Anio_Periodo&accionn=Seccion&accionnn=Estudiantes_Lapsos&accio4=Listar" class="btn btn-success btn-raised btn-xs"><i class="zmdi zmdi-refresh"></i>Mas opciones</a></td>
+										<td><a href="Controlador?menu=Periodo&accion=Anio_Periodo&accionn=Seccion&accionnn=Asignatura_periodo&accio4=Listar&idp=${periodoses.getId_p()}&idpa=${anio.getId_a()}&idpas=${seccion.getId_s()}" class="btn btn-success btn-raised btn-xs"><i class="zmdi zmdi-refresh"></i>Mas opciones</a></td>
                                                                                 
                                                                                 </tr>
                                                                             </c:forEach>

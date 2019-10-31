@@ -63,6 +63,7 @@ public class Controlador extends HttpServlet {
         String accionn = request.getParameter("accionn");
         String accionnn = request.getParameter("accionnn");
         String accio4 = request.getParameter("accio4");
+        String accio5 = request.getParameter("accio5");
         if (menu.equals("Principal")) {
             request.getRequestDispatcher("home.jsp").forward(request, response);
         }
@@ -119,6 +120,10 @@ public class Controlador extends HttpServlet {
                  request.getRequestDispatcher("Controlador?menu=Periodo&accion=Listar").forward(request, response);
                  break;
 
+                 
+                 
+                 
+                 
              //ENTRAMOS EN LOS AÑOS DEL PERIODO AQUI
              case "Anio_Periodo":
                  switch (accionn) {
@@ -171,6 +176,10 @@ public class Controlador extends HttpServlet {
                          request.getRequestDispatcher("Controlador?menu=Periodo&accion=Anio_Periodo&accionn=Listar").forward(request, response);
                          break;
 
+                         
+                         
+                         
+                         
                      //ENTRAMOS EN LAS SECCIONES DE CADA AÑO DEL PERIODO AQUI
                      case "Seccion":
                          switch (accionnn) {
@@ -239,64 +248,96 @@ public class Controlador extends HttpServlet {
                                  
                                  
                                  
+                                 
+                             //ENTRAMOS EN LAS MATERIAS DE LAS SECCIONES DE CADA AÑO DEL PERIODO AQUI    
                              case "Asignatura_periodo": { 
-                                 switch (accion) {
+                                 switch (accio4) {
                              case "Listar":
+                                 
+                         Periodo pe22 = (Periodo) sesion.getAttribute("periodoses");
+                         if (pe22 == null) {
+                             idp = Integer.parseInt(request.getParameter("idp"));
+                             pe22 = periodoCRUD.listarId(idp);                             
+                         }
+                         sesion.setAttribute("periodoses", pe22);
+                         
+                         
+                         Anio anio22 = (Anio) sesion.getAttribute("anioses");
+                         if (anio22 == null) {
+                             id_anio = Integer.parseInt(request.getParameter("idpa"));
+                             anio22 = anioCRUD.listarId(id_anio);                             
+                         }
+                         sesion.setAttribute("anioses", anio22);
+                         
+                         
+                         Seccion seccion = (Seccion) sesion.getAttribute("seccionoses");
+                         if (seccion == null) {
+                             id_seccion = Integer.parseInt(request.getParameter("idpas"));
+                             seccion = seccionCRUD.listarId(id_seccion);                             
+                         }
+                         sesion.setAttribute("seccionoses", seccion);
+                         
+                         
+                         
                              List listaasig = asignaturaCRUD.listar();
                              request.setAttribute("Asignaturas", listaasig);
-                             request.getRequestDispatcher("asignatura.jsp").forward(request, response);
+                             request.getRequestDispatcher("asignatura_periodo.jsp").forward(request, response);
                                   break;
                              case "Agregar":
-                    String codigo_asig=request.getParameter("codigo_asig");
-                    String nombre_asig=request.getParameter("nombre_asig");
-                    double minimo_asig=Double.parseDouble(request.getParameter("minimo_asig"));
-                    double maximo_asig=Double.parseDouble(request.getParameter("maximo_asig"));
-                    String estatus_asig=request.getParameter("estatus_asig");
+                             String codigo_asigg=request.getParameter("codigo_asigg");
+                             String nombre_asigg=request.getParameter("nombre_asigg");
+                             double minimo_asigg=Double.parseDouble(request.getParameter("minimo_asigg"));
+                             double maximo_asigg=Double.parseDouble(request.getParameter("maximo_asigg"));
+                             String estatus_asigg=request.getParameter("estatus_asigg");
                     
-                    asignatura.setCodigo(codigo_asig);
-                    asignatura.setNombre(nombre_asig);
-                    asignatura.setMinimo(minimo_asig);
-                    asignatura.setMaximo(maximo_asig);
-                    asignatura.setEstatus(estatus_asig);
+                             asignatura.setCodigo(codigo_asigg);
+                             asignatura.setNombre(nombre_asigg);
+                             asignatura.setMinimo(minimo_asigg);
+                             asignatura.setMaximo(maximo_asigg);
+                             asignatura.setEstatus(estatus_asigg);
+                             asignatura.setId_periodo(idp);
+                             asignatura.setId_anio(id_anio);
+                             asignatura.setId_seccion(id_seccion);
                     
-                    asignaturaCRUD.agregar(asignatura);
-                    request.getRequestDispatcher("Controlador?menu=Asignatura&accion=Listar").forward(request, response);
-                    break;
-                case "Editar":
-                    id_asignatura=Integer.parseInt(request.getParameter("id"));
-                    Asignatura asig=asignaturaCRUD.listarId(id_asignatura);
-                    request.setAttribute("asignatura", asig);
-                    request.getRequestDispatcher("Controlador?menu=Asignatura&accion=Listar").forward(request, response);                    
-                break;
-                case "Actualizar":
-                    String codigo_asig1=request.getParameter("codigo_asig");
-                    String nombre_asig1=request.getParameter("nombre_asig");
-                    double minimo_asig1=Double.parseDouble(request.getParameter("minimo_asig"));
-                    double maximo_asig1=Double.parseDouble(request.getParameter("maximo_asig"));
-                    String estatus_asig1=request.getParameter("estatus_asig");
+                             asignaturaCRUD.agregarIDS(asignatura);
+                             request.getRequestDispatcher("Controlador?menu=Periodo&accion=Anio_Periodo&accionn=Seccion&accionnn=Asignatura_periodo&accio4=Listar").forward(request, response);
+                                  break;
+                             case "Editar":
+                             id_asignatura=Integer.parseInt(request.getParameter("id"));
+                             Asignatura asig=asignaturaCRUD.listarId(id_asignatura);
+                             request.setAttribute("asignatura", asig);
+                             request.getRequestDispatcher("Controlador?menu=Periodo&accion=Anio_Periodo&accionn=Seccion&accionnn=Asignatura_periodo&accio4=Listar").forward(request, response);                    
+                                  break;
+                             case "Actualizar":
+                             String codigo_asig1=request.getParameter("codigo_asigg");
+                             String nombre_asig1=request.getParameter("nombre_asigg");
+                             double minimo_asig1=Double.parseDouble(request.getParameter("minimo_asigg"));
+                             double maximo_asig1=Double.parseDouble(request.getParameter("maximo_asigg"));
+                             String estatus_asig1=request.getParameter("estatus_asigg");
                     
-                    asignatura.setCodigo(codigo_asig1);
-                    asignatura.setNombre(nombre_asig1);
-                    asignatura.setMinimo(minimo_asig1);
-                    asignatura.setMaximo(maximo_asig1);
-                    asignatura.setEstatus(estatus_asig1);
+                             asignatura.setCodigo(codigo_asig1);
+                             asignatura.setNombre(nombre_asig1);
+                             asignatura.setMinimo(minimo_asig1);
+                             asignatura.setMaximo(maximo_asig1);
+                             asignatura.setEstatus(estatus_asig1);
                     
-                    asignatura.setId_a(id_asignatura);
-                    asignaturaCRUD.actualizar(asignatura);
-                    request.getRequestDispatcher("Controlador?menu=Asignatura&accion=Listar").forward(request, response);                    
-                break;
-                case "Eliminar":
-                id_asignatura=Integer.parseInt(request.getParameter("id"));
-                asignaturaCRUD.delete(id_asignatura);
-                request.getRequestDispatcher("Controlador?menu=Asignatura&accion=Listar").forward(request, response);                    
-                break;
-                default:
-                    throw new AssertionError();
-            }     
-                             }    
+                             asignatura.setId_a(id_asignatura);
+                             asignaturaCRUD.actualizar(asignatura);
+                             request.getRequestDispatcher("Controlador?menu=Periodo&accion=Anio_Periodo&accionn=Seccion&accionnn=Asignatura_periodo&accio4=Listar").forward(request, response);                    
+                                   break;
+                             case "Eliminar":
+                             id_asignatura=Integer.parseInt(request.getParameter("id"));
+                             asignaturaCRUD.delete(id_asignatura);
+                             request.getRequestDispatcher("Controlador?menu=Periodo&accion=Anio_Periodo&accionn=Seccion&accionnn=Asignatura_periodo&accio4=Listar").forward(request, response);                    
+                                   break;
+                                   
+                                   
+                                   
+                                   
+                                   
                              //ENTRAMOS EN EL MODULO DE LOS ESTUDIANTES Y SUS LAPSOS
                              case "Estudiantes_Lapsos":
-                                 switch (accio4) {
+                                 switch (accio5) {
                                      case "Listar":
                                          List list4 = estudianteCRUD.listar();
                                          request.setAttribute("Estudiantesl", list4);
@@ -332,9 +373,14 @@ public class Controlador extends HttpServlet {
                                          request.setAttribute("Finales", finall);
                                          request.getRequestDispatcher("lapso.jsp").forward(request, response);
                                          break;
+                                             default:
+                                                throw new AssertionError();
+                                          }
                                      default:
-                                         throw new AssertionError();
-                                 }
+                                        throw new AssertionError();
+                                    }     
+                               }    
+                             
                              default:
                                  throw new AssertionError();
                          }
@@ -344,6 +390,7 @@ public class Controlador extends HttpServlet {
              default:
                  throw new AssertionError();
          }
+         
      }
         if (menu.equals("Anio")) {
            

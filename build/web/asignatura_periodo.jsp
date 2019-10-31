@@ -9,7 +9,7 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-	<title>Asignatura</title>
+	<title>Asignatura del periodo</title>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
 	<link rel="stylesheet" href="./css/main.css">
@@ -180,8 +180,9 @@
 											<td>${asignatura.getEstatus()}</td>											
                                                                                           
                                                                                    
-                                                                                <td><a href="Controlador?menu=Asignatura&accion=Editar&id=${asignatura.getId_a()}" class="btn btn-success btn-raised btn-xs"><i class="zmdi zmdi-refresh"></i></a></td>
-									        <td><a href="Controlador?menu=Asignatura&accion=Eliminar&id=${asignatura.getId_a()}" class="btn btn-danger btn-raised btn-xs"><i class="zmdi zmdi-delete"></i></a></td>
+                                                                                <td><a href="Controlador?menu=Periodo&accion=Anio_Periodo&accionn=Seccion&accionnn=Asignatura_periodo&accio4=Editar&id=${asignatura.getId_a()}" class="btn btn-success btn-raised btn-xs"><i class="zmdi zmdi-refresh"></i></a></td>
+									        <td><a href="Controlador?menu=Periodo&accion=Anio_Periodo&accionn=Seccion&accionnn=Asignatura_periodo&accio4=Eliminar&id=${asignatura.getId_a()}" class="btn btn-danger btn-raised btn-xs"><i class="zmdi zmdi-delete"></i></a></td>
+                                                                                <td><a href="Controlador?menu=Periodo&accion=Anio_Periodo&accionn=Seccion&accionnn=Asignatura_periodo&accio4=Estudiantes_Lapsos&accio5=Listar&idp=${periodoses.getId_p()}&idpa=${anio.getId_a()}&idpas=${seccion.getId_s()}&idpasa=${asignatura.getId_a()}" class="btn btn-success btn-raised btn-xs"><i class="zmdi zmdi-refresh"></i>Mas opciones</a></td>
 										
                                                                                 </tr>
                                                                             </c:forEach>
@@ -203,31 +204,31 @@
 							<div class="container-fluid">
 								<div class="row">
 									<div class="col-xs-12 col-md-10 col-md-offset-1">
-									    <form action="Controlador?menu=Asignatura" name="formulario" method="POST">
+									    <form action="Controlador?menu=Periodo&accion=Anio_Periodo&accionn=Seccion&accionnn=Asignatura_periodo" name="formulario" method="POST">
 									    	<div class="form-group label-floating">
 											  <label id="error" class="control-label">Codigo de la materia</label>
-                                                                                           <input class="form-control" type="text" value="${asignatura.getCodigo()}" name="codigo_asig">
+                                                                                           <input class="form-control" type="text" value="${asignatura.getCodigo()}" name="codigo_asigg">
 											</div>
                                                                                         <div class="form-group label-floating">
 											  <label class="control-label">Nombre de la materia</label>
-											  <input class="form-control" type="text" value="${asignatura.getNombre()}" name="nombre_asig">
+											  <input class="form-control" type="text" value="${asignatura.getNombre()}" name="nombre_asigg">
 											</div>
                                                                                         <div class="form-group label-floating">
 											  <label class="control-label">Calificacion minima</label>
-											  <input class="form-control" type="text" value="${asignatura.getMinimo()}" name="minimo_asig">
+											  <input class="form-control" type="number" value="${asignatura.getMinimo()}" name="minimo_asigg">
 											</div>
                                                                                         <div class="form-group label-floating">
 											  <label class="control-label">Calificacion maxima</label>
-											  <input class="form-control" type="text" value="${asignatura.getMaximo()}" name="maximo_asig">
+											  <input class="form-control" type="number" value="${asignatura.getMaximo()}" name="maximo_asigg">
 											</div>
                                                                                         <div class="form-group label-floating">
 											  <label class="control-label">Estatus</label>
-											  <input class="form-control" type="text" value="${asignatura.getEstatus()}" name="estatus_asig">
+											  <input class="form-control" type="text" value="${asignatura.getEstatus()}" name="estatus_asigg">
 											</div>											                                                                                       
 											
 										    </div>
-										    <input type="submit" name="accion" value="Agregar" class="btn btn-primary">
-                                                                                    <input type="submit" name="accion" value="Actualizar" class="btn btn-success">
+										    <input type="submit" name="accio4" value="Agregar" class="btn btn-primary">
+                                                                                    <input type="submit" name="accio4" value="Actualizar" class="btn btn-success">
 									    </form>
 									</div>
 								</div>
