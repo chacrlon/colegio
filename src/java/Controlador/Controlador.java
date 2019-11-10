@@ -59,7 +59,7 @@ public class Controlador extends HttpServlet {
  private Periodo getPeriodo(HttpServletRequest request, HttpSession sesion) {
      Periodo pee = null;
      String rev = request.getParameter("idp");
-     if (rev != null) {
+     if (rev != null && !rev.equals("")) {
          idp = Integer.parseInt(rev);
          pee = periodoCRUD.listarId(idp);
      } 
@@ -72,7 +72,7 @@ public class Controlador extends HttpServlet {
  private Anio getAnio(HttpServletRequest request, HttpSession sesion) {
      Anio anio2 = null;
      String rev = request.getParameter("idpa");
-     if (rev != null){
+     if (rev != null && !rev.equals("")){
          id_anio = Integer.parseInt(rev);
          anio2 = anioCRUD.listarId(id_anio);
      }
@@ -85,7 +85,7 @@ public class Controlador extends HttpServlet {
  private Seccion getSeccion(HttpServletRequest request, HttpSession sesion) {
      Seccion seccion = null;
      String rev = request.getParameter("idpas");
-     if (rev != null) {
+     if (rev != null && !rev.equals("")) {
          id_seccion = Integer.parseInt(rev);
          seccion = seccionCRUD.listarId(id_seccion);         
      }
