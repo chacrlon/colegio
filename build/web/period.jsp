@@ -180,7 +180,7 @@
                                                                                    
                                                                                 <td><a href="Controlador?menu=Periodo&accion=Editar&id=${periodo.getId_p()}" class="btn btn-success btn-raised btn-xs"><i class="zmdi zmdi-refresh"></i></a></td>                                                                             
 									        <td><a href="Controlador?menu=Periodo&accion=Eliminar&id=${periodo.getId_p()}" class="btn btn-danger btn-raised btn-xs"><i class="zmdi zmdi-delete"></i></a></td>
-                                                                                <td><a href="Controlador?menu=Periodo&accion=Anio_Periodo&accionn=Listar&id=${periodo.getId_p()}" class="btn btn-success btn-raised btn-xs"><i class="zmdi zmdi-refresh"></i>Agregar Año</a></td>
+                                                                                <td><a href="Controlador?menu=Periodo&accion=Anio_Periodo&accionn=Listar&idp=${periodo.getId_p()}" class="btn btn-success btn-raised btn-xs"><i class="zmdi zmdi-refresh"></i>Agregar Año</a></td>
 										
                                                                                 </tr>
                                                                             </c:forEach>

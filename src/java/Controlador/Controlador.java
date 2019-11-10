@@ -55,6 +55,45 @@ public class Controlador extends HttpServlet {
         
         Representante representante=new Representante();
         RepresentanteCRUD representanteCRUD=new RepresentanteCRUD();
+        
+ private Periodo getPeriodo(HttpServletRequest request, HttpSession sesion) {
+     Periodo pee = null;
+     String rev = request.getParameter("idp");
+     if (rev != null) {
+         idp = Integer.parseInt(rev);
+         pee = periodoCRUD.listarId(idp);
+     } 
+     else {
+         pee = (Periodo) sesion.getAttribute("periodoses");
+     }
+     return pee;
+ }
+ 
+ private Anio getAnio(HttpServletRequest request, HttpSession sesion) {
+     Anio anio2 = null;
+     String rev = request.getParameter("idpa");
+     if (rev != null){
+         id_anio = Integer.parseInt(rev);
+         anio2 = anioCRUD.listarId(id_anio);
+     }
+     else {
+         anio2 = (Anio) sesion.getAttribute("anioses");
+     }
+     return anio2;
+ }
+ 
+ private Seccion getSeccion(HttpServletRequest request, HttpSession sesion) {
+     Seccion seccion = null;
+     String rev = request.getParameter("idpas");
+     if (rev != null) {
+         id_seccion = Integer.parseInt(rev);
+         seccion = seccionCRUD.listarId(id_seccion);         
+     }
+     else {
+         seccion = (Seccion) sesion.getAttribute("seccionoses");
+     }
+     return seccion;
+ }
               
  protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
@@ -128,11 +167,7 @@ public class Controlador extends HttpServlet {
              case "Anio_Periodo":
                  switch (accionn) {
                      case "Listar":
-                         Periodo pee = (Periodo) sesion.getAttribute("periodoses");
-                         if (pee == null) {
-                             idp = Integer.parseInt(request.getParameter("id"));
-                             pee = periodoCRUD.listarId(idp);                             
-                         }
+                         Periodo pee = getPeriodo(request, sesion);
                          sesion.setAttribute("periodoses", pee);
                          List listaa = anioCRUD.listar();
                          request.setAttribute("Anios", listaa);
@@ -184,23 +219,11 @@ public class Controlador extends HttpServlet {
                      case "Seccion":
                          switch (accionnn) {
                              case "Listar":
-                                 
-                                 
-                         Periodo pe2 = (Periodo) sesion.getAttribute("periodoses");
-                         if (pe2 == null) {
-                             idp = Integer.parseInt(request.getParameter("idp"));
-                             pe2 = periodoCRUD.listarId(idp);                             
-                         }
-                         sesion.setAttribute("periodoses", pe2);
-                         
-                         Anio anio2 = (Anio) sesion.getAttribute("anioses");
-                         if (anio2 == null) {
-                             id_anio = Integer.parseInt(request.getParameter("idpa"));
-                             anio2 = anioCRUD.listarId(id_anio);                             
-                         }
-                         sesion.setAttribute("anioses", anio2);
+                                 Periodo pe2 = getPeriodo(request, sesion);
+                                 sesion.setAttribute("periodoses", pe2);
 
-                                 
+                                 Anio anio2 = getAnio(request, sesion);
+                                 sesion.setAttribute("anioses", anio2);
 
                                  List listaaa = seccionCRUD.listar();
                                  request.setAttribute("Secciones", listaaa);
@@ -253,36 +276,20 @@ public class Controlador extends HttpServlet {
                              case "Asignatura_periodo": { 
                                  switch (accio4) {
                              case "Listar":
-                                 
-                         Periodo pe22 = (Periodo) sesion.getAttribute("periodoses");
-                         if (pe22 == null) {
-                             idp = Integer.parseInt(request.getParameter("idp"));
-                             pe22 = periodoCRUD.listarId(idp);                             
-                         }
-                         sesion.setAttribute("periodoses", pe22);
-                         
-                         
-                         Anio anio22 = (Anio) sesion.getAttribute("anioses");
-                         if (anio22 == null) {
-                             id_anio = Integer.parseInt(request.getParameter("idpa"));
-                             anio22 = anioCRUD.listarId(id_anio);                             
-                         }
-                         sesion.setAttribute("anioses", anio22);
-                         
-                         
-                         Seccion seccion = (Seccion) sesion.getAttribute("seccionoses");
-                         if (seccion == null) {
-                             id_seccion = Integer.parseInt(request.getParameter("idpas"));
-                             seccion = seccionCRUD.listarId(id_seccion);                             
-                         }
-                         sesion.setAttribute("seccionoses", seccion);
-                         
-                         
-                         
-                             List listaasig = asignaturaCRUD.listar();
-                             request.setAttribute("Asignaturas", listaasig);
-                             request.getRequestDispatcher("asignatura_periodo.jsp").forward(request, response);
-                                  break;
+
+                                 Periodo pe22 = getPeriodo(request, sesion);
+                                 sesion.setAttribute("periodoses", pe22);
+
+                                 Anio anio22 = getAnio(request, sesion);
+                                 sesion.setAttribute("anioses", anio22);
+
+                                 Seccion seccion = getSeccion(request, sesion);
+                                 sesion.setAttribute("seccionoses", seccion);
+
+                                 List listaasig = asignaturaCRUD.listar();
+                                 request.setAttribute("Asignaturas", listaasig);
+                                 request.getRequestDispatcher("asignatura_periodo.jsp").forward(request, response);
+                                 break;
                              case "Agregar":
                              String codigo_asigg=request.getParameter("codigo_asigg");
                              String nombre_asigg=request.getParameter("nombre_asigg");
