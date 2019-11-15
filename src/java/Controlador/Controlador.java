@@ -8,6 +8,8 @@ import Modelo.Asignatura;
 import Modelo.AsignaturaCRUD;
 import Modelo.Docente;
 import Modelo.DocenteCRUD;
+import Modelo.Docentemateria;
+import Modelo.DocentemateriaCRUD;
 import Modelo.Estudiante;
 import Modelo.EstudianteCRUD;
 import Modelo.Periodo;
@@ -49,6 +51,9 @@ public class Controlador extends HttpServlet {
         
         Docente doc=new Docente();
         DocenteCRUD docCRUD=new DocenteCRUD();
+        
+        Docentemateria docma=new Docentemateria();
+        DocentemateriaCRUD docmaCRUD=new DocentemateriaCRUD();
         
         Estudiante estudiante=new Estudiante();
         EstudianteCRUD estudianteCRUD=new EstudianteCRUD();
@@ -94,6 +99,19 @@ public class Controlador extends HttpServlet {
      }
      return seccion;
  }
+ 
+ private Asignatura getAsignatura(HttpServletRequest request, HttpSession sesion) {
+     Asignatura asignatura = null;
+     String rev = request.getParameter("idpasa");
+     if (rev != null && !rev.equals("")) {
+         id_asignatura = Integer.parseInt(rev);
+         asignatura = asignaturaCRUD.listarId(id_asignatura);         
+     }
+     else {
+         asignatura = (Asignatura) sesion.getAttribute("asignaturases");
+     }
+     return asignatura;
+ }
               
  protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
@@ -103,6 +121,7 @@ public class Controlador extends HttpServlet {
         String accionnn = request.getParameter("accionnn");
         String accio4 = request.getParameter("accio4");
         String accio5 = request.getParameter("accio5");
+        String acciodoc = request.getParameter("acciodoc");
         if (menu.equals("Principal")) {
             request.getRequestDispatcher("home.jsp").forward(request, response);
         }
@@ -346,14 +365,42 @@ public class Controlador extends HttpServlet {
                              case "Estudiantes_Lapsos":
                                  switch (accio5) {
                                      case "Listar":
+                                         
+                                 Periodo pe222 = getPeriodo(request, sesion);
+                                 sesion.setAttribute("periodoses", pe222);
+
+                                 Anio anio222 = getAnio(request, sesion);
+                                 sesion.setAttribute("anioses", anio222);
+
+                                 Seccion seccion2 = getSeccion(request, sesion);
+                                 sesion.setAttribute("seccionoses", seccion2);
+                                 
+                                 Asignatura asignatura = getAsignatura(request, sesion);
+                                 sesion.setAttribute("asignaturases", asignatura);
+                                 
+                                 
                                          List list4 = estudianteCRUD.listar();
                                          request.setAttribute("Estudiantesl", list4);
                                          request.getRequestDispatcher("estudiantelapsos.jsp").forward(request, response);
                                          break;
                                      case "Asignar_Docente":
-                                         List list5 = estudianteCRUD.listar();
-                                         request.setAttribute("Estudiantesl", list5);
+                                         List list5 = docCRUD.listar();
+                                         request.setAttribute("Asignadoc", list5);
                                          request.getRequestDispatcher("asignar_docente.jsp").forward(request, response);
+                                         
+                                         if (acciodoc.equals("Asignar")) { 
+                                             int select_docente=Integer.parseInt(request.getParameter("select_docente"));
+
+                                             docma.setDocente(select_docente);
+                                             docma.setPeriodo(idp);
+                                             docma.setAnio(id_anio);
+                                             docma.setSeccion(id_seccion);
+                                             docma.setMateria(id_asignatura);
+                                             
+                                             docmaCRUD.asignarmateria(docma);
+                                             request.getRequestDispatcher("Controlador?menu=Periodo&accion=Anio_Periodo&accionn=Seccion&accionnn=Asignatura_periodo&accio4=Estudiantes_Lapsos&accio5=Asignar_Docente").forward(request, response);                    
+                                   
+                                         }
                                          break;
                                      case "Historial":
                                          List Historial = estudianteCRUD.listar();

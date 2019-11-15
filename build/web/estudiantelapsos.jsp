@@ -46,50 +46,51 @@
 			<ul class="list-unstyled full-box dashboard-sideBar-Menu">
 				<li>
 					<a href="home.jsp">
-						<i class="zmdi zmdi-view-dashboard zmdi-hc-fw"></i> Dashboard
+						<i class="zmdi zmdi-view-dashboard zmdi-hc-fw"></i> Inicio
 					</a>
 				</li>
 				<li>
 					<a href="#!" class="btn-sideBar-SubMenu">
-						<i class="zmdi zmdi-case zmdi-hc-fw"></i> Administration <i class="zmdi zmdi-caret-down pull-right"></i>
+						<i class="zmdi zmdi-case zmdi-hc-fw"></i> Administracion <i class="zmdi zmdi-caret-down pull-right"></i>
 					</a>
 					<ul class="list-unstyled full-box">
 						<li>
-							<a href="period.jsp"><i class="zmdi zmdi-timer zmdi-hc-fw"></i> Period</a>
+							<a href="Controlador?menu=Periodo&accion=Listar"><i class="zmdi zmdi-timer zmdi-hc-fw"></i> Periodos</a>
 						</li>
 						<li>
-							<a href="subject.jsp"><i class="zmdi zmdi-book zmdi-hc-fw"></i> Subject</a>
+							<a href="Controlador?menu=Anio&accion=Listar"><i class="zmdi zmdi-book zmdi-hc-fw"></i> Año escolar</a>
 						</li>
 						<li>
-							<a href="section.jsp"><i class="zmdi zmdi-graduation-cap zmdi-hc-fw"></i> Section</a>
+							<a href="Controlador?menu=Seccion&accion=Listar"><i class="zmdi zmdi-graduation-cap zmdi-hc-fw"></i> Section</a>
 						</li>
 						<li>
-							<a href="salon.jsp"><i class="zmdi zmdi-font zmdi-hc-fw"></i> Salon</a>
+							<a href="Controlador?menu=Asignatura&accion=Listar"><i class="zmdi zmdi-font zmdi-hc-fw"></i> Materias</a>
+						</li>
+                                                
+					</ul>
+				</li>
+				<li>
+					<a href="#!" class="btn-sideBar-SubMenu">
+						<i class="zmdi zmdi-account-add zmdi-hc-fw"></i> Usuarios <i class="zmdi zmdi-caret-down pull-right"></i>
+					</a>
+					<ul class="list-unstyled full-box">
+						<li>
+							<a href="Controlador?menu=Administrador&accion=Listar"><i class="zmdi zmdi-account zmdi-hc-fw"></i> Administradores</a>
+						</li>
+						<li>
+							<a href="Controlador?menu=Docente&accion=Listar"><i class="zmdi zmdi-male-alt zmdi-hc-fw"></i> Docentes</a>
+						</li>
+						<li>
+							<a href="Controlador?menu=Estudiante&accion=Listar"><i class="zmdi zmdi-face zmdi-hc-fw"></i> Estudiantes</a>
+						</li>
+						<li>
+							<a href="Controlador?menu=Representante&accion=Listar"><i class="zmdi zmdi-male-female zmdi-hc-fw"></i> Representantes</a>
 						</li>
 					</ul>
 				</li>
 				<li>
 					<a href="#!" class="btn-sideBar-SubMenu">
-						<i class="zmdi zmdi-account-add zmdi-hc-fw"></i> Users <i class="zmdi zmdi-caret-down pull-right"></i>
-					</a>
-					<ul class="list-unstyled full-box">
-						<li>
-							<a href="admin.jsp"><i class="zmdi zmdi-account zmdi-hc-fw"></i> Admin</a>
-						</li>
-						<li>
-							<a href="teacher.jsp"><i class="zmdi zmdi-male-alt zmdi-hc-fw"></i> Teacher</a>
-						</li>
-						<li>
-							<a href="student.jsp"><i class="zmdi zmdi-face zmdi-hc-fw"></i> Student</a>
-						</li>
-						<li>
-							<a href="representative.jsp"><i class="zmdi zmdi-male-female zmdi-hc-fw"></i> Representative</a>
-						</li>
-					</ul>
-				</li>
-				<li>
-					<a href="#!" class="btn-sideBar-SubMenu">
-						<i class="zmdi zmdi-card zmdi-hc-fw"></i> Payments <i class="zmdi zmdi-caret-down pull-right"></i>
+						<i class="zmdi zmdi-card zmdi-hc-fw"></i> Pagos <i class="zmdi zmdi-caret-down pull-right"></i>
 					</a>
 					<ul class="list-unstyled full-box">
 						<li>
@@ -153,6 +154,7 @@
 					<ul class="nav nav-tabs" style="margin-bottom: 15px;">
                                                 <li class="active"><a href="#list" data-toggle="tab">List</a></li>
 					  	<li ><a href="#new" data-toggle="tab">New</a></li>
+                                                <li ><a href="Controlador?menu=Periodo&accion=Anio_Periodo&accionn=Seccion&accionnn=Asignatura_periodo&accio4=Estudiantes_Lapsos&accio5=Asignar_Docente" >Asignar Docente</a></li>
 					</ul>	
                                                 <div id="myTabContent" class="tab-content">
                                                     <div class="tab-pane fade active in" id="list">
@@ -180,11 +182,11 @@
                                                                                         <td>${es.getApellido2()}</td>
 											<td>${es.getCedula()}</td>											
                                                                                 //&id=${es.getId_p_e()}                                                                                             
-                                                                                <td><a href="Controlador?menu=Periodo&accion=Anio_Periodo&accionn=Seccion&accionnn=Estudiantes_Lapsos&accio4=Historial" class="btn btn-primary btn-raised btn-xs"><i class="zmdi zmdi-refresh"></i>Historial</a></td>
-                                                                                <td><a href="Controlador?menu=Periodo&accion=Anio_Periodo&accionn=Seccion&accionnn=Estudiantes_Lapsos&accio4=Lapso1" class="btn btn-success btn-raised btn-xs"><i class="zmdi zmdi-refresh"></i>1</a></td>
-                                                                                <td><a href="Controlador?menu=Periodo&accion=Anio_Periodo&accionn=Seccion&accionnn=Estudiantes_Lapsos&accio4=Lapso2" class="btn btn-success btn-raised btn-xs"><i class="zmdi zmdi-refresh"></i>2</a></td>
-                                                                                <td><a href="Controlador?menu=Periodo&accion=Anio_Periodo&accionn=Seccion&accionnn=Estudiantes_Lapsos&accio4=Lapso3" class="btn btn-success btn-raised btn-xs"><i class="zmdi zmdi-refresh"></i>3</a></td>
-                                                                                <td><a href="Controlador?menu=Periodo&accion=Anio_Periodo&accionn=Seccion&accionnn=Estudiantes_Lapsos&accio4=Final" class="btn btn-success btn-raised btn-xs"><i class="zmdi zmdi-refresh"></i>Final</a></td>
+                                                                                <td><a href="Controlador?menu=Periodo&accion=Anio_Periodo&accionn=Seccion&accionnn=Asignatura_periodo&accio4=Estudiantes_Lapsos&accio5=Historial" class="btn btn-primary btn-raised btn-xs"><i class="zmdi zmdi-refresh"></i>Historial</a></td>
+                                                                                <td><a href="Controlador?menu=Periodo&accion=Anio_Periodo&accionn=Seccion&accionnn=Asignatura_periodo&accio4=Estudiantes_Lapsos&accio5=Lapso1" class="btn btn-success btn-raised btn-xs"><i class="zmdi zmdi-refresh"></i>1</a></td>
+                                                                                <td><a href="Controlador?menu=Periodo&accion=Anio_Periodo&accionn=Seccion&accionnn=Asignatura_periodo&accio4=Estudiantes_Lapsos&accio5=Lapso2" class="btn btn-success btn-raised btn-xs"><i class="zmdi zmdi-refresh"></i>2</a></td>
+                                                                                <td><a href="Controlador?menu=Periodo&accion=Anio_Periodo&accionn=Seccion&accionnn=Asignatura_periodo&accio4=Estudiantes_Lapsos&accio5=Lapso3" class="btn btn-success btn-raised btn-xs"><i class="zmdi zmdi-refresh"></i>3</a></td>
+                                                                                <td><a href="Controlador?menu=Periodo&accion=Anio_Periodo&accionn=Seccion&accionnn=Asignatura_periodo&accio4=Estudiantes_Lapsos&accio5=Final" class="btn btn-success btn-raised btn-xs"><i class="zmdi zmdi-refresh"></i>Final</a></td>
 										
                                                                                 </tr>
                                                                             </c:forEach>
@@ -206,7 +208,7 @@
 							<div class="container-fluid">
 								<div class="row">
 									<div class="col-xs-12 col-md-10 col-md-offset-1">
-									    <form action="Controlador?menu=EstudianteLapsos" name="formulario" method="POST">
+									    <form action="Controlador?menu=Periodo&accion=Anio_Periodo&accionn=Seccion&accionnn=Asignatura_periodo&accio4=Estudiantes_Lapsos" name="formulario" method="POST">
 									    	<div class="form-group label-floating">
 											  <label id="error" class="control-label">Codigo de la materia</label>
                                                                                            <input class="form-control" type="text" value="${asignatura.getCodigo()}" name="codigo_asig">
