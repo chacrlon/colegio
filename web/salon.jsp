@@ -1,8 +1,3 @@
-<%-- 
-    Document   : salon
-    Created on : Aug 18, 2019, 7:22:56 PM
-    Author     : AARON ROMAN
---%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>

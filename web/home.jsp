@@ -1,8 +1,4 @@
-<%-- 
-    Document   : home
-    Created on : Aug 18, 2019, 7:21:09 PM
-    Author     : AARON ROMAN
---%>
+
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>

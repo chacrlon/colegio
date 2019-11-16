@@ -1,8 +1,3 @@
-<%-- 
-    Document   : index
-    Created on : Aug 18, 2019, 7:11:24 PM
-    Author     : AARON ROMAN
---%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
