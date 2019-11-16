@@ -8,6 +8,14 @@
         <servlet-name>ingresar</servlet-name>
         <servlet-class>Controlador.ControladorIngresar</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>ControladorDocente</servlet-name>
+        <servlet-class>Controlador.ControladorDocente</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ControladorEstudiante</servlet-name>
+        <servlet-class>Controlador.ControladorEstudiante</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>Controlador</servlet-name>
         <url-pattern>/Controlador</url-pattern>
@@ -15,6 +23,14 @@
     <servlet-mapping>
         <servlet-name>ingresar</servlet-name>
         <url-pattern>/ingresar</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ControladorDocente</servlet-name>
+        <url-pattern>/ControladorDocente</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ControladorEstudiante</servlet-name>
+        <url-pattern>/ControladorEstudiante</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
