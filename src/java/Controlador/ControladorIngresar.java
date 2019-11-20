@@ -27,6 +27,7 @@ public class ControladorIngresar extends HttpServlet {
             throws ServletException, IOException {
         String accion = request.getParameter("accion");
         String tipo_usuario="";
+        /*
         try {
             while(rs.next())
             { 
@@ -36,6 +37,7 @@ public class ControladorIngresar extends HttpServlet {
          catch (Exception e) {
             e.printStackTrace();
         }
+*/
         if (accion.equalsIgnoreCase("Ingresar")) {
             String nick = request.getParameter("txtuser");
             String pass = request.getParameter("txtpass");

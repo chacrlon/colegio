@@ -11,16 +11,28 @@
 <script type="text/javascript">
             function botones() {
                 var e = document.getElementById("objeto1");
-                var e2 = document.getElementById("objeto2");
-                var e3 = document.getElementById("objeto3");
+                var e2 = document.getElementsByName("objeto2");
+                var e3 = document.getElementsByName("objeto3");
+                
                 var myvar=${BoolMostrarBoton}
+                
                 e.style.display = 'none';
-                e2.style.display = 'none';
-                e3.style.display = 'none';
                 if (myvar==1) {
                     e.style.display = '';
-                    e2.style.display = '';
-                    e3.style.display = '';
+                }
+                
+                for (var x2 = 0; x2 < e2.length; x2++) {
+                    e2[x2].style.display = 'none';
+                    if (myvar==1) {
+                        e2[x2].style.display = '';
+                    }
+                }
+                
+                for (var x3 = 0; x3 < e3.length; x3++) {
+                    e3[x3].style.display = 'none';
+                    if (myvar==1) {
+                        e3[x3].style.display = '';
+                    }
                 }
             }
         </script>          
@@ -209,8 +221,8 @@
                                                                                         <td>${admin.getDireccion()}</td>
                                                                                         <td>${admin.getEstatus()}</td>    
                                                                                    
-                                                                                <td id="objeto2" name="objeto2"><a href="Controlador?menu=Administrador&accion=Editar&id=${admin.getId_p_a()}" class="btn btn-success btn-raised btn-xs"><i class="zmdi zmdi-refresh"></i></a></td>
-									        <td id="objeto3" name="objeto3"><a href="Controlador?menu=Administrador&accion=Eliminar&id=${admin.getId_p_a()}" class="btn btn-danger btn-raised btn-xs"><i class="zmdi zmdi-delete"></i></a></td>
+                                                                                <td><a name="objeto2" href="Controlador?menu=Administrador&accion=Editar&id=${admin.getId_p_a()}" class="btn btn-success btn-raised btn-xs"><i class="zmdi zmdi-refresh"></i></a></td>
+									        <td><a name="objeto3" href="Controlador?menu=Administrador&accion=Eliminar&id=${admin.getId_p_a()}" class="btn btn-danger btn-raised btn-xs"><i class="zmdi zmdi-delete"></i></a></td>
 										
                                                                                 </tr>
                                                                             </c:forEach>
