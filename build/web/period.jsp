@@ -9,8 +9,10 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
 	<link rel="stylesheet" href="./css/main.css">
+    <script type="text/javascript" src="js/OcultarObjeto.js"></script>
 </head>
-<body>
+<body onload="botones(${BoolMostrarBoton});">
+      
 	<!-- SideBar -->
 	<section class="full-box cover dashboard-sideBar">
 		<div class="full-box dashboard-sideBar-bg btn-menu-dashboard"></div>
@@ -149,7 +151,7 @@
 				<div class="col-xs-12">
 					<ul class="nav nav-tabs" style="margin-bottom: 15px;">
                                                 <li class="active"><a href="#list" data-toggle="tab">List</a></li>
-					  	<li ><a href="#new" data-toggle="tab">New</a></li>
+                                                <li id="botonNuevo" name="botonNuevo"><a href="#new" data-toggle="tab">New</a></li>
 					</ul>	
                                                 <div id="myTabContent" class="tab-content">
                                                     <div class="tab-pane fade active in" id="list">
@@ -321,5 +323,6 @@
 	<script>
 		$.material.init();
 	</script>
+        <script src="./js/OcultarObjeto.js"></script>
 </body>
 </html>

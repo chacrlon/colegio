@@ -8,8 +8,24 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
 	<link rel="stylesheet" href="./css/main.css">
+<script type="text/javascript">
+            function botones() {
+                var e = document.getElementById("objeto1");
+                var e2 = document.getElementById("objeto2");
+                var e3 = document.getElementById("objeto3");
+                var myvar=${BoolMostrarBoton}
+                e.style.display = 'none';
+                e2.style.display = 'none';
+                e3.style.display = 'none';
+                if (myvar==1) {
+                    e.style.display = '';
+                    e2.style.display = '';
+                    e3.style.display = '';
+                }
+            }
+        </script>          
 </head>
-<body>
+<body onload="botones();">
 	<!-- SideBar -->
 	<section class="full-box cover dashboard-sideBar">
 		<div class="full-box dashboard-sideBar-bg btn-menu-dashboard"></div>
@@ -150,7 +166,7 @@
 				<div class="col-xs-12">
 					<ul class="nav nav-tabs" style="margin-bottom: 15px;">
                                                 <li class="active"><a href="#list" data-toggle="tab">List</a></li>
-					  	<li ><a href="#new" data-toggle="tab">New</a></li>
+					  	<li id="objeto1" name="objeto1"><a href="#new" data-toggle="tab">New</a></li>
 					</ul>	
                                                 <div id="myTabContent" class="tab-content">
                                                     <div class="tab-pane fade active in" id="list">
@@ -193,8 +209,8 @@
                                                                                         <td>${admin.getDireccion()}</td>
                                                                                         <td>${admin.getEstatus()}</td>    
                                                                                    
-                                                                                <td><a href="Controlador?menu=Administrador&accion=Editar&id=${admin.getId_p_a()}" class="btn btn-success btn-raised btn-xs"><i class="zmdi zmdi-refresh"></i></a></td>
-									        <td><a href="Controlador?menu=Administrador&accion=Eliminar&id=${admin.getId_p_a()}" class="btn btn-danger btn-raised btn-xs"><i class="zmdi zmdi-delete"></i></a></td>
+                                                                                <td id="objeto2" name="objeto2"><a href="Controlador?menu=Administrador&accion=Editar&id=${admin.getId_p_a()}" class="btn btn-success btn-raised btn-xs"><i class="zmdi zmdi-refresh"></i></a></td>
+									        <td id="objeto3" name="objeto3"><a href="Controlador?menu=Administrador&accion=Eliminar&id=${admin.getId_p_a()}" class="btn btn-danger btn-raised btn-xs"><i class="zmdi zmdi-delete"></i></a></td>
 										
                                                                                 </tr>
                                                                             </c:forEach>

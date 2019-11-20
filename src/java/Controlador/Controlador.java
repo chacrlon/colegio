@@ -130,6 +130,9 @@ public class Controlador extends HttpServlet {
         
      if (menu.equals("Periodo")) {
 
+         Integer nMostrarBoton = 0;
+         request.setAttribute("BoolMostrarBoton", nMostrarBoton);
+
          switch (accion) {
              case "Listar":
                  List lista = periodoCRUD.listar();
@@ -600,6 +603,8 @@ public class Controlador extends HttpServlet {
         }
              
         if (menu.equals("Administrador")) {
+            Integer nMostrarBoton = 1;
+            request.setAttribute("BoolMostrarBoton", nMostrarBoton);
             //request.getRequestDispatcher("admin.jsp").forward(request, response);
             switch (accion) {
                 case "Listar":

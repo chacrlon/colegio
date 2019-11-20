@@ -139,6 +139,9 @@ public class ControladorDocente extends HttpServlet {
         
      if (menu.equals("Periodo")) {
 
+         Integer nMostrarBoton = 0;
+         request.setAttribute("BoolMostrarBoton", nMostrarBoton);
+
          switch (accion) {
              case "Listar":
                  List lista = periodoCRUD.listar();
@@ -158,13 +161,13 @@ public class ControladorDocente extends HttpServlet {
                  periodo.setEstatus(estatus_p);
 
                  periodoCRUD.agregar(periodo);
-                 request.getRequestDispatcher("ControladorDocente?menu=Periodo&accion=Listar").forward(request, response);
+                 request.getRequestDispatcher("Controlador?menu=Periodo&accion=Listar").forward(request, response);
                  break;
              case "Editar":
                  idp = Integer.parseInt(request.getParameter("id"));
                  Periodo pe = periodoCRUD.listarId(idp);
                  request.setAttribute("periodo", pe);
-                 request.getRequestDispatcher("ControladorDocente?menu=Periodo&accion=Listar").forward(request, response);
+                 request.getRequestDispatcher("Controlador?menu=Periodo&accion=Listar").forward(request, response);
                  break;
              case "Actualizar":
                  String nombre_p1 = request.getParameter("nombre_p");
@@ -179,12 +182,12 @@ public class ControladorDocente extends HttpServlet {
 
                  periodo.setId_p(idp);
                  periodoCRUD.actualizar(periodo);
-                 request.getRequestDispatcher("ControladorDocente?menu=Periodo&accion=Listar").forward(request, response);
+                 request.getRequestDispatcher("Controlador?menu=Periodo&accion=Listar").forward(request, response);
                  break;
              case "Eliminar":
                  idp = Integer.parseInt(request.getParameter("id"));
                  periodoCRUD.delete(idp);
-                 request.getRequestDispatcher("ControladorDocente?menu=Periodo&accion=Listar").forward(request, response);
+                 request.getRequestDispatcher("Controlador?menu=Periodo&accion=Listar").forward(request, response);
                  break;
 
                  
@@ -212,13 +215,13 @@ public class ControladorDocente extends HttpServlet {
                          anio.setEstatus(estatus_anio);
                          anio.setId_p(id_periodo2);
                          anioCRUD.agregarIDperiodo(anio);
-                         request.getRequestDispatcher("ControladorDocente?menu=Periodo&accion=Anio_Periodo&accionn=Listar").forward(request, response);
+                         request.getRequestDispatcher("Controlador?menu=Periodo&accion=Anio_Periodo&accionn=Listar").forward(request, response);
                          break;
                      case "Editar":
                          id_anio = Integer.parseInt(request.getParameter("id"));
                          Anio pea = anioCRUD.listarId(id_anio);
                          request.setAttribute("anio", pea);
-                         request.getRequestDispatcher("ControladorDocente?menu=Periodo&accion=Anio_Periodo&accionn=Listar").forward(request, response);
+                         request.getRequestDispatcher("Controlador?menu=Periodo&accion=Anio_Periodo&accionn=Listar").forward(request, response);
                          break;
                      case "Actualizar":
                          String codigo_anio1 = request.getParameter("codigo_anio");
@@ -231,12 +234,12 @@ public class ControladorDocente extends HttpServlet {
 
                          anio.setId_a(id_anio);
                          anioCRUD.actualizar(anio);
-                         request.getRequestDispatcher("ControladorDocente?menu=Periodo&accion=Anio_Periodo&accionn=Listar").forward(request, response);
+                         request.getRequestDispatcher("Controlador?menu=Periodo&accion=Anio_Periodo&accionn=Listar").forward(request, response);
                          break;
                      case "Eliminar":
                          id_anio = Integer.parseInt(request.getParameter("id"));
                          anioCRUD.delete(id_anio);
-                         request.getRequestDispatcher("ControladorDocente?menu=Periodo&accion=Anio_Periodo&accionn=Listar").forward(request, response);
+                         request.getRequestDispatcher("Controlador?menu=Periodo&accion=Anio_Periodo&accionn=Listar").forward(request, response);
                          break;
 
                          
@@ -269,13 +272,13 @@ public class ControladorDocente extends HttpServlet {
                                  seccion.setId_a(id_anio);
 
                                  seccionCRUD.agregarIDS(seccion);
-                                 request.getRequestDispatcher("ControladorDocente?menu=Periodo&accion=Anio_Periodo&accionn=Seccion&accionnn=Listar").forward(request, response);
+                                 request.getRequestDispatcher("Controlador?menu=Periodo&accion=Anio_Periodo&accionn=Seccion&accionnn=Listar").forward(request, response);
                                  break;
                              case "Editar":
                                  id_seccion = Integer.parseInt(request.getParameter("id"));
                                  Seccion pes = seccionCRUD.listarId(id_seccion);
                                  request.setAttribute("seccion", pes);
-                                 request.getRequestDispatcher("ControladorDocente?menu=Periodo&accion=Anio_Periodo&accionn=Seccion&accionnn=Listar").forward(request, response);
+                                 request.getRequestDispatcher("Controlador?menu=Periodo&accion=Anio_Periodo&accionn=Seccion&accionnn=Listar").forward(request, response);
                                  break;
                              case "Actualizar":
                                  String codigo_s1 = request.getParameter("codigo_s");
@@ -288,12 +291,12 @@ public class ControladorDocente extends HttpServlet {
 
                                  seccion.setId_s(id_seccion);
                                  seccionCRUD.actualizar(seccion);
-                                 request.getRequestDispatcher("ControladorDocente?menu=Periodo&accion=Anio_Periodo&accionn=Seccion&accionnn=Listar").forward(request, response);
+                                 request.getRequestDispatcher("Controlador?menu=Periodo&accion=Anio_Periodo&accionn=Seccion&accionnn=Listar").forward(request, response);
                                  break;
                              case "Eliminar":
                                  id_seccion = Integer.parseInt(request.getParameter("id"));
                                  seccionCRUD.delete(id_seccion);
-                                 request.getRequestDispatcher("ControladorDocente?menu=Periodo&accion=Anio_Periodo&accionn=Seccion&accionnn=Listar").forward(request, response);
+                                 request.getRequestDispatcher("Controlador?menu=Periodo&accion=Anio_Periodo&accionn=Seccion&accionnn=Listar").forward(request, response);
                                  break;
 
                                  
@@ -335,13 +338,13 @@ public class ControladorDocente extends HttpServlet {
                              asignatura.setId_seccion(id_seccion);
                     
                              asignaturaCRUD.agregarIDS(asignatura);
-                             request.getRequestDispatcher("ControladorDocente?menu=Periodo&accion=Anio_Periodo&accionn=Seccion&accionnn=Asignatura_periodo&accio4=Listar").forward(request, response);
+                             request.getRequestDispatcher("Controlador?menu=Periodo&accion=Anio_Periodo&accionn=Seccion&accionnn=Asignatura_periodo&accio4=Listar").forward(request, response);
                                   break;
                              case "Editar":
                              id_asignatura=Integer.parseInt(request.getParameter("id"));
                              Asignatura asig=asignaturaCRUD.listarId(id_asignatura);
                              request.setAttribute("asignatura", asig);
-                             request.getRequestDispatcher("ControladorDocente?menu=Periodo&accion=Anio_Periodo&accionn=Seccion&accionnn=Asignatura_periodo&accio4=Listar").forward(request, response);                    
+                             request.getRequestDispatcher("Controlador?menu=Periodo&accion=Anio_Periodo&accionn=Seccion&accionnn=Asignatura_periodo&accio4=Listar").forward(request, response);                    
                                   break;
                              case "Actualizar":
                              String codigo_asig1=request.getParameter("codigo_asigg");
@@ -358,12 +361,12 @@ public class ControladorDocente extends HttpServlet {
                     
                              asignatura.setId_a(id_asignatura);
                              asignaturaCRUD.actualizar(asignatura);
-                             request.getRequestDispatcher("ControladorDocente?menu=Periodo&accion=Anio_Periodo&accionn=Seccion&accionnn=Asignatura_periodo&accio4=Listar").forward(request, response);                    
+                             request.getRequestDispatcher("Controlador?menu=Periodo&accion=Anio_Periodo&accionn=Seccion&accionnn=Asignatura_periodo&accio4=Listar").forward(request, response);                    
                                    break;
                              case "Eliminar":
                              id_asignatura=Integer.parseInt(request.getParameter("id"));
                              asignaturaCRUD.delete(id_asignatura);
-                             request.getRequestDispatcher("ControladorDocente?menu=Periodo&accion=Anio_Periodo&accionn=Seccion&accionnn=Asignatura_periodo&accio4=Listar").forward(request, response);                    
+                             request.getRequestDispatcher("Controlador?menu=Periodo&accion=Anio_Periodo&accionn=Seccion&accionnn=Asignatura_periodo&accio4=Listar").forward(request, response);                    
                                    break;
                                    
                                    
@@ -407,7 +410,7 @@ public class ControladorDocente extends HttpServlet {
                                              docma.setMateria(id_asignatura);
                                              
                                              docmaCRUD.asignarmateria(docma);
-                                             request.getRequestDispatcher("ControladorDocente?menu=Periodo&accion=Anio_Periodo&accionn=Seccion&accionnn=Asignatura_periodo&accio4=Estudiantes_Lapsos&accio5=Asignar_Docente").forward(request, response);                    
+                                             request.getRequestDispatcher("Controlador?menu=Periodo&accion=Anio_Periodo&accionn=Seccion&accionnn=Asignatura_periodo&accio4=Estudiantes_Lapsos&accio5=Asignar_Docente").forward(request, response);                    
                                    
                                          }
                                          break;
@@ -473,13 +476,13 @@ public class ControladorDocente extends HttpServlet {
                     anio.setEstatus(estatus_anio);
                     
                     anioCRUD.agregar(anio);
-                    request.getRequestDispatcher("ControladorDocente?menu=Anio&accion=Listar").forward(request, response);
+                    request.getRequestDispatcher("Controlador?menu=Anio&accion=Listar").forward(request, response);
                     break;
                 case "Editar":
                     id_anio=Integer.parseInt(request.getParameter("id"));
                     Anio pe=anioCRUD.listarId(id_anio);
                     request.setAttribute("anio", pe);
-                    request.getRequestDispatcher("ControladorDocente?menu=Anio&accion=Listar").forward(request, response);                    
+                    request.getRequestDispatcher("Controlador?menu=Anio&accion=Listar").forward(request, response);                    
                 break;
                 case "Actualizar":
                     String codigo_anio1=request.getParameter("codigo_anio");
@@ -492,12 +495,12 @@ public class ControladorDocente extends HttpServlet {
                     
                     anio.setId_a(id_anio);
                     anioCRUD.actualizar(anio);
-                    request.getRequestDispatcher("ControladorDocente?menu=Anio&accion=Listar").forward(request, response);                    
+                    request.getRequestDispatcher("Controlador?menu=Anio&accion=Listar").forward(request, response);                    
                 break;
                 case "Eliminar":
                 id_anio=Integer.parseInt(request.getParameter("id"));
                 anioCRUD.delete(id_anio);
-                request.getRequestDispatcher("ControladorDocente?menu=Anio&accion=Listar").forward(request, response);                    
+                request.getRequestDispatcher("Controlador?menu=Anio&accion=Listar").forward(request, response);                    
                 break;
                 default:
                     throw new AssertionError();
@@ -521,13 +524,13 @@ public class ControladorDocente extends HttpServlet {
                     seccion.setEstatus(estatus_s);
                     
                     seccionCRUD.agregar(seccion);
-                    request.getRequestDispatcher("ControladorDocente?menu=Seccion&accion=Listar").forward(request, response);
+                    request.getRequestDispatcher("Controlador?menu=Seccion&accion=Listar").forward(request, response);
                     break;
                 case "Editar":
                     id_seccion=Integer.parseInt(request.getParameter("id"));
                     Seccion pe=seccionCRUD.listarId(id_seccion);
                     request.setAttribute("seccion", pe);
-                    request.getRequestDispatcher("ControladorDocente?menu=Seccion&accion=Listar").forward(request, response);                    
+                    request.getRequestDispatcher("Controlador?menu=Seccion&accion=Listar").forward(request, response);                    
                 break;
                 case "Actualizar":
                     String codigo_s1=request.getParameter("codigo_s");
@@ -540,12 +543,12 @@ public class ControladorDocente extends HttpServlet {
                     
                     seccion.setId_s(id_seccion);
                     seccionCRUD.actualizar(seccion);
-                    request.getRequestDispatcher("ControladorDocente?menu=Seccion&accion=Listar").forward(request, response);                    
+                    request.getRequestDispatcher("Controlador?menu=Seccion&accion=Listar").forward(request, response);                    
                 break;
                 case "Eliminar":
                 id_seccion=Integer.parseInt(request.getParameter("id"));
                 seccionCRUD.delete(id_seccion);
-                request.getRequestDispatcher("ControladorDocente?menu=Seccion&accion=Listar").forward(request, response);                    
+                request.getRequestDispatcher("Controlador?menu=Seccion&accion=Listar").forward(request, response);                    
                 break;
                 default:
                     throw new AssertionError();
@@ -573,13 +576,13 @@ public class ControladorDocente extends HttpServlet {
                     asignatura.setEstatus(estatus_asig);
                     
                     asignaturaCRUD.agregar(asignatura);
-                    request.getRequestDispatcher("ControladorDocente?menu=Asignatura&accion=Listar").forward(request, response);
+                    request.getRequestDispatcher("Controlador?menu=Asignatura&accion=Listar").forward(request, response);
                     break;
                 case "Editar":
                     id_asignatura=Integer.parseInt(request.getParameter("id"));
                     Asignatura pe=asignaturaCRUD.listarId(id_asignatura);
                     request.setAttribute("asignatura", pe);
-                    request.getRequestDispatcher("ControladorDocente?menu=Asignatura&accion=Listar").forward(request, response);                    
+                    request.getRequestDispatcher("Controlador?menu=Asignatura&accion=Listar").forward(request, response);                    
                 break;
                 case "Actualizar":
                     String codigo_asig1=request.getParameter("codigo_asig");
@@ -596,12 +599,12 @@ public class ControladorDocente extends HttpServlet {
                     
                     asignatura.setId_a(id_asignatura);
                     asignaturaCRUD.actualizar(asignatura);
-                    request.getRequestDispatcher("ControladorDocente?menu=Asignatura&accion=Listar").forward(request, response);                    
+                    request.getRequestDispatcher("Controlador?menu=Asignatura&accion=Listar").forward(request, response);                    
                 break;
                 case "Eliminar":
                 id_asignatura=Integer.parseInt(request.getParameter("id"));
                 asignaturaCRUD.delete(id_asignatura);
-                request.getRequestDispatcher("ControladorDocente?menu=Asignatura&accion=Listar").forward(request, response);                    
+                request.getRequestDispatcher("Controlador?menu=Asignatura&accion=Listar").forward(request, response);                    
                 break;
                 default:
                     throw new AssertionError();
@@ -644,13 +647,13 @@ public class ControladorDocente extends HttpServlet {
                     admin.setDireccion(direccion);
                     admin.setEstatus(estatus);
                     adminCRUD.agregar(admin);
-                    request.getRequestDispatcher("ControladorDocente?menu=Administrador&accion=Listar").forward(request, response);
+                    request.getRequestDispatcher("Controlador?menu=Administrador&accion=Listar").forward(request, response);
                     break;
                 case "Editar":
                     ida=Integer.parseInt(request.getParameter("id"));
                     Administrador a=adminCRUD.listarId(ida);
                     request.setAttribute("administrador", a);
-                    request.getRequestDispatcher("ControladorDocente?menu=Administrador&accion=Listar").forward(request, response);                    
+                    request.getRequestDispatcher("Controlador?menu=Administrador&accion=Listar").forward(request, response);                    
                 break;
                 case "Actualizar":
                     String nombre1_a=request.getParameter("nombre1");
@@ -681,12 +684,12 @@ public class ControladorDocente extends HttpServlet {
                     admin.setEstatus(estatus_a);
                     admin.setId_p_a(ida);
                     adminCRUD.actualizar(admin);
-                    request.getRequestDispatcher("ControladorDocente?menu=Administrador&accion=Listar").forward(request, response);                    
+                    request.getRequestDispatcher("Controlador?menu=Administrador&accion=Listar").forward(request, response);                    
                 break;
                 case "Eliminar":
                 ida=Integer.parseInt(request.getParameter("id"));
                 adminCRUD.delete(ida);
-                request.getRequestDispatcher("ControladorDocente?menu=Administrador&accion=Listar").forward(request, response);                    
+                request.getRequestDispatcher("Controlador?menu=Administrador&accion=Listar").forward(request, response);                    
                 break;
                 default:
                     throw new AssertionError();
@@ -729,13 +732,13 @@ public class ControladorDocente extends HttpServlet {
                     doc.setDireccion(direcciond);
                     doc.setEstatus(estatusd);
                     docCRUD.agregar(doc);
-                    request.getRequestDispatcher("ControladorDocente?menu=Docente&accion=Listar").forward(request, response);
+                    request.getRequestDispatcher("Controlador?menu=Docente&accion=Listar").forward(request, response);
                     break;
                 case "Editar":
                     id_docente=Integer.parseInt(request.getParameter("id"));
                     Docente a=docCRUD.listarId(id_docente);
                     request.setAttribute("docente", a);
-                    request.getRequestDispatcher("ControladorDocente?menu=Docente&accion=Listar").forward(request, response);                    
+                    request.getRequestDispatcher("Controlador?menu=Docente&accion=Listar").forward(request, response);                    
                 break;
                 case "Actualizar":
                     String nombred11=request.getParameter("nombred1");
@@ -766,12 +769,12 @@ public class ControladorDocente extends HttpServlet {
                     doc.setEstatus(estatusd1);
                     doc.setId_p_d(id_docente);
                     docCRUD.actualizar(doc);
-                    request.getRequestDispatcher("ControladorDocente?menu=Docente&accion=Listar").forward(request, response);                    
+                    request.getRequestDispatcher("Controlador?menu=Docente&accion=Listar").forward(request, response);                    
                 break;
                 case "Eliminar":
                 id_docente=Integer.parseInt(request.getParameter("id"));
                 docCRUD.delete(id_docente);
-                request.getRequestDispatcher("ControladorDocente?menu=Docente&accion=Listar").forward(request, response);                    
+                request.getRequestDispatcher("Controlador?menu=Docente&accion=Listar").forward(request, response);                    
                 break;
                 default:
                     throw new AssertionError();
@@ -818,13 +821,13 @@ public class ControladorDocente extends HttpServlet {
                     estudiante.setAnio(anio);
                     estudiante.setCedula_r(cedula_r);
                     estudianteCRUD.agregar(estudiante);
-                    request.getRequestDispatcher("ControladorDocente?menu=Estudiante&accion=Listar").forward(request, response);
+                    request.getRequestDispatcher("Controlador?menu=Estudiante&accion=Listar").forward(request, response);
                     break;
                 case "Editar":
                     id_estudiante=Integer.parseInt(request.getParameter("id"));
                     Estudiante a=estudianteCRUD.listarId(id_estudiante);
                     request.setAttribute("estudiante", a);
-                    request.getRequestDispatcher("ControladorDocente?menu=Estudiante&accion=Listar").forward(request, response);                    
+                    request.getRequestDispatcher("Controlador?menu=Estudiante&accion=Listar").forward(request, response);                    
                 break;
                 case "Actualizar":
                     String nombre1e=request.getParameter("nombre1");
@@ -859,12 +862,12 @@ public class ControladorDocente extends HttpServlet {
                     estudiante.setCedula_r(cedula_re);
                     estudiante.setId_p_e(id_estudiante);
                     estudianteCRUD.actualizar(estudiante);
-                    request.getRequestDispatcher("ControladorDocente?menu=Estudiante&accion=Listar").forward(request, response);                    
+                    request.getRequestDispatcher("Controlador?menu=Estudiante&accion=Listar").forward(request, response);                    
                 break;
                 case "Eliminar":
                 id_estudiante=Integer.parseInt(request.getParameter("id"));
                 estudianteCRUD.delete(id_estudiante);
-                request.getRequestDispatcher("ControladorDocente?menu=Estudiante&accion=Listar").forward(request, response);                    
+                request.getRequestDispatcher("Controlador?menu=Estudiante&accion=Listar").forward(request, response);                    
                 break;
                 default:
                     throw new AssertionError();
@@ -903,13 +906,13 @@ public class ControladorDocente extends HttpServlet {
                     representante.setCorreo(correod);
                     representante.setDireccion(direcciond);
                     representanteCRUD.agregar(representante);
-                    request.getRequestDispatcher("ControladorDocente?menu=Representante&accion=Listar").forward(request, response);
+                    request.getRequestDispatcher("Controlador?menu=Representante&accion=Listar").forward(request, response);
                     break;
                 case "Editar":
                     id_representante=Integer.parseInt(request.getParameter("id"));
                     Representante a=representanteCRUD.listarId(id_representante);
                     request.setAttribute("representante", a);
-                    request.getRequestDispatcher("ControladorDocente?menu=Representante&accion=Listar").forward(request, response);                    
+                    request.getRequestDispatcher("Controlador?menu=Representante&accion=Listar").forward(request, response);                    
                 break;
                 case "Actualizar":
                     String nombred11=request.getParameter("nombred1");
@@ -936,12 +939,12 @@ public class ControladorDocente extends HttpServlet {
                     representante.setDireccion(direcciond1);
                     representante.setId_p_r(id_representante);
                     representanteCRUD.actualizar(representante);
-                    request.getRequestDispatcher("ControladorDocente?menu=Representante&accion=Listar").forward(request, response);                    
+                    request.getRequestDispatcher("Controlador?menu=Representante&accion=Listar").forward(request, response);                    
                 break;
                 case "Eliminar":
                 id_representante=Integer.parseInt(request.getParameter("id"));
                 representanteCRUD.delete(id_representante);
-                request.getRequestDispatcher("ControladorDocente?menu=Representante&accion=Listar").forward(request, response);                    
+                request.getRequestDispatcher("Controlador?menu=Representante&accion=Listar").forward(request, response);                    
                 break;
                 default:
                     throw new AssertionError();
