@@ -6,12 +6,12 @@ public class Usuarios {
     private int id_u;
     private String nick;
     private String pass;
-    private String tipo_u;
+    private Integer tipo_u;
 
     public Usuarios() {
     }
 
-    public Usuarios(int id_u, String nick, String pass, String tipo_u) {
+    public Usuarios(int id_u, String nick, String pass, Integer tipo_u) {
         this.id_u = id_u;
         this.nick = nick;
         this.pass = pass;
@@ -42,11 +42,11 @@ public class Usuarios {
         this.pass = pass;
     }
 
-    public String getTipo_u() {
+    public Integer getTipo_u() {
         return tipo_u;
     }
 
-    public void setTipo_u(String tipo_u) {
+    public void setTipo_u(Integer tipo_u) {
         this.tipo_u = tipo_u;
     }
   

@@ -1,4 +1,6 @@
 
+<%@page import="Controlador.ControladorDocente"%>
+<%@page import="Controlador.Controlador"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -178,11 +180,14 @@
 											<td>${anio.getNombre()}</td>
 											<td>${anio.getEstatus()}</td>											
                                                                                           
-                                                                                   
+                                                                                <% if (Controlador.Rol_usuario(1, request)){%>     
                                                                                 <td><a href="Controlador?menu=Periodo&accion=Anio_Periodo&accionn=Editar&id=${anio.getId_a()}" class="btn btn-success btn-raised btn-xs"><i class="zmdi zmdi-refresh"></i></a></td>
 									        <td><a href="Controlador?menu=Periodo&accion=Anio_Periodo&accionn=Eliminar&id=${anio.getId_a()}" class="btn btn-danger btn-raised btn-xs"><i class="zmdi zmdi-delete"></i></a></td>
 										<td><a href="Controlador?menu=Periodo&accion=Anio_Periodo&accionn=Seccion&accionnn=Listar&idp=${periodoses.getId_p()}&idpa=${anio.getId_a()}" class="btn btn-success btn-raised btn-xs"><i class="zmdi zmdi-refresh"></i>Agregar Seccion</a></td>
-                                                                                
+                                                                                <% } %>
+                                                                                <% if (ControladorDocente.Rol_usuario(2, request)){%>
+                                                                                <td><a href="ControladorDocente?menu=Periodo&accion=Anio_Periodo&accionn=Seccion&accionnn=Listar&idp=${periodoses.getId_p()}&idpa=${anio.getId_a()}" class="btn btn-success btn-raised btn-xs"><i class="zmdi zmdi-refresh"></i>Agregar Seccion</a></td>
+                                                                                <% } %>
                                                                                 </tr>
                                                                             </c:forEach>
 									</tbody>

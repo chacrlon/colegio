@@ -30,7 +30,7 @@ public class UsuariosCRUD {
                 em.setId_u(rs.getInt(1));
                 em.setNick(rs.getString(2));
                 em.setPass(rs.getString(3));
-                em.setTipo_u(rs.getString(4));
+                em.setTipo_u(rs.getInt(4));
             }
         } catch (Exception e) {
             e.printStackTrace();

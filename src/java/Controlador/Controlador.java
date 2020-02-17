@@ -18,6 +18,7 @@ import Modelo.Representante;
 import Modelo.RepresentanteCRUD;
 import Modelo.Seccion;
 import Modelo.SeccionCRUD;
+import Modelo.Usuarios;
 import static com.sun.corba.se.spi.presentation.rmi.StubAdapter.request;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -30,8 +31,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 public class Controlador extends HttpServlet {
-    
-        int ida, idp, id_anio, id_seccion, id_asignatura, id_docente, id_estudiante, id_representante;
+     int ida, idp, id_anio, id_seccion, id_asignatura, id_docente, id_estudiante, id_representante;
              
         Periodo periodo=new Periodo();
         PeriodoCRUD periodoCRUD=new PeriodoCRUD();
@@ -112,6 +112,14 @@ public class Controlador extends HttpServlet {
      }
      return asignatura;
  }
+ 
+  public static Boolean Rol_usuario(Integer nRol, HttpServletRequest request) {
+     HttpSession sesion = request.getSession();
+     Usuarios user = (Usuarios) sesion.getAttribute("usuario");
+     Boolean sal = false;
+     if (user.getTipo_u() == nRol) sal = true;
+     return sal;
+ }
               
  protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
@@ -122,13 +130,31 @@ public class Controlador extends HttpServlet {
         String accio4 = request.getParameter("accio4");
         String accio5 = request.getParameter("accio5");
         String acciodoc = request.getParameter("acciodoc");
-        if (menu.equals("Principal")) {
-            request.getRequestDispatcher("home.jsp").forward(request, response);
-        }
         HttpSession sesion = request.getSession();
+        Usuarios user = (Usuarios) sesion.getAttribute("usuario");
+
+        if (menu.equals("Principal")) {
+            //request.getRequestDispatcher("home.jsp").forward(request, response);
+            if (user != null) {
+                if (user.getTipo_u() == 1) {
+                    request.getRequestDispatcher("home.jsp").forward(request, response);
+                    System.out.println("admin");
+                } else if (user.getTipo_u() == 2) {
+                    request.getRequestDispatcher("homedocente.jsp").forward(request, response);
+                    System.out.println("docente");
+                } else {
+                    request.getRequestDispatcher("homeestudiante.jsp").forward(request, response);
+                    System.out.println("estudiante");
+                }
+            } else {
+                request.getRequestDispatcher("index.jsp").forward(request, response);
+            }
+        }
         String valorr="Probando variables";
         
      if (menu.equals("Periodo")) {
+         
+        if (user.getTipo_u() == 1) {
 
          Integer nMostrarBoton = 0;
          request.setAttribute("BoolMostrarBoton", nMostrarBoton);
@@ -447,10 +473,12 @@ public class Controlador extends HttpServlet {
              default:
                  throw new AssertionError();
          }
-         
+            } else {
+                request.getRequestDispatcher("index.jsp").forward(request, response);
+            }         
      }
         if (menu.equals("Anio")) {
-           
+            if (user.getTipo_u() == 1) {           
             switch (accion) {
                 case "Listar":
                    List lista = anioCRUD.listar();
@@ -495,10 +523,14 @@ public class Controlador extends HttpServlet {
                 break;
                 default:
                     throw new AssertionError();
-            }          
+            }  
+            } else {
+                request.getRequestDispatcher("index.jsp").forward(request, response);
+            }         
+            
         }
         if (menu.equals("Seccion")) {
-           
+            if (user.getTipo_u() == 1) {            
             switch (accion) {
                 case "Listar":
                    List lista = seccionCRUD.listar();
@@ -543,10 +575,13 @@ public class Controlador extends HttpServlet {
                 break;
                 default:
                     throw new AssertionError();
-            }          
+            }   
+            } else {
+                request.getRequestDispatcher("index.jsp").forward(request, response);
+            }                     
         }
         if (menu.equals("Asignatura")) {
-           
+            if (user.getTipo_u() == 1) { 
             switch (accion) {
                 case "Listar":
                    List lista = asignaturaCRUD.listar();
@@ -599,10 +634,15 @@ public class Controlador extends HttpServlet {
                 break;
                 default:
                     throw new AssertionError();
-            }          
+            }
+            } else {
+                request.getRequestDispatcher("index.jsp").forward(request, response);
+            }                     
+            
         }
              
         if (menu.equals("Administrador")) {
+            if (user.getTipo_u() == 1) { 
             Integer nMostrarBoton = 0;
             request.setAttribute("BoolMostrarBoton", nMostrarBoton);
             //request.getRequestDispatcher("admin.jsp").forward(request, response);
@@ -686,11 +726,15 @@ public class Controlador extends HttpServlet {
                 break;
                 default:
                     throw new AssertionError();
-            }          
+            }   
+            } else {
+                request.getRequestDispatcher("index.jsp").forward(request, response);
+            }                     
+            
         }
         
         if (menu.equals("Docente")) {
-            
+            if (user.getTipo_u() == 2) {
             switch (accion) {
                 case "Listar":
                    List lista = docCRUD.listar();
@@ -771,11 +815,15 @@ public class Controlador extends HttpServlet {
                 break;
                 default:
                     throw new AssertionError();
-            }          
+            }  
+            } else {
+                request.getRequestDispatcher("index.jsp").forward(request, response);
+            }                     
+            
         }
         
         if (menu.equals("Estudiante")) {
-            
+            if (user.getTipo_u() == 1) {
             switch (accion) {
                 case "Listar":
                    List lista = estudianteCRUD.listar();
@@ -864,11 +912,15 @@ public class Controlador extends HttpServlet {
                 break;
                 default:
                     throw new AssertionError();
-            }          
+            }  
+            } else {
+                request.getRequestDispatcher("index.jsp").forward(request, response);
+            }                     
+            
         }
         
         if (menu.equals("Representante")) {
-            
+            if (user.getTipo_u() == 1) {
             switch (accion) {
                 case "Listar":
                    List lista = representanteCRUD.listar();
@@ -941,10 +993,13 @@ public class Controlador extends HttpServlet {
                 break;
                 default:
                     throw new AssertionError();
-            }          
+            }  
+            } else {
+                request.getRequestDispatcher("index.jsp").forward(request, response);
+            }                     
+            
         }
     }
-
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {

@@ -1,4 +1,6 @@
 
+<%@page import="Controlador.ControladorDocente"%>
+<%@page import="Controlador.Controlador"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -40,11 +42,12 @@
 					</li>
 				</ul>
 			</div>
-			<!-- SideBar Menu -->
+			<!-- MENU PARA DIRECTIVOS -->
+                        <% if (Controlador.Rol_usuario(1, request)){%>						
 			<ul class="list-unstyled full-box dashboard-sideBar-Menu">
 				<li>
 					<a href="home.jsp">
-						<i class="zmdi zmdi-view-dashboard zmdi-hc-fw"></i> Inicio
+						<i class="zmdi zmdi-view-dashboard zmdi-hc-fw"></i> Dashboard
 					</a>
 				</li>
 				<li>
@@ -52,9 +55,11 @@
 						<i class="zmdi zmdi-case zmdi-hc-fw"></i> Administracion <i class="zmdi zmdi-caret-down pull-right"></i>
 					</a>
 					<ul class="list-unstyled full-box">
+						 
 						<li>
 							<a href="Controlador?menu=Periodo&accion=Listar"><i class="zmdi zmdi-timer zmdi-hc-fw"></i> Periodos</a>
 						</li>
+                                                
 						<li>
 							<a href="Controlador?menu=Anio&accion=Listar"><i class="zmdi zmdi-book zmdi-hc-fw"></i> Año escolar</a>
 						</li>
@@ -112,6 +117,84 @@
 			</ul>
 		</div>
 	</section>
+         <% } %>   
+         
+         <!-- MENU PARA DOCENTES -->
+                                 <% if (ControladorDocente.Rol_usuario(2, request)){%>						
+			<ul class="list-unstyled full-box dashboard-sideBar-Menu">
+				<li>
+					<a href="home.jsp">
+						<i class="zmdi zmdi-view-dashboard zmdi-hc-fw"></i> Dashboard
+					</a>
+				</li>
+				<li>
+					<a href="#!" class="btn-sideBar-SubMenu">
+						<i class="zmdi zmdi-case zmdi-hc-fw"></i> Administracion <i class="zmdi zmdi-caret-down pull-right"></i>
+					</a>
+					<ul class="list-unstyled full-box">
+						 
+						<li>
+							<a href="ControladorDocente?menu=Periodo&accion=Listar"><i class="zmdi zmdi-timer zmdi-hc-fw"></i> Periodos Docentes</a>
+						</li>
+                                                
+						<li>
+							<a href="ControladorDocente?menu=Anio&accion=Listar"><i class="zmdi zmdi-book zmdi-hc-fw"></i> Año escolar</a>
+						</li>
+						<li>
+							<a href="ControladorDocente?menu=Seccion&accion=Listar"><i class="zmdi zmdi-graduation-cap zmdi-hc-fw"></i> Section</a>
+						</li>
+						<li>
+							<a href="ControladorDocente?menu=Asignatura&accion=Listar"><i class="zmdi zmdi-font zmdi-hc-fw"></i> Materias</a>
+						</li>
+                                                
+					</ul>
+				</li>
+				<li>
+					<a href="#!" class="btn-sideBar-SubMenu">
+						<i class="zmdi zmdi-account-add zmdi-hc-fw"></i> Usuarios <i class="zmdi zmdi-caret-down pull-right"></i>
+					</a>
+					<ul class="list-unstyled full-box">
+						<li>
+							<a href="ControladorDocente?menu=Administrador&accion=Listar"><i class="zmdi zmdi-account zmdi-hc-fw"></i> Administradores</a>
+						</li>
+						<li>
+							<a href="ControladorDocente?menu=Docente&accion=Listar"><i class="zmdi zmdi-male-alt zmdi-hc-fw"></i> Docentes</a>
+						</li>
+						<li>
+							<a href="ControladorDocente?menu=Estudiante&accion=Listar"><i class="zmdi zmdi-face zmdi-hc-fw"></i> Estudiantes</a>
+						</li>
+						<li>
+							<a href="ControladorDocente?menu=Representante&accion=Listar"><i class="zmdi zmdi-male-female zmdi-hc-fw"></i> Representantes</a>
+						</li>
+					</ul>
+				</li>
+				<li>
+					<a href="#!" class="btn-sideBar-SubMenu">
+						<i class="zmdi zmdi-card zmdi-hc-fw"></i> Pagos <i class="zmdi zmdi-caret-down pull-right"></i>
+					</a>
+					<ul class="list-unstyled full-box">
+						<li>
+							<a href="registration.jsp"><i class="zmdi zmdi-money-box zmdi-hc-fw"></i> Registration</a>
+						</li>
+						<li>
+							<a href="payments.jsp"><i class="zmdi zmdi-money zmdi-hc-fw"></i> Payments</a>
+						</li>
+					</ul>
+				</li>
+				<li>
+					<a href="#!" class="btn-sideBar-SubMenu">
+						<i class="zmdi zmdi-shield-security zmdi-hc-fw"></i> Settings School <i class="zmdi zmdi-caret-down pull-right"></i>
+					</a>
+					<ul class="list-unstyled full-box">
+						<li>
+							<a href="school.jsp"><i class="zmdi zmdi-balance zmdi-hc-fw"></i> School Data</a>
+						</li>
+					</ul>
+				</li>
+			</ul>
+		</div>
+	</section>
+         <% } %>  
 
 	<!-- Content page-->
 	<section class="full-box dashboard-contentPage">
@@ -150,8 +233,10 @@
 			<div class="row">
 				<div class="col-xs-12">
 					<ul class="nav nav-tabs" style="margin-bottom: 15px;">
+                                            <% if (Controlador.Rol_usuario(1, request)){%>
                                                 <li class="active"><a href="#list" data-toggle="tab">List</a></li>
-                                                <li id="botonNuevo" name="botonNuevo"><a href="#new" data-toggle="tab">New</a></li>
+                                                <li ><a href="#new" data-toggle="tab">New</a></li>
+                                                <% } %>
 					</ul>	
                                                 <div id="myTabContent" class="tab-content">
                                                     <div class="tab-pane fade active in" id="list">
@@ -176,11 +261,14 @@
 											<td>${periodo.getFecha_f()}</td>
 											<td>${periodo.getEstatus()}</td>											
                                                                                           
-                                                                                   
+                                                                                <% if (Controlador.Rol_usuario(1, request)){%>   
                                                                                 <td><a href="Controlador?menu=Periodo&accion=Editar&id=${periodo.getId_p()}" class="btn btn-success btn-raised btn-xs"><i class="zmdi zmdi-refresh"></i></a></td>                                                                             
 									        <td><a href="Controlador?menu=Periodo&accion=Eliminar&id=${periodo.getId_p()}" class="btn btn-danger btn-raised btn-xs"><i class="zmdi zmdi-delete"></i></a></td>
                                                                                 <td><a href="Controlador?menu=Periodo&accion=Anio_Periodo&accionn=Listar&idp=${periodo.getId_p()}" class="btn btn-success btn-raised btn-xs"><i class="zmdi zmdi-refresh"></i>Agregar Año</a></td>
-										
+										<% } %>
+                                                                                <% if (ControladorDocente.Rol_usuario(2, request)){%> 
+                                                                                <td><a href="ControladorDocente?menu=Periodo&accion=Anio_Periodo&accionn=Listar&idp=${periodo.getId_p()}" class="btn btn-success btn-raised btn-xs"><i class="zmdi zmdi-refresh"></i>Buscar Año Escolar</a></td>
+                                                                                <% } %>
                                                                                 </tr>
                                                                             </c:forEach>
 									</tbody>
