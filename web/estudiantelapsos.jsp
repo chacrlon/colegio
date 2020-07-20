@@ -231,9 +231,11 @@
 			<div class="row">
 				<div class="col-xs-12">
 					<ul class="nav nav-tabs" style="margin-bottom: 15px;">
+                                            <% if (Controlador.Rol_usuario(1, request)){%>
                                                 <li class="active"><a href="#list" data-toggle="tab">List</a></li>
 					  	<li ><a href="#new" data-toggle="tab">New</a></li>
                                                 <li ><a href="Controlador?menu=Periodo&accion=Anio_Periodo&accionn=Seccion&accionnn=Asignatura_periodo&accio4=Estudiantes_Lapsos&accio5=Asignar_Docente" >Asignar Docente</a></li>
+                                                <% } %>
 					</ul>	
                                                 <div id="myTabContent" class="tab-content">
                                                     <div class="tab-pane fade active in" id="list">

@@ -6,7 +6,7 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-	<title>Inicio</title>
+	<title>Perfiles de usuarios</title>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
 	<link rel="stylesheet" href="./css/main.css">
@@ -23,7 +23,7 @@
 			<!-- SideBar User info -->
 			<div class="full-box dashboard-sideBar-UserInfo">
 				<figure class="full-box">
-					<img src="assets/img/avatar.jpg" alt="UserIcon">
+					<img src="./assets/img/avatar.jpg" alt="UserIcon">
 					<figcaption class="text-center text-titles">User Name</figcaption>
 				</figure>
 				<ul class="full-box list-unstyled text-center">
@@ -85,9 +85,6 @@
 						</li>
 						<li>
 							<a href="Controlador?menu=Representante&accion=Listar"><i class="zmdi zmdi-male-female zmdi-hc-fw"></i> Representantes</a>
-						</li>
-                                                <li>
-							<a href="Controlador?menu=Usuario&accion=Listar"><i class="zmdi zmdi-account-add zmdi-hc-fw"></i> Usuarios</a>
 						</li>
 					</ul>
 				</li>
@@ -195,6 +192,7 @@
 		</div>
 	</section>
          <% } %>  
+
 	<!-- Content page-->
 	<section class="full-box dashboard-contentPage">
 		<!-- NavBar -->
@@ -224,123 +222,93 @@
 		<!-- Content page -->
 		<div class="container-fluid">
 			<div class="page-header">
-			  <h1 class="text-titles">System <small>Tiles</small></h1>
+			  <h1 class="text-titles"><i class="zmdi zmdi-male-alt zmdi-hc-fw"></i> Users <small>Teacher</small></h1>
 			</div>
-		</div>
-                                                                                        <div class="form-group label-floating">
-											  <label class="control-label">Tipo de usuario</label>
-											  <input class="form-control" type="text" value="${usuario.getTipo_u()}" name="rol_usuario">
-											</div>
-		<div class="full-box text-center" style="padding: 30px 10px;">
-			<article class="full-box tile">
-				<div class="full-box tile-title text-center text-titles text-uppercase">
-					Admin
-				</div>
-				<div class="full-box tile-icon text-center">
-					<i class="zmdi zmdi-account"></i>
-				</div>
-				<div class="full-box tile-number text-titles">
-					<p class="full-box">7</p>
-					<small>Register</small>
-				</div>
-			</article>
-			<article class="full-box tile">
-				<div class="full-box tile-title text-center text-titles text-uppercase">
-					Teacher
-				</div>
-				<div class="full-box tile-icon text-center">
-					<i class="zmdi zmdi-male-alt"></i>
-				</div>
-				<div class="full-box tile-number text-titles">
-					<p class="full-box">10</p>
-					<small>Register</small>
-				</div>
-			</article>
-			<article class="full-box tile">
-				<div class="full-box tile-title text-center text-titles text-uppercase">
-					Student
-				</div>
-				<div class="full-box tile-icon text-center">
-					<i class="zmdi zmdi-face"></i>
-				</div>
-				<div class="full-box tile-number text-titles">
-					<p class="full-box">70</p>
-					<small>Register</small>
-				</div>
-			</article>
-			<article class="full-box tile">
-				<div class="full-box tile-title text-center text-titles text-uppercase">
-					Representative
-				</div>
-				<div class="full-box tile-icon text-center">
-					<i class="zmdi zmdi-male-female"></i>
-				</div>
-				<div class="full-box tile-number text-titles">
-					<p class="full-box">70</p>
-					<small>Register</small>
-				</div>
-			</article>
+			<p class="lead"></p>
 		</div>
 		<div class="container-fluid">
-			<div class="page-header">
-			  <h1 class="text-titles">System <small>TimeLine</small></h1>
+			<div class="row">
+				<div class="col-xs-12">
+					<ul class="nav nav-tabs" style="margin-bottom: 15px;">
+                                                <% if (Controlador.Rol_usuario(1, request)){%>
+                                                <li class="active"><a href="#list" data-toggle="tab">List</a></li>
+					  	<li ><a href="#new" data-toggle="tab">New</a></li>
+                                                <% } %>  
+					</ul>	
+                                                <div id="myTabContent" class="tab-content">
+                                                    <div class="tab-pane fade active in" id="list">
+							<div class="table-responsive">
+								<table class="table table-hover text-center">
+									<thead>
+										<tr>
+											<th class="text-center">Id</th>
+											<th class="text-center">Nick</th>
+											<th class="text-center">Contraseña</th>
+											<th class="text-center">Tipo de usuario</th>
+											<th class="text-center">ACCIONES</th>			
+										</tr>
+									</thead>
+									<tbody>
+                                                                             <c:forEach var="usu" items="${Usuarios}">
+                                                                                <tr>
+                                                                                        <td>${usu.getId_u()}</td>
+											<td>${usu.getNick()}</td>
+											<td>${usu.getPass()}</td>
+											<td>${usu.getTipo_u()}</td>							   
+                                                                                <% if (Controlador.Rol_usuario(1, request)){%>   
+                                                                                <td><a href="Controlador?menu=Usuario&accion=Editar&id=${usu.getId_u()}" class="btn btn-success btn-raised btn-xs"><i class="zmdi zmdi-refresh"></i></a></td>
+									        <td><a href="Controlador?menu=Usuario&accion=Eliminar&id=${usu.getId_u()}" class="btn btn-danger btn-raised btn-xs"><i class="zmdi zmdi-delete"></i></a></td>
+										<% } %>
+                                                                                </tr>
+                                                                            </c:forEach>
+									</tbody>
+								</table>
+                                                            <ul class="pagination pagination-sm">
+								  	<li class="disabled"><a href="#!">«</a></li>
+								  	<li class="active"><a href="#!">1</a></li>
+								  	<li><a href="#!">2</a></li>
+								  	<li><a href="#!">3</a></li>
+								  	<li><a href="#!">4</a></li>
+								  	<li><a href="#!">5</a></li>
+								  	<li><a href="#!">»</a></li>
+								</ul>
+							</div>
+					  	</div>
+                                                                           
+						<div class="tab-pane fade in" id="new">
+							<div class="container-fluid">
+								<div class="row">
+									<div class="col-xs-12 col-md-10 col-md-offset-1">
+									    <form action="Controlador?menu=Usuario" name="formulario" method="POST">
+									    	<div class="form-group label-floating">
+											  <label id="error" class="control-label">Nick</label>
+                                                                                           <input class="form-control" type="text" value="${usuario.getNick()}" name="nicku">
+											</div>
+                                                                                        <div class="form-group label-floating">
+											  <label class="control-label">Contraseña</label>
+											  <input class="form-control" type="text" value="${usuario.getPass()}" name="passu">
+											</div>
+                                                                                        <div class="form-group label-floating">
+											  <label class="control-label">Tipo de usuario</label>
+											  <input class="form-control" type="text" value="${usuario.getTipo_u()}" name="tipo_uu">
+											</div>
+											
+										    </div>
+										    <input type="submit" name="accion" value="Agregar" class="btn btn-primary">
+                                                                                    <input type="submit" name="accion" value="Actualizar" class="btn btn-success">
+									    </form>
+									</div>
+								</div>
+							</div>
+                                                                                        
+                                                                                        
+                                                                                        
+                                                                                        
+                                                                                        
+						</div>
+					</div>
+				</div>
 			</div>
-			<section id="cd-timeline" class="cd-container">
-                <div class="cd-timeline-block">
-                    <div class="cd-timeline-img">
-                        <img src="./assets/img/avatar.jpg" alt="user-picture">
-                    </div>
-                    <div class="cd-timeline-content">
-                        <h4 class="text-center text-titles">1 - Name (Admin)</h4>
-                        <p class="text-center">
-                            <i class="zmdi zmdi-timer zmdi-hc-fw"></i> Start: <em>7:00 AM</em> &nbsp;&nbsp;&nbsp; 
-                            <i class="zmdi zmdi-time zmdi-hc-fw"></i> End: <em>7:17 AM</em>
-                        </p>
-                        <span class="cd-date"><i class="zmdi zmdi-calendar-note zmdi-hc-fw"></i> 07/07/2016</span>
-                    </div>
-                </div>  
-                <div class="cd-timeline-block">
-                    <div class="cd-timeline-img">
-                        <img src="./assets/img/avatar.jpg" alt="user-picture">
-                    </div>
-                    <div class="cd-timeline-content">
-                        <h4 class="text-center text-titles">2 - Name (Teacher)</h4>
-                        <p class="text-center">
-                            <i class="zmdi zmdi-timer zmdi-hc-fw"></i> Start: <em>7:00 AM</em> &nbsp;&nbsp;&nbsp; 
-                            <i class="zmdi zmdi-time zmdi-hc-fw"></i> End: <em>7:17 AM</em>
-                        </p>
-                        <span class="cd-date"><i class="zmdi zmdi-calendar-note zmdi-hc-fw"></i> 07/07/2016</span>
-                    </div>
-                </div>
-                <div class="cd-timeline-block">
-                    <div class="cd-timeline-img">
-                        <img src="./assets/img/avatar.jpg" alt="user-picture">
-                    </div>
-                    <div class="cd-timeline-content">
-                        <h4 class="text-center text-titles">3 - Name (Student)</h4>
-                        <p class="text-center">
-                            <i class="zmdi zmdi-timer zmdi-hc-fw"></i> Start: <em>7:00 AM</em> &nbsp;&nbsp;&nbsp; 
-                            <i class="zmdi zmdi-time zmdi-hc-fw"></i> End: <em>7:17 AM</em>
-                        </p>
-                        <span class="cd-date"><i class="zmdi zmdi-calendar-note zmdi-hc-fw"></i> 07/07/2016</span>
-                    </div>
-                </div>
-                <div class="cd-timeline-block">
-                    <div class="cd-timeline-img">
-                        <img src="./assets/img/avatar.jpg" alt="user-picture">
-                    </div>
-                    <div class="cd-timeline-content">
-                        <h4 class="text-center text-titles">4 - Name (Personal Ad.)</h4>
-                        <p class="text-center">
-                            <i class="zmdi zmdi-timer zmdi-hc-fw"></i> Start: <em>7:00 AM</em> &nbsp;&nbsp;&nbsp; 
-                            <i class="zmdi zmdi-time zmdi-hc-fw"></i> End: <em>7:17 AM</em>
-                        </p>
-                        <span class="cd-date"><i class="zmdi zmdi-calendar-note zmdi-hc-fw"></i> 07/07/2016</span>
-                    </div>
-                </div>   
-            </section>
-
-
 		</div>
 	</section>
 
@@ -398,7 +366,6 @@
 			</div>
 
 		</div>
-                
 	</section>
 
 	<!-- Dialog help -->

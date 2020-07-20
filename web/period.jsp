@@ -267,7 +267,7 @@
                                                                                 <td><a href="Controlador?menu=Periodo&accion=Anio_Periodo&accionn=Listar&idp=${periodo.getId_p()}" class="btn btn-success btn-raised btn-xs"><i class="zmdi zmdi-refresh"></i>Agregar Año</a></td>
 										<% } %>
                                                                                 <% if (ControladorDocente.Rol_usuario(2, request)){%> 
-                                                                                <td><a href="ControladorDocente?menu=Periodo&accion=Anio_Periodo&accionn=Listar&idp=${periodo.getId_p()}" class="btn btn-success btn-raised btn-xs"><i class="zmdi zmdi-refresh"></i>Buscar Año Escolar</a></td>
+                                                                         <td><a href="ControladorDocente?menu=Periodo&accion=Anio_Periodo&accionn=Listar&idp=${periodo.getId_p()}" class="btn btn-success btn-raised btn-xs"><i class="zmdi zmdi-refresh"></i>Buscar Año Escolar</a></td>
                                                                                 <% } %>
                                                                                 </tr>
                                                                             </c:forEach>

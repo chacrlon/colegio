@@ -230,8 +230,10 @@
 			<div class="row">
 				<div class="col-xs-12">
 					<ul class="nav nav-tabs" style="margin-bottom: 15px;">
+                                                <% if (Controlador.Rol_usuario(1, request)){%>
                                                 <li class="active"><a href="#list" data-toggle="tab">List</a></li>
 					  	<li ><a href="#new" data-toggle="tab">New</a></li>
+                                                <% } %>  
 					</ul>	
                                                 <div id="myTabContent" class="tab-content">
                                                     <div class="tab-pane fade active in" id="list">
@@ -320,27 +322,27 @@
 											</div>
                                                                                         <div class="form-group label-floating">
 											  <label class="control-label">Sexo</label>
-											  <input class="form-control" type="text" value="${docente.getSexo()}" name="correod">
+											  <input class="form-control" type="text" value="${docente.getSexo()}" name="sexod">
 											</div>
                                                                                         <div class="form-group label-floating">
 											  <label class="control-label">Fecha de nacimiento</label>
-											  <input class="form-control" type="text" value="${docente.getFecha()}" name="celulard">
+											  <input class="form-control" type="text" value="${docente.getFecha()}" name="fechad">
 											</div>
                                                                                         <div class="form-group label-floating">
 											  <label class="control-label">Nacionalidad</label>
-											  <input class="form-control" type="text" value="${docente.getNacionalidad()}" name="telefonod">
+											  <input class="form-control" type="text" value="${docente.getNacionalidad()}" name="nacionalidadd">
 											</div>
 											<div class="form-group label-floating">
 											  <label class="control-label">Celular</label>
-											  <input class="form-control" type="text" value="${docente.getCelular()}" name="fechad">
+											  <input class="form-control" type="text" value="${docente.getCelular()}" name="celulard">
 											</div>
                                                                                         <div class="form-group label-floating">
 											  <label class="control-label">Telefono</label>
-											  <input class="form-control" type="text" value="${docente.getTelefono()}" name="sexod">
+											  <input class="form-control" type="text" value="${docente.getTelefono()}" name="telefonod">
 											</div> 
                                                                                         <div class="form-group label-floating">
 											  <label class="control-label">Correo</label>
-											  <input class="form-control" type="text" value="${docente.getCorreo()}" name="nacionalidadd">
+											  <input class="form-control" type="text" value="${docente.getCorreo()}" name="correod">
 											</div>                                                                    
                                                                                         <div class="form-group label-floating">
 											  <label class="control-label">Dirección</label>

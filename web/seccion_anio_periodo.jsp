@@ -231,8 +231,10 @@
 			<div class="row">
 				<div class="col-xs-12">
 					<ul class="nav nav-tabs" style="margin-bottom: 15px;">
+                                               <% if (Controlador.Rol_usuario(1, request)){%>
                                                 <li class="active"><a href="#list" data-toggle="tab">List</a></li>
 					  	<li ><a href="#new" data-toggle="tab">New</a></li>
+                                                <% } %>
 					</ul>	
                                                 <div id="myTabContent" class="tab-content">
                                                     <div class="tab-pane fade active in" id="list">
@@ -259,6 +261,9 @@
                                                                                 <td><a href="Controlador?menu=Periodo&accion=Anio_Periodo&accionn=Seccion&accionnn=Editar&id=${seccion.getId_s()}" class="btn btn-success btn-raised btn-xs"><i class="zmdi zmdi-refresh"></i></a></td>
 									        <td><a href="Controlador?menu=Periodo&accion=Anio_Periodo&accionn=Seccion&accionnn=Eliminar&id=${seccion.getId_s()}" class="btn btn-danger btn-raised btn-xs"><i class="zmdi zmdi-delete"></i></a></td>
 										<td><a href="Controlador?menu=Periodo&accion=Anio_Periodo&accionn=Seccion&accionnn=Asignatura_periodo&accio4=Listar&idp=${periodoses.getId_p()}&idpa=${anio.getId_a()}&idpas=${seccion.getId_s()}" class="btn btn-success btn-raised btn-xs"><i class="zmdi zmdi-refresh"></i>Mas opciones</a></td>
+                                                                                <% } %>
+                                                                                <% if (ControladorDocente.Rol_usuario(2, request)){%> 
+                                                                         <td><a href="ControladorDocente?menu=Periodo&accion=Anio_Periodo&accionn=Seccion&accionnn=Asignatura_periodo&accio4=Listar&idp=${periodoses.getId_p()}&idpa=${anio.getId_a()}&idpas=${seccion.getId_s()}" class="btn btn-success btn-raised btn-xs"><i class="zmdi zmdi-refresh"></i>Mas opciones</a></td>
                                                                                 <% } %>
                                                                                 </tr>
                                                                             </c:forEach>

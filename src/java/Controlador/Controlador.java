@@ -19,6 +19,7 @@ import Modelo.RepresentanteCRUD;
 import Modelo.Seccion;
 import Modelo.SeccionCRUD;
 import Modelo.Usuarios;
+import Modelo.UsuariosCRUD;
 import static com.sun.corba.se.spi.presentation.rmi.StubAdapter.request;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -31,7 +32,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 public class Controlador extends HttpServlet {
-     int ida, idp, id_anio, id_seccion, id_asignatura, id_docente, id_estudiante, id_representante;
+     int ida, idp, id_anio, id_seccion, id_asignatura, id_docente, id_estudiante, id_representante, id_usuario;
              
         Periodo periodo=new Periodo();
         PeriodoCRUD periodoCRUD=new PeriodoCRUD();
@@ -60,6 +61,9 @@ public class Controlador extends HttpServlet {
         
         Representante representante=new Representante();
         RepresentanteCRUD representanteCRUD=new RepresentanteCRUD();
+        
+        Usuarios usuarios=new Usuarios();
+        UsuariosCRUD usuariosCRUD=new UsuariosCRUD();
         
  private Periodo getPeriodo(HttpServletRequest request, HttpSession sesion) {
      Periodo pee = null;
@@ -427,6 +431,10 @@ public class Controlador extends HttpServlet {
                                              docma.setMateria(id_asignatura);
                                              
                                              docmaCRUD.asignarmateria(docma);
+                                             //No entiendo aqui
+                                             anio.setId_p_d(select_docente);
+                                             anio.setId_a(id_anio);
+                                             anioCRUD.actualizar(anio);
                                              request.getRequestDispatcher("Controlador?menu=Periodo&accion=Anio_Periodo&accionn=Seccion&accionnn=Asignatura_periodo&accio4=Estudiantes_Lapsos&accio5=Asignar_Docente").forward(request, response);                    
                                    
                                          }
@@ -734,7 +742,8 @@ public class Controlador extends HttpServlet {
         }
         
         if (menu.equals("Docente")) {
-            if (user.getTipo_u() == 2) {
+            // SI QUISIERAMOS QUE SOLO EL USUARIO DOCENTE ES DECIR EL USUARIO NUMERO 2 TUVIERA ACCESO A ESTE MODULO if (user.getTipo_u() == 2) {
+            if (user.getTipo_u() == 1) {
             switch (accion) {
                 case "Listar":
                    List lista = docCRUD.listar();
@@ -998,7 +1007,56 @@ public class Controlador extends HttpServlet {
                 request.getRequestDispatcher("index.jsp").forward(request, response);
             }                     
             
-        }
+        }       
+        
+        if (menu.equals("Usuario")) {
+          
+            switch (accion) {
+                case "Listar":
+                   List lista = usuariosCRUD.listar();
+                   request.setAttribute("Usuarios", lista);
+                   request.getRequestDispatcher("usuario.jsp").forward(request, response);
+                break;
+                case "Agregar":
+                    String nicku=request.getParameter("nicku");
+                    String passu=request.getParameter("passu");
+                    int tipo_uu=Integer.parseInt(request.getParameter("tipo_uu"));
+                    usuarios.setNick(nicku);
+                    usuarios.setPass(passu);
+                    usuarios.setTipo_u(tipo_uu);
+                    usuariosCRUD.agregar(usuarios);
+                    request.getRequestDispatcher("Controlador?menu=Usuario&accion=Listar").forward(request, response);
+                    break;
+                case "Editar":
+                    id_usuario=Integer.parseInt(request.getParameter("id"));
+                    Usuarios a=usuariosCRUD.listarId(id_usuario);
+                    request.setAttribute("usuario", a);
+                    request.getRequestDispatcher("Controlador?menu=Usuario&accion=Listar").forward(request, response);                    
+                break;
+                case "Actualizar":
+                    String nicku1=request.getParameter("nicku");
+                    String passu1=request.getParameter("passu");
+                    int tipo_uu1=Integer.parseInt(request.getParameter("tipo_uu"));
+                    usuarios.setNick(nicku1);
+                    usuarios.setPass(passu1);
+                    usuarios.setTipo_u(tipo_uu1);
+                    usuarios.setId_u(id_usuario);
+                    usuariosCRUD.actualizar(usuarios);
+                    request.getRequestDispatcher("Controlador?menu=Usuario&accion=Listar").forward(request, response);                    
+                break;
+                case "Eliminar":
+                id_usuario=Integer.parseInt(request.getParameter("id"));
+                usuariosCRUD.delete(id_usuario);
+                request.getRequestDispatcher("Controlador?menu=Usuario&accion=Listar").forward(request, response);                    
+                break;
+                default:
+                    throw new AssertionError();
+            }  
+            } else {
+                request.getRequestDispatcher("index.jsp").forward(request, response);
+            }                     
+            
+        
     }
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)

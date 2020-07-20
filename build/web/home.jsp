@@ -86,6 +86,9 @@
 						<li>
 							<a href="Controlador?menu=Representante&accion=Listar"><i class="zmdi zmdi-male-female zmdi-hc-fw"></i> Representantes</a>
 						</li>
+                                                <li>
+							<a href="Controlador?menu=Usuario&accion=Listar"><i class="zmdi zmdi-account-add zmdi-hc-fw"></i> Usuarios</a>
+						</li>
 					</ul>
 				</li>
 				<li>

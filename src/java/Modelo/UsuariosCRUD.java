@@ -52,22 +52,21 @@ public class UsuariosCRUD {
     }
 
 public List listar() {
-        String sql="select * from periodo";
+        String sql="select * from usuarios";
         Connection conn = null;
         PreparedStatement ps = null;
         ResultSet rs = null;
-        List<Periodo>lista=new ArrayList<>();
+        List<Usuarios>lista=new ArrayList<>();
         try {
             conn=con.Conexionn();
             ps=conn.prepareStatement(sql);
             rs=ps.executeQuery();
             while (rs.next()) {
-                Periodo periodo = new Periodo();
-                periodo.setId_p(rs.getInt(1));
-                periodo.setNombre(rs.getString(2));
-                periodo.setFecha_i(rs.getString(3));
-                periodo.setFecha_f(rs.getString(4));               
-                periodo.setEstatus(rs.getString(5));
+                Usuarios periodo = new Usuarios();
+                periodo.setId_u(rs.getInt(1));
+                periodo.setNick(rs.getString(2));
+                periodo.setPass(rs.getString(3));
+                periodo.setTipo_u(rs.getInt(4));               
                 lista.add(periodo);
             }
         } catch (Exception e) {
@@ -89,9 +88,9 @@ public List listar() {
         return lista;
     }
 
-public Periodo listarId(int id) {
-        Periodo periodo= new Periodo();
-        String sql="select * from periodo where id_periodo="+id;
+public Usuarios listarId(int id) {
+        Usuarios periodo= new Usuarios();
+        String sql="select * from usuarios where id_usuario="+id;
         Connection conn = null;
         PreparedStatement pst = null;
         ResultSet rs = null;
@@ -100,11 +99,10 @@ public Periodo listarId(int id) {
             pst=conn.prepareStatement(sql);
             rs=pst.executeQuery();
             while(rs.next()){                               
-                periodo.setId_p(rs.getInt(1));
-                periodo.setNombre(rs.getString(2));
-                periodo.setFecha_i(rs.getString(3));
-                periodo.setFecha_f(rs.getString(4));               
-                periodo.setEstatus(rs.getString(5));   
+                periodo.setId_u(rs.getInt(1));
+                periodo.setNick(rs.getString(2));
+                periodo.setPass(rs.getString(3));
+                periodo.setTipo_u(rs.getInt(4));                 
             }
         } catch (Exception e) {
             e.printStackTrace();
@@ -126,18 +124,17 @@ public Periodo listarId(int id) {
     }
 
 
-public int agregar(Periodo admin) {
-        String sql="insert into periodo(nombre, fecha_inicio, fecha_fin, estatus)values(?,?,?,?)";
+public int agregar(Usuarios admin) {
+        String sql="insert into usuarios(nick, password, tipo_usuario)values(?,?,?)";
         Connection conn = null;
         PreparedStatement ps = null;
         ResultSet rs = null;
         try {
             conn=con.Conexionn();
             ps=conn.prepareStatement(sql);
-            ps.setString(1, admin.getNombre());
-            ps.setString(2, admin.getFecha_i());
-            ps.setString(3, admin.getFecha_f());
-            ps.setString(4, admin.getEstatus());
+            ps.setString(1, admin.getNick());
+            ps.setString(2, admin.getPass());
+            ps.setInt(3, admin.getTipo_u());
             ps.executeUpdate();
         } catch (Exception e) {
             e.printStackTrace();
@@ -159,19 +156,18 @@ public int agregar(Periodo admin) {
         return r;
     }
 
-     public int actualizar(Periodo admin) {
-        String sql="update periodo set nombre=?, fecha_inicio=?, fecha_fin=?, estatus=? where id_periodo=?";
+     public int actualizar(Usuarios admin) {
+        String sql="update usuarios set nick=?, password=?, tipo_usuario=? where id_usuario=?";
         Connection conn = null;
         PreparedStatement ps = null;
         ResultSet rs = null;
         try {
             conn=con.Conexionn();
             ps=conn.prepareStatement(sql);
-            ps.setString(1, admin.getNombre());
-            ps.setString(2, admin.getFecha_i());
-            ps.setString(3, admin.getFecha_f());
-            ps.setString(4, admin.getEstatus());
-            ps.setInt(5, admin.getId_p());
+            ps.setString(1, admin.getNick());
+            ps.setString(2, admin.getPass());
+            ps.setInt(3, admin.getTipo_u());
+            ps.setInt(4, admin.getId_u());
             ps.executeUpdate();           
         } catch (Exception e) {
             e.printStackTrace();
@@ -195,7 +191,7 @@ public int agregar(Periodo admin) {
      
      
      public void delete(int id) {
-        String sql="delete from periodo where id_periodo="+id;       
+        String sql="delete from usuarios where id_usuario="+id;       
         Connection conn = null;
         PreparedStatement ps = null;
         ResultSet rs = null;

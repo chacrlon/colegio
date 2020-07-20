@@ -15,16 +15,18 @@ public class Anio {
     private String nombre;
     private String estatus;
     private int id_p;
+    private int id_p_d;
 
     public Anio() {
     }
 
-    public Anio(int id_a, String codigo, String nombre, String estatus, int id_p) {
+    public Anio(int id_a, String codigo, String nombre, String estatus, int id_p, int id_p_d) {
         this.id_a = id_a;
         this.codigo = codigo;
         this.nombre = nombre;
         this.estatus = estatus;
         this.id_p = id_p;
+        this.id_p = id_p_d;
     }
 
     public int getId_a() {
@@ -65,6 +67,14 @@ public class Anio {
 
     public void setId_p(int id_p) {
         this.id_p = id_p;
+    }
+    
+    public int getId_p_d() {
+        return id_p_d;
+    }
+
+    public void setId_p_d(int id_p_d) {
+        this.id_p_d = id_p_d;
     }
 
     

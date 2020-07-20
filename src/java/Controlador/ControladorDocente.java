@@ -169,7 +169,7 @@ public class ControladorDocente extends HttpServlet {
                      case "Listar":
                          Periodo pee = getPeriodo(request, sesion);
                          sesion.setAttribute("periodoses", pee);
-                         List listaa = anioCRUD.listar();
+                         List listaa = anioCRUD.listarDocente();
                          request.setAttribute("Anios", listaa);
                          request.setAttribute("valor", valorr);
                          request.getRequestDispatcher("anio_periodo.jsp").forward(request, response);
@@ -183,7 +183,17 @@ public class ControladorDocente extends HttpServlet {
                      //ENTRAMOS EN LAS SECCIONES DE CADA AÑO DEL PERIODO AQUI
                      case "Seccion":
                          switch (accionnn) {
-                             
+                             case "Listar":
+                                 Periodo pe2 = getPeriodo(request, sesion);
+                                 sesion.setAttribute("periodoses", pe2);
+
+                                 Anio anio2 = getAnio(request, sesion);
+                                 sesion.setAttribute("anioses", anio2);
+
+                                 List listaaa = seccionCRUD.listar();
+                                 request.setAttribute("Secciones", listaaa);
+                                 request.getRequestDispatcher("seccion_anio_periodo.jsp").forward(request, response);
+                                 break;
 
                                  
                                  
@@ -330,7 +340,7 @@ public class ControladorDocente extends HttpServlet {
                                           }
                                      default:
                                         throw new AssertionError();
-                                    }     
+                                    }    
                                }    
                              
                              default:

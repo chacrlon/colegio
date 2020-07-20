@@ -1,5 +1,6 @@
 
 
+<%@page import="Controlador.Controlador"%>
 <%@page import="Controlador.ControladorDocente"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -229,11 +230,13 @@
 			<div class="row">
 				<div class="col-xs-12">
 					<ul class="nav nav-tabs" style="margin-bottom: 15px;">
+                                            <% if (Controlador.Rol_usuario(1, request)){%>
 					  	<li class="active"><a href="#newSchool" data-toggle="tab"><i class="zmdi zmdi-balance"></i> School Data</a></li>
 					  	<li><a href="#newYear" data-toggle="tab"><i class="zmdi zmdi-calendar-check"></i> New Year</a></li>
 					  	<li><a href="#listYear" data-toggle="tab"><i class="zmdi zmdi-calendar-note"></i> List Year</a></li>
 					  	<li><a href="#newPeriod" data-toggle="tab"><i class="zmdi zmdi-timer"></i> New Period</a></li>
 					  	<li><a href="#listPeriod" data-toggle="tab"><i class="zmdi zmdi-time-restore"></i> List Period</a></li>
+                                                <% } %>
 					</ul>
 					<div class="tab-content">
 						<div class="tab-pane fade active in" id="newSchool">

@@ -5,6 +5,7 @@
  */
 package Modelo;
 
+import Modelo.DocenteAcessos;
 import BD.Conexion;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -94,6 +95,46 @@ public Anio listarId(int id) {
     }
 
 
+public List listarDocente() {
+        String sql="select id_anio from docente_materia where id_dm=2";
+        Connection conn = null;
+        PreparedStatement ps = null;
+        ResultSet rs = null;
+        List<DocenteAcessos>lista=new ArrayList<>();
+        try {
+            conn=con.Conexionn();
+            ps=conn.prepareStatement(sql);
+            rs=ps.executeQuery();
+            while (rs.next()) {
+                DocenteAcessos da = new DocenteAcessos();
+                da.setId_dm(rs.getInt(1));
+                da.setId_p_d(rs.getString(2));
+                da.setId_periodo(rs.getString(3));              
+                da.setId_anio(rs.getString(4));
+                da.setId_seccion(rs.getString(5));              
+                da.setId_asignatura(rs.getString(6));
+                lista.add(da);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        finally {
+            try {
+                if(ps != null)
+                    ps.close();
+                if(rs != null)
+                    rs.close();
+                if(conn != null)
+                    conn.close();    
+            }
+            catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
+        return lista;
+    }
+
+
 public int agregar(Anio admin) {
         String sql="insert into anio(codigo, nombre, estatus)values(?,?,?)";
         Connection conn = null;
@@ -160,6 +201,42 @@ public int agregarIDperiodo(Anio admin) {
         return r;
     }
 
+    public int agregarIDDocentePeriodo(Anio admin) {
+        String sql="insert into anio(codigo, nombre, estatus, id_periodo, id_p_d)valid_periodoues(?,?,?,?,?)";
+        Connection conn = null;
+        PreparedStatement ps = null;
+        ResultSet rs = null;
+        try {
+            conn=con.Conexionn();
+            ps=conn.prepareStatement(sql);
+            ps.setString(1, admin.getCodigo());
+            ps.setString(2, admin.getNombre());
+            ps.setString(3, admin.getEstatus());
+            ps.setInt(4, admin.getId_p());
+            ps.setInt(5, admin.getId_p_d());
+            ps.executeUpdate();
+        } catch (Exception e) {
+            e.printStackTrace();
+            return 0;
+        }
+        finally {
+            try {
+                if(ps != null)
+                    ps.close();
+                if(rs != null)
+                    rs.close();
+                if(conn != null)
+                    conn.close();    
+            }
+            catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }       
+        return r;
+    } 
+    
+    
+    
      public int actualizar(Anio admin) {
         String sql="update anio set codigo=?, nombre=?, estatus=? where id_anio=?";
         Connection conn = null;
