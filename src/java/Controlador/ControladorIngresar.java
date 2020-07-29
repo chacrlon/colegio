@@ -2,23 +2,27 @@ package Controlador;
 
 
 import BD.Conexion;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.util.ArrayList;
 import java.util.List;
 import Modelo.Usuarios;
 import Modelo.UsuariosCRUD;
 import java.io.IOException;
+import java.util.ArrayList;
+import javax.ejb.EJB;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import models.Status;
+import persistence.StatusFacadeLocal;
+import persistence.UsuariosFacadeLocal;
+import utils.ListRolesUsuariosUtil;
 
 public class ControladorIngresar extends HttpServlet {
-
+        @EJB
+        private StatusFacadeLocal statusFacade;
+         @EJB
+        private UsuariosFacadeLocal usuariosFacade;
     Usuarios us= new Usuarios();
     UsuariosCRUD usCRUD= new UsuariosCRUD();
     Conexion con= new Conexion();       
@@ -29,22 +33,29 @@ public class ControladorIngresar extends HttpServlet {
        HttpSession sesion = request.getSession();
         String accion = request.getParameter("accion");
         String tipo_usuario="";
-
+           List<Status> status = statusFacade.findAll();
         if (accion.equalsIgnoreCase("Ingresar")) {
             String nick = request.getParameter("txtuser");
             String pass = request.getParameter("txtpass");
+            models.Usuarios usuario= usuariosFacade.findByNickPass(nick, pass);
             us = usCRUD.validar(nick, pass);
             if (us.getNick() != null) {
                 
-                sesion.setAttribute("usuario", us);
-                Usuarios user = (Usuarios) sesion.getAttribute("usuario");
-                if (user.getTipo_u() == 1) {
+                sesion.setAttribute("usuario", usuario);
+                models.Usuarios user = (models.Usuarios) sesion.getAttribute("usuario");
+                List<models.Usuarios> listita= new ArrayList();
+                if(user != null){
+                    
+                listita.add(user);
+                    ListRolesUsuariosUtil.setUsuariosRolesString(listita);
+                }
+                if (listita.get(0).getRolesString().contains("Administrador")) {
                     request.getRequestDispatcher("Controlador?menu=Principal").forward(request, response);
                 }
-                if (user.getTipo_u() == 2) {
+                else if (listita.get(0).getRolesString().contains("siguiente rol")) {
                     request.getRequestDispatcher("ControladorDocente?menu=Principal").forward(request, response);
                 }
-                if (user.getTipo_u() == 3) {
+                else if (listita.get(0).getRolesString().contains("siguiente rol")) {
                     request.getRequestDispatcher("ControladorEstudiante?menu=Principal").forward(request, response);
                 }
                 

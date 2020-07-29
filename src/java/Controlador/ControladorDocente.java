@@ -25,21 +25,23 @@ import Modelo.Seccion;
 import Modelo.SeccionCRUD;
 import Modelo.Usuarios;
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.List;
+import javax.ejb.EJB;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import utils.ListRolesUsuariosUtil;
 
 /**
  *
  * @author AARON ROMAN
  */
 public class ControladorDocente extends HttpServlet {
-
+    
+   
    int ida, idp, id_anio, id_seccion, id_asignatura, id_docente, id_estudiante, id_representante;
              
         Periodo periodo=new Periodo();
@@ -124,15 +126,30 @@ public class ControladorDocente extends HttpServlet {
  
  public static Boolean Rol_usuario(Integer nRol, HttpServletRequest request) {
      HttpSession sesion = request.getSession();
-     Usuarios user = (Usuarios) sesion.getAttribute("usuario");
+     models.Usuarios user = (models.Usuarios) sesion.getAttribute("usuario");
+     List<models.Usuarios> listita = new ArrayList();
+     Integer tipoUsuario = 0;
+        if (user != null) {
+
+            listita.add(user);
+            ListRolesUsuariosUtil.setUsuariosRolesString(listita);
+        }
+        if (listita.get(0).getRolesString().contains("Administrador")) {
+            tipoUsuario = 1;
+        } else if (listita.get(0).getRolesString().contains("siguiente rol")) {
+            tipoUsuario = 2;
+        } else if (listita.get(0).getRolesString().contains("siguiente rol")) {
+            tipoUsuario = 3;
+        }
      Boolean sal = false;
-     if (user.getTipo_u() == nRol) sal = true;
+     if (tipoUsuario == nRol) sal = true;
      return sal;
  }
  
  
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        
         String menu = request.getParameter("menu");
         String accion = request.getParameter("accion");
         String accionn = request.getParameter("accionn");

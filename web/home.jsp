@@ -229,7 +229,7 @@
 		</div>
                                                                                         <div class="form-group label-floating">
 											  <label class="control-label">Tipo de usuario</label>
-											  <input class="form-control" type="text" value="${usuario.getTipo_u()}" name="rol_usuario">
+											  <input class="form-control" type="text" value="${usuario.getNick()}" name="rol_usuario">
 											</div>
 		<div class="full-box text-center" style="padding: 30px 10px;">
 			<article class="full-box tile">
