@@ -12,9 +12,9 @@ public class Conexion {
         Connection con = null;
         try {
             Class.forName("com.mysql.jdbc.Driver");
-            con=DriverManager.getConnection("jdbc:mysql://localhost:3306/colegio_online","root","");            
+            con=DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/colegio_online?zeroDateTimeBehavior=convertToNull&serverTimezone=UTC","root","pass");            
         } catch (Exception e) {
-            System.err.println("Error"+e);
+          e.printStackTrace();
         }
         finally {
            return con;

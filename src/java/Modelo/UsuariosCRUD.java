@@ -21,17 +21,17 @@ public class UsuariosCRUD {
         PreparedStatement ps = null;
         ResultSet rs = null;
         try {
-            conn=con.Conexionn();
-            ps=conn.prepareStatement(sql);
+          conn=con.Conexionn();
+           ps=conn.prepareStatement(sql);
             ps.setString(1, nick);
             ps.setString(2, pass);
             rs = ps.executeQuery();
             while (rs.next()) {
                 em.setId_u(rs.getInt(1));
                 em.setNick(rs.getString(2));
-                em.setPass(rs.getString(3));
+               em.setPass(rs.getString(3));
                 em.setTipo_u(rs.getInt(4));
-            }
+           }
         } catch (Exception e) {
             e.printStackTrace();
         }
