@@ -9,7 +9,7 @@ import models.PaquetesMaterias;
 import models.PeriodosSecciones;
 import models.Status;
 
-@Generated(value="EclipseLink-2.5.2.v20140319-rNA", date="2020-07-27T22:34:14")
+@Generated(value="EclipseLink-2.5.2.v20140319-rNA", date="2020-08-08T18:10:29")
 @StaticMetamodel(Secciones.class)
 public class Secciones_ { 
 

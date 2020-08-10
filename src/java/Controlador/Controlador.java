@@ -1130,7 +1130,7 @@ public class Controlador extends HttpServlet {
                 request.getRequestDispatcher("home.jsp").forward(request, response);
             }
         } catch (Exception e) {
-            e.getStackTrace();
+            e.printStackTrace();
             request.setAttribute("message", ConstantesUtils.MensajesList.ERROR+" Algo ha salido mal, favor de comunicarse a soporte.");
             request.getRequestDispatcher("Controlador?menu=Usuario&accion=Listar").forward(request, response);
         }

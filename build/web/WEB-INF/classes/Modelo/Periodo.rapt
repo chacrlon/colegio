@@ -1,0 +1,15 @@
+models/PaquetesMaterias_.java
+models/Estudiantes_.java
+models/Calificacion_.java
+models/Usuarios_.java
+models/EstudiantesSecciones_.java
+models/DocentesMaterias_.java
+models/Docentes_.java
+models/Asignaturas_.java
+models/Secciones_.java
+models/PlanEvaluacion_.java
+models/Periodo_.java
+models/Status_.java
+models/UsuariosRoles_.java
+models/PeriodosSecciones_.java
+models/Publicaciones_.java
