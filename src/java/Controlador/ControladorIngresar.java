@@ -38,8 +38,8 @@ public class ControladorIngresar extends HttpServlet {
             String nick = request.getParameter("txtuser");
             String pass = request.getParameter("txtpass");
             models.Usuarios usuario= usuariosFacade.findByNickPass(nick, pass);
-            us = usCRUD.validar(nick, pass);
-            if (us.getNick() != null) {
+           // us = usCRUD.validar(nick, pass);
+            if (usuario != null) {
                 
                 sesion.setAttribute("usuario", usuario);
                 models.Usuarios user = (models.Usuarios) sesion.getAttribute("usuario");

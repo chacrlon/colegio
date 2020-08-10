@@ -11,7 +11,7 @@ import models.Periodo;
 import models.Secciones;
 import models.Usuarios;
 
-@Generated(value="EclipseLink-2.5.2.v20140319-rNA", date="2020-07-27T22:34:14")
+@Generated(value="EclipseLink-2.5.2.v20140319-rNA", date="2020-08-08T18:10:29")
 @StaticMetamodel(Status.class)
 public class Status_ { 
 

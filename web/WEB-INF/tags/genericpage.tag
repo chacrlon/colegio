@@ -4,7 +4,6 @@
     Author     : G L703
 --%>
 <%@tag import="Controlador.Controlador" %>
-<%@tag import="Controlador.ControladorDocente"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@tag description="Overall page template"  pageEncoding="UTF-8"%>
 <%@attribute name="header" fragment="true" %>

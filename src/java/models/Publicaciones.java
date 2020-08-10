@@ -14,6 +14,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
+import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
@@ -23,6 +24,7 @@ import javax.xml.bind.annotation.XmlRootElement;
  * @author G L703
  */
 @Entity
+@Table(name="publicaciones")
 @XmlRootElement
 @NamedQueries({
     @NamedQuery(name = "Publicaciones.findAll", query = "SELECT p FROM Publicaciones p")
